@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>耿锐的博客</title>
+  
+  <subtitle>欢迎的来到耿锐的技术小栈</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://gengrui01.github.io/"/>
+  <updated>2021-02-19T12:32:46.683Z</updated>
+  <id>https://gengrui01.github.io/</id>
+  
+  <author>
+    <name>耿锐</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git的安装与配置</title>
+    <link href="https://gengrui01.github.io/article/20210219.html"/>
+    <id>https://gengrui01.github.io/article/20210219.html</id>
+    <published>2021-02-18T16:00:00.000Z</published>
+    <updated>2021-02-19T12:32:46.683Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载并安装"><a href="#下载并安装" class="headerlink" title="下载并安装"></a>下载并安装</h2><p>官方下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git-Downloads</a> </p><p>安装方法：无特殊需求直接下一步即可</p><a id="more"></a><h2 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h2><p>设置Git的用户名和邮件地址（邮箱就是注册Github时候的邮箱）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"gengrui01"</span></span><br><span class="line">$ git config --global user.email <span class="string">"12******09@qq.com"</span></span><br></pre></td></tr></table></figure><h2 id="Git-GitHub建立联系（SSH）"><a href="#Git-GitHub建立联系（SSH）" class="headerlink" title="Git-GitHub建立联系（SSH）"></a>Git-GitHub建立联系（SSH）</h2><h3 id="删除原有SSH配置"><a href="#删除原有SSH配置" class="headerlink" title="删除原有SSH配置"></a>删除原有SSH配置</h3><p>检查电脑是否有ssh配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al ~/.ssh</span><br></pre></td></tr></table></figure><p>出现下面提示表示无ssh配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls: cannot access <span class="string">'/c/Users/HUAWEI/.ssh'</span>: No such file or directory</span><br></pre></td></tr></table></figure><p>如果未提示上述内容表示已经有ssh配置，需要删除用户文件夹下.ssh文件夹中的所有文件</p><h3 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h3><p>键入命令，注意这里需要输入注册Github时候的邮箱地址，停顿的地方一路回车</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"12******09@qq.com"</span></span><br></pre></td></tr></table></figure><p>之后键入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent -s</span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>如果出现如下错误</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not open a connection to your authentication agent.</span><br></pre></td></tr></table></figure><p>先执行命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure><p>再重新执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><h3 id="添加SSH密钥到GitHub账户"><a href="#添加SSH密钥到GitHub账户" class="headerlink" title="添加SSH密钥到GitHub账户"></a>添加SSH密钥到GitHub账户</h3><p>执行如下命令复制密钥</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure><p>之后打开GitHub<a href="https://github.com/GengRui01" target="_blank" rel="noopener">https://github.com/GengRui01</a> ，其中“GengRui01”为用户名</p><p>按下图步骤打开设置页</p><p><img src="https://gengrui01.github.io/picture/git-install-configurate/1.png" alt=""></p><p>单击左边标签栏中的 SSH and GPG keys 打开密钥管理页</p><p>单击 New SSH key 添加SSH密钥</p><p><img src="https://gengrui01.github.io/picture/git-install-configurate/2.png" alt=""></p><p>title可以随意输入，key直接粘贴刚才复制好的密钥即可</p><p><img src="https://gengrui01.github.io/picture/git-install-configurate/3.png" alt=""></p><p>最后点击添加按钮完成SSH密钥添加</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;下载并安装&quot;&gt;&lt;a href=&quot;#下载并安装&quot; class=&quot;headerlink&quot; title=&quot;下载并安装&quot;&gt;&lt;/a&gt;下载并安装&lt;/h2&gt;&lt;p&gt;官方下载地址：&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Git-Downloads&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;安装方法：无特殊需求直接下一步即可&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="安装与配置" scheme="https://gengrui01.github.io/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>博客改版</title>
+    <link href="https://gengrui01.github.io/article/20200718.html"/>
+    <id>https://gengrui01.github.io/article/20200718.html</id>
+    <published>2020-07-17T16:00:00.000Z</published>
+    <updated>2021-02-19T12:32:46.711Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="改版计划及目前进度"><a href="#改版计划及目前进度" class="headerlink" title="改版计划及目前进度"></a>改版计划及目前进度</h2><p>博客改版开始啦，这次的改版主要将博客主题修改为简洁轻量的<a href="https://github.com/chaooo/hexo-theme-BlueLake" target="_blank" rel="noopener">BlueLake</a>主题</p><a id="more"></a><h2 id="博客部署"><a href="#博客部署" class="headerlink" title="博客部署"></a>博客部署</h2><p>在每次完成文档修改后执行如下指令完成部署（先生成后上传）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>每次部署完成后执行如下指令完成备份</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"..."</span></span><br><span class="line">$ git push</span><br></pre></td></tr></table></figure><h2 id="更换开发环境"><a href="#更换开发环境" class="headerlink" title="更换开发环境"></a>更换开发环境</h2><p>备份的目的是满足异地工作的需求，更换开发环境时只需要安装git和node，执行如下操作即可</p><ol><li>安装IDEA</li></ol><p>IDEA的安装及破解方法见往期文章<a href="https://gengrui01.github.io/article/20210218.html">IDEA的安装与破解</a></p><ol start="2"><li>安装git 配置git</li></ol><p>git的安装及配置方法见往期文章<a href="https://gengrui01.github.io/article/20210219.html">git的安装与配置</a></p><ol start="3"><li><p>idea拉取Hexo-admin备份文件</p></li><li><p>安装hexo</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> Hexo-admin</span><br><span class="line">$ npm install -g hexo-cli</span><br><span class="line">$ npm install hexo</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;改版计划及目前进度&quot;&gt;&lt;a href=&quot;#改版计划及目前进度&quot; class=&quot;headerlink&quot; title=&quot;改版计划及目前进度&quot;&gt;&lt;/a&gt;改版计划及目前进度&lt;/h2&gt;&lt;p&gt;博客改版开始啦，这次的改版主要将博客主题修改为简洁轻量的&lt;a href=&quot;https://github.com/chaooo/hexo-theme-BlueLake&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;BlueLake&lt;/a&gt;主题&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="博客相关" scheme="https://gengrui01.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>类加载机制</title>
+    <link href="https://gengrui01.github.io/article/20180718.html"/>
+    <id>https://gengrui01.github.io/article/20180718.html</id>
+    <published>2018-07-17T16:00:00.000Z</published>
+    <updated>2021-02-19T12:32:46.699Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h2><ul><li>加载<ol><li>找到类文件（通过类的全限定名来获取定义此类的二进制字节流）</li><li>放入方法区（将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构）</li><li>开个入口（生成一个代表此类的java.lang.Class对象，作为访问方法区这些数据结构的入口）</li></ol></li></ul><a id="more"></a><ul><li>连接<ol><li>校验（检查Class文件的字节流中包含的信息是否符合当前虚拟机的要求）</li><li>准备（为静态变量和静态常量分配内存，并给静态常量赋设定值，静态变量赋初始值）</li><li>解析（jvm将常量池的符号引用替换为直接引用）</li></ol></li><li>初始化(为静态变量赋程序设定的初值，类只有在如下五种情况下会初始化)<ul><li>使用new关键字创建类的实例，或读取或设置一个静态字段的值，或调用静态方法的时候</li><li>通过java.lang.reflect包的方法对类进行反射调用的时候，如果类没有进行过初始化，则要首先进行初始化</li><li>当初始化一个类的时候，如果发现其父类没有进行过初始化，则首先触发父类初始化</li><li>当虚拟机启动时，用户需要指定一个主类（包含main()方法的类），虚拟机会首先初始化这个类</li><li>使用jdk1.7的动态语言支持时，如果一个java.lang.invoke.MethodHandle实例最后的解析结果REFgetStatic、REFputStatic、RE_invokeStatic的方法句柄，并且这个方法句柄对应的类没有进行初始化，则需要先触发其初始化</li></ul></li><li>使用</li><li>卸载</li></ul><h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><ol><li>启动类加载器(BootStrapClassLoader)<ul><li>负责加载Java的核心库</li><li>是用原生代码来实现的</li><li>并不继承自java.lang.ClassLoader</li></ul></li><li>扩展类加载器(ExtClassLoader)<ul><li>负责加载Java的扩展库</li><li>在虚拟机实现时提供的扩展库目录里面查找并加载Java类</li></ul></li><li>应用程序类加载器(AppClassLoader)<ul><li>负责加载classpath路径下的Java类</li><li>一般来说 Java应用的类都是由它来完成加载的</li><li>可以通过ClassLoader.getSystemClassLoader()来获取它</li></ul></li><li>用户自定义类加载器<ul><li>用户根据自定义需求，自由的定制加载的逻辑</li><li>一般都继承AppClassLoader，仅仅覆盖findClass()方法，继续遵守双亲委派模型</li></ul></li></ol><p>如上四种类加载器之间存在继承关系，除了引导类加载器外，其他的加载器都可以用getParent()方法获取父类加载器</p><h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>类的加载机制是双亲委派机制，工作过程如下：</p><ol><li>当前加载器从自己的缓存中查询是否此类已经加载，有就返回加载好的类（每个类加载器都有自己的加载缓存，已经加载的类都会放入缓存中）</li><li>当前加载器的缓存中没有找到被加载的类的时候，委托父类加载器去加载，父类加载器采用同样的策略，首先查看自己的缓存，然后委托父类的父类去加载，一直到启动类加载器</li><li>当所有的父类加载器都没有加载的时候，再由当前的类加载器加载，并将其放入它自己的缓存中，以便下次有加载请求的时候直接返回</li></ol><p>双亲委派的优点是：</p><ol><li>保证 Java 程序安全稳定运行，Java 核心 API 定义类型不会被随意替换。比如自己写的String.class类就不会被加载</li><li>通过带有优先级的层级关可以避免类的重复加载</li></ol><p><img src="https://gengrui01.github.io/picture/jvm-class-loading/1.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;类的生命周期&quot;&gt;&lt;a href=&quot;#类的生命周期&quot; class=&quot;headerlink&quot; title=&quot;类的生命周期&quot;&gt;&lt;/a&gt;类的生命周期&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;加载&lt;ol&gt;
+&lt;li&gt;找到类文件（通过类的全限定名来获取定义此类的二进制字节流）&lt;/li&gt;
+&lt;li&gt;放入方法区（将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构）&lt;/li&gt;
+&lt;li&gt;开个入口（生成一个代表此类的java.lang.Class对象，作为访问方法区这些数据结构的入口）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="JVM" scheme="https://gengrui01.github.io/categories/JVM/"/>
+    
+    
+  </entry>
+  
+</feed>
