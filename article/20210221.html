@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>安装MySQL并配置环境变量(以Java8为例) | 耿锐的博客</title>
+  <title>安装MySQL并配置环境变量(以MySQL8为例) | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      安装MySQL并配置环境变量(以Java8为例)
+      安装MySQL并配置环境变量(以MySQL8为例)
     </h1>
   
 
@@ -166,18 +166,18 @@
 <p>这里需要注意我们的数据存放目录为“安装目录\Data”，Data文件夹不需要自己创建</p>
 <h2 id="安装服务并初始化"><a href="#安装服务并初始化" class="headerlink" title="安装服务并初始化"></a>安装服务并初始化</h2><p>虽然我我们下载的是免安装版，还是要用命令安装MySQL服务并且初始化MySQL</p>
 <p>以管理员身份打开控制台，一定要是管理员身份，否则后续部分命令会出现权限错误，点此链接查看<a href="https://jingyan.baidu.com/article/86fae346e586323c49121a00.html" target="_blank" rel="noopener">如何以管理员身份打开CMD控制台（详解-百度经验）</a></p>
-<p>转到mysql安装目录的bin目录下</p>
+<h3 id="安装服务"><a href="#安装服务" class="headerlink" title="安装服务"></a>安装服务</h3><p>转到mysql安装目录的bin目录下</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/6.png" alt=""></p>
 <p>使用<code>.\mysqld --install</code>命令安装MySQL服务</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/7.png" alt=""></p>
-<p>使用<code>.\mysqld --initialize --console</code>命令初始化MySQL</p>
+<h3 id="初始化MySQL"><a href="#初始化MySQL" class="headerlink" title="初始化MySQL"></a>初始化MySQL</h3><p>使用<code>.\mysqld --initialize --console</code>命令初始化MySQL</p>
 <p>初始化会产生一个随机密码，需要复制下来，后面第一次登录会用到</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/8.png" alt=""></p>
-<p>使用<code>net start mysql</code>命令开启mysql的服务</p>
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><p>使用<code>net start mysql</code>命令开启mysql的服务</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/9.png" alt=""></p>
 <p>使用MySQL登录命令<code>mysql -u root -p随机密码</code>，出现如下界面表示安装成功</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/10.png" alt=""></p>
-<p>使用如下SQL语句修改root用户密码</p>
+<h3 id="修改密码"><a href="#修改密码" class="headerlink" title="修改密码"></a>修改密码</h3><p>使用如下SQL语句修改root用户密码</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> <span class="string">"root"</span>@<span class="string">"localhost"</span> <span class="keyword">identified</span> <span class="keyword">by</span> <span class="string">"新的密码"</span>;</span><br></pre></td></tr></table></figure>
 
 <p>提示“Query OK”表示命令执行成功</p>
@@ -185,19 +185,18 @@
 <p>退出登陆后使用新密码登录，验证密码是否修改成功</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/12.png" alt=""></p>
 <p>关闭控制台</p>
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>复制MySQL安装目录下bin目录绝对路径</p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>复制MySQL安装目录下bin目录绝对路径</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/15.png" alt=""></p>
 <p>鼠标右键我的电脑-属性 会进入到可以查看计算机基本信息的系统页</p>
 <p>点击左侧“高级系统设置” 会弹出“系统属性”对话框</p>
 <p>之后点击“环境变量” 会弹出“环境变量”对话框</p>
 <p>选中用户变量下的PATH变量，点击“编辑”</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/13.png" alt=""></p>
-<p>弹出“编辑环境变量”对话框</p>
-<p>粘贴刚才复制的MySQL安装目录下bin目录绝对路径，点击确定</p>
+<p>弹出“编辑环境变量”对话框，点击新建，粘贴刚才复制的MySQL安装目录下bin目录绝对路径，点击确定</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/14.png" alt=""></p>
 <p>依次点击“环境变量”对话框和“系统属性”对话框中的确定按钮，完成MySQL环境变量配置</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/16.png" alt=""></p>
-<h2 id="检测环境变量是否配置成功"><a href="#检测环境变量是否配置成功" class="headerlink" title="检测环境变量是否配置成功"></a>检测环境变量是否配置成功</h2><p>WIN+R键打开运行框，输入<code>cmd</code>点击确定打开控制台</p>
+<h3 id="检测环境变量是否配置成功"><a href="#检测环境变量是否配置成功" class="headerlink" title="检测环境变量是否配置成功"></a>检测环境变量是否配置成功</h3><p>WIN+R键打开运行框，输入<code>cmd</code>点击确定打开控制台</p>
 <p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/16.png" alt=""></p>
 <p>输入<code>mysql -u root -p自设密码</code>验证是否可直接登录，登录成功表示配置成功</p>
 <p><img src="https://gengrui01.github.io/picture/mysql-install-configurate/17.png" alt=""></p>
@@ -208,7 +207,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置初始化的my-ini文件"><span class="toc-text">配置初始化的my.ini文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装服务并初始化"><span class="toc-text">安装服务并初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置环境变量"><span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测环境变量是否配置成功"><span class="toc-text">检测环境变量是否配置成功</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置初始化的my-ini文件"><span class="toc-text">配置初始化的my.ini文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装服务并初始化"><span class="toc-text">安装服务并初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装服务"><span class="toc-text">安装服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化MySQL"><span class="toc-text">初始化MySQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务"><span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改密码"><span class="toc-text">修改密码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量"><span class="toc-text">环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测环境变量是否配置成功"><span class="toc-text">检测环境变量是否配置成功</span></a></li></ol></li></ol>
     </div>
   </div>
 
