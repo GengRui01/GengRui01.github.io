@@ -134,71 +134,14 @@
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MyBatis 是一款优秀的持久层框架，它支持定制化SQL、存储过程以及高级映射</p>
 <p>与其它ORM框架不同，MyBatis没有将Java对象与数据表关联起来，而是作为Java方法和SQL语句的桥梁，我们一般称它为半ORM框架</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><ul>
-<li>方便地定制化SQL，操作数据库对象</li>
-<li>使用简单的XML或注解来配置和映射原生类、接口和Java的POJO为数据库中的记录</li>
-<li>提供强大的动态SQL功能，可以更加灵活地使用SQL语句</li>
-<li>提供插件增强机制，可以轻松集成其它插件</li>
-</ul>
-<h2 id="Hibernate与MyBatis对比"><a href="#Hibernate与MyBatis对比" class="headerlink" title="Hibernate与MyBatis对比"></a>Hibernate与MyBatis对比</h2><ul>
-<li>Hibernate<ul>
-<li>全自动化ORM框架，数据库移植性好，基础业务几乎不需要写SQL</li>
-<li>易学难精，上手简单但熟练使用需要阅读大量文档，框架结构复杂</li>
-</ul>
-</li>
-<li>MyBatis<ul>
-<li>半自动化ORM框架，数据库移植性一般，基础业务仍需写SQL，但可以通过基础Mapper来简化</li>
-<li>易学易用，上手简单，结构精简清晰，易深入学习</li>
-</ul>
-</li>
-</ul>
-<p>对比结果：</p>
-<ul>
-<li>Hibernate适合在需求明确、业务固定的项目中使用，如OA、ERP项目</li>
-<li>MyBatis适合在需求多变，快速迭代的项目中使用，如互联网的电商项目</li>
-</ul>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210227.html#more">Read More</a>
+        </p>
       
       
       
@@ -250,93 +193,15 @@
 <ol>
 <li>注册驱动</li>
 <li>获取连接</li>
-<li>获取statement对象</li>
-<li>执行SQL语句返回结果集</li>
-<li>遍历结果集</li>
-<li>关闭连接释放资源</li>
 </ol>
-<p>原生JDBC连接及操作数据库有几个缺点：</p>
-<ul>
-<li>某条语句执行失败时的处理逻辑非常复杂</li>
-<li>要对其中某些业务逻辑做修改，改动代码量较大</li>
-</ul>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ORM是对象(Object)、关系(Relational)、映射(Mapping)的缩写，是一种用于实现面向对象编程语言里不同类型系统的数据之间转换的程序技术</p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>Java是一门面向对象语言，几乎所有的程序中都存在对象和关系数据库</p>
-<p>当对象信息发生变化的时候，我们需要去改数据库中的数据</p>
-<p>ORM会把对SQL的操作转换为对象的操作，从而让程序员使用起来更加方便和易于接受</p>
-<p>一般情况下，一个持久化类和一个表对应，类的每个实例对应表中的一条记录，类的每个属性对应表的每个字段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line">    String name;</span><br><span class="line">    Integer gender;</span><br><span class="line">    Date birthday;</span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>id</th>
-<th>name</th>
-<th>gender</th>
-<th>birthday</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>Anne</td>
-<td>female</td>
-<td>1999-01-01</td>
-</tr>
-<tr>
-<td>2</td>
-<td>Bob</td>
-<td>male</td>
-<td>1998-08-21</td>
-</tr>
-</tbody></table>
-<p>由于类和表之间、属性和字段之间建立起了映射关系，所以SQL对表的操作就可以转换为对象的操作</p>
-<p>程序员从此无需编写SQL语句，由框架根据对象的变化及映射关系自动生成SQL语句，这就是ORM的作用</p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
-<li>提高了开发效率。由于ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射，所以我们实际可能已经不需要一个专用的、庞大的数据访问层。 </li>
-<li>ORM提供了对数据库的映射，不用SQL直接编码，能够像操作对象一样从数据库获取数据</li>
-</ol>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210226.html#more">Read More</a>
+        </p>
       
       
       
@@ -385,58 +250,14 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>SpringMVC是Spring生态圈中的WEB-MVC框架</p>
-<h2 id="SpringMVC和Spring的关系"><a href="#SpringMVC和Spring的关系" class="headerlink" title="SpringMVC和Spring的关系"></a>SpringMVC和Spring的关系</h2><p>由于Spring的概念有狭义广义两种理解方式，SpringMVC和Spring的关系可以从如下两个角度理解：</p>
-<ul>
-<li>水平角度：SpringMVC是Spring生态圈中的一个功能模块，两者是包含与被包含的关系；</li>
-<li>垂直角度：SpringMVC是建立在Spring核心功能之上的一个WEB-MVC框架，是Spring核心功能的延伸和扩展。</li>
-</ul>
-<h2 id="Struts2与SpringMVC对比"><a href="#Struts2与SpringMVC对比" class="headerlink" title="Struts2与SpringMVC对比"></a>Struts2与SpringMVC对比</h2><ul>
-<li>Struts2很多功能也需要借助于Spring实现，SpringMVC和Spring有直属血缘的关系，两者吻合度更高</li>
-<li>使用SpringMVC时所需要的其他逻辑组件都经由IOC创建Spring容器管理，可根据组件特性保证其线程安全性</li>
-<li>SpringMVC利用DI功能，能轻松地装配好各组件之间的依赖，开发者只需要关注编写自己的业务逻辑便可</li>
-</ul>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210225.html#more">Read More</a>
+        </p>
       
       
       
@@ -490,70 +311,14 @@
 <li>PHP</li>
 <li>.net</li>
 </ul>
-<p>Servlet是基于Java语言的动态WEB开发技术，Servlet指的是J2EE中所提出来的企业级服务器开发规范。</p>
-<p>理论上讲，每一次不同的http请求需要一个Servlet组件来响应，当请求类型比较多时，Servlet就会相应增加，也意味着每一个Servlet都可以成为进入服务器的入口。</p>
-<p>原生Servlet构建的MVC开发模式有几个缺点：</p>
-<ul>
-<li>Servlet本身采用单例设计模式，生命周期由服务器维护，存在线程安全隐患的问题；</li>
-<li>随着Servlet数量的增加，对服务器的存储空间也会产生压力；</li>
-<li>使用Servlet响应用户请求时，每一个响应逻辑都需要开发者不厌其烦地做些重复的事情，如，解析请求包中的数据、构建响应包、设置页面跳转等等。</li>
-</ul>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>MVC是模型(Model)、视图(View)、控制器(Controller)的缩写，是一种分离显示业务逻辑、数据和界面的设计模式</p>
-<h2 id="组件关系"><a href="#组件关系" class="headerlink" title="组件关系"></a>组件关系</h2><ul>
-<li>模型（Model）表示应用程序核心，是应用程序中用于处理应用程序数据逻辑的部分，通常负责在数据库中存取数据。</li>
-<li>视图（View）用来显示数据，是应用程序中处理数据显示的部分，通常View是依据Model的数据而创建的。</li>
-<li>控制器（Controller）用来处理用户输入并调用模型和视图来满足用户的需求，是应用程序中处理用户交互的部分，通常Controller负责从View读取数据，控制用户输入，并向Model发送数据。</li>
-</ul>
-<h2 id="请求响应流程"><a href="#请求响应流程" class="headerlink" title="请求响应流程"></a>请求响应流程</h2><p><img src="https://gengrui01.github.io/picture/mvc/2.png" alt=""></p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
-<li>低耦合性：MVC的视图层和业务层是分离的，如果项目的业务流程或业务规则有所更改，只需要更改MVC的Model层，不需要重新更改编译View和Controller的代码内容。</li>
-<li>高可重用性：MVC模式允许不同类型的View访问相同的服务器端代码，多个View可以共享一个Model，它包括任何WEB浏览器(HTTP)或无线浏览器(WAP)，因为这些表示所需要改变的只有View层的实现方式，Model层和Controller层不需要做任何改变。</li>
-<li>低生命周期成本：MVC降低了用户界面开发和维护的技术需求，从而降低了生命周期成本</li>
-<li>快速部署：使用MVC模式可以大大缩短开发时间，允许后端开发人员只关注业务逻辑，而前端开发人员只需要关注页面的表现形式。</li>
-<li>高可维护性：前后端分离使得WEB应用程序更易于维护和修改。</li>
-</ol>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210224.html#more">Read More</a>
+        </p>
       
       
       
@@ -603,89 +368,14 @@
       
         <h2 id="为什么使用Spring？"><a href="#为什么使用Spring？" class="headerlink" title="为什么使用Spring？"></a>为什么使用Spring？</h2><p><a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a></p>
 <p>Spring官网首页滚动显示如下内容：</p>
-<p><em>Spring makes Java simple.</em></p>
-<p><em>Spring makes Java modern.</em></p>
-<p><em>Spring makes Java productive.</em></p>
-<p><em>Spring makes Java reactive.</em></p>
-<p><em>Spring makes Java cloud-ready.</em></p>
-<p>Spring使Java简单易用、紧跟时代、复用性强、快速响应、云就绪。</p>
-<p><img src="https://gengrui01.github.io/picture/spring/2.png" alt=""></p>
-<h2 id="体系结构介绍"><a href="#体系结构介绍" class="headerlink" title="体系结构介绍"></a>体系结构介绍</h2><p><img src="https://gengrui01.github.io/picture/spring/1.png" alt=""></p>
-<p>结构图阐释：</p>
-<ul>
-<li>Data Access/Integration：持久层 是Spring对数据持久化、事务管理的支持。SpringDataJpa就是其中的一种</li>
-<li>Web：表现层 是Spring对表现层数据的处理部分的支持。SpirngMVC就是其中的一种</li>
-<li>Test：测试层 是Spring对项目提供的一个完整测试环境</li>
-<li>中间的两部分 是Spring框架的核心功能</li>
-</ul>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Spring刚出世时，仅提供了一些核心功能模块</p>
-<p>其中IOC&amp;DI和AOP两大两大核心模块对企业项目开发过程产生了巨大的影响</p>
-<p>后来，Spring在核心功能的的基础之上，延伸出更多的功能模块</p>
-<p>由这些功能模块为企业项目开发提供了较完整的、全方位的解决方案</p>
-<p>所以Spring概念在狭义及广义角度理解不同：</p>
-<ul>
-<li>狭义角度：Spring指的是Spring框架核心功能模块</li>
-<li>广义角度：Spring是一个提供了众多功能模块的生态圈</li>
-</ul>
-<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><h3 id="控制反转-IOC-amp-依赖注入-DI"><a href="#控制反转-IOC-amp-依赖注入-DI" class="headerlink" title="控制反转(IOC) &amp; 依赖注入(DI)"></a>控制反转(IOC) &amp; 依赖注入(DI)</h3><h4 id="控制反转-IOC"><a href="#控制反转-IOC" class="headerlink" title="控制反转(IOC)"></a>控制反转(IOC)</h4><p>简单理解IOC是一种设计模式，将实例化对象的控制权由手动的new变成了Spring框架通过反射机制实例化，并将对象的实例存入在容器种进行管理</p>
-<h4 id="依赖注入-DI"><a href="#依赖注入-DI" class="headerlink" title="依赖注入(DI)"></a>依赖注入(DI)</h4><p>首先理解依赖，程序运行的需要可以称之为依赖</p>
-<p>如果一个类中的某个属性是另一个类，该属性无需手动赋值，通过Spring的配置文件或者注解，通过Spring框架可以实现直接注入属性</p>
-<h4 id="IOC-amp-DI-联合使用"><a href="#IOC-amp-DI-联合使用" class="headerlink" title="IOC &amp; DI 联合使用"></a>IOC &amp; DI 联合使用</h4><p>B类中需要使用A类时：</p>
-<ul>
-<li>未引入Spring框架</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    A a = <span class="keyword">new</span> A();</span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>引入Spring框架后</li>
-</ul>
-<p><img src="https://gengrui01.github.io/picture/spring/3.png" alt=""></p>
-<h3 id="面向切面编程-AOP"><a href="#面向切面编程-AOP" class="headerlink" title="面向切面编程(AOP)"></a>面向切面编程(AOP)</h3><p>首先理解切面，切面是数学中的一个概念，和球面只有一个交点的平面称作球的切面，而接触点称作切点</p>
-<p>在Spring中，切面编程指的就是在程序运行某个方法的时候，不修改原始执行代码逻辑，由程序动态地执行某些额外的功能，对原有的方法做增强，这就叫做面向切面编程，那个被监测的执行方法，称呼为切入点。</p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>Spring框架以控制反转(IOC)和面向切面编程(AOP)为内核，提供了展现层(SpringMVC)、持久层(SpringJDBC)、业务层事务管理等众多的企业级应用技术，还能整合其他第三方开源框架和类库。</p>
-<p>对于对象的实例管理更加方便，代码编写更加优雅，降低代码的耦合性，提升代码的可扩展性。</p>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210223.html#more">Read More</a>
+        </p>
       
       
       
@@ -735,69 +425,14 @@
       
         <h2 id="SSH-amp-SSM"><a href="#SSH-amp-SSM" class="headerlink" title="SSH &amp; SSM"></a>SSH &amp; SSM</h2><p>SSH是Spring+Struts2+Hibernate的缩写，是一种较主流的Java企业级应用框架。</p>
 <p>SSM是Spring+SpringMVC+MyBatis的缩写，是继SSH之后，目前比较主流的Java企业级应用框架。</p>
-<p>本质上都是Spring框架+MVC模式框架+ORM技术框架</p>
-<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p><img src="https://gengrui01.github.io/picture/ssh-ssm-difference/1.png" alt=""></p>
-<p><a href="https://gengrui01.github.io/article/20210223.html">Spring简介</a></p>
-<h2 id="Struts2"><a href="#Struts2" class="headerlink" title="Struts2"></a>Struts2</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><img src="https://gengrui01.github.io/picture/ssh-ssm-difference/2.png" alt=""></p>
-<p>Struts2是一个基于 <a href="https://gengrui01.github.io/article/20210224.html">MVC设计模式</a> 的表现层框架，Struts2作为控制器来建立模型与视图的数据交互。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>校验较繁琐，多字段时出错返回不同。</li>
-<li>安全性太低。</li>
-<li>获取传参时较麻烦</li>
-</ul>
-<h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p><img src="https://gengrui01.github.io/picture/ssh-ssm-difference/3.png" alt=""></p>
-<p><a href="https://gengrui01.github.io/article/20210225.html">SpringMVC简介</a></p>
-<h2 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate"></a>Hibernate</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p><img src="https://gengrui01.github.io/picture/ssh-ssm-difference/4.png" alt=""></p>
-<p>Hibernate是一个基于 <a href="https://gengrui01.github.io/article/20210226.html">ORM程序技术</a> 的持久层框架，与各种数据库，SQL语句打交道，是数据持久化的一种解决方案。</p>
-<h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><ul>
-<li>持久层封装过于完整，导致开发人员无法对SQL进行优化，无法灵活应用原生SQL</li>
-<li>批量数据处理能力较弱势</li>
-<li>导致配置过于复杂，遇到大项目，维护和问题不断</li>
-</ul>
-<h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p><img src="https://gengrui01.github.io/picture/ssh-ssm-difference/5.png" alt=""></p>
-<p><a href="https://gengrui01.github.io/article/20210227.html">MyBatis简介</a></p>
-
-        
-        
-          <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/index.html">https://gengrui01.github.io/index.html</a></p>
-              <p>版权声明: 转载请注明出处.</p>
-          </blockquote>
-        
       
     </div>
     <footer class="article-footer">
       
-        <div class="article-tag-wrap">
-          
-    <div class="article-reward">
-        <a id="reward-btn" href="javascript:;">打赏</a>
-        <div id="reward-content">
-            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
-            <div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/wechat.jpg">
-                    <img class="er-code" src="/css/images/wechat-pay.jpg">
-                </div>
-                <div class="reward-code">
-                    <img class="type-code" src="/css/images/alipay.jpg">
-                    <img class="er-code" src="/css/images/alipay-pay.jpg">
-                </div>
-            </div>
-            <p class="reward-desc">扫码打赏，感谢支持</p>
-        </div>
-    </div>
-
-
-          
-          
-    <div class="social-share">
-      <span>分享到:</span>
-    </div>
-
-
-
-        </div>
+        
+        <p class="article-more-link">
+          <a href="/article/20210222.html#more">Read More</a>
+        </p>
       
       
       
