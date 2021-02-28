@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>归档: 2018 | 耿锐的博客</title>
+  <title>ORM程序技术 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,47 +92,200 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-
-  
-  
+        <section id="main"><article id="post-orm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
     
     
-    <section class="archives-wrap">
-      <div class="archive-title">
+      <header class="article-header">
         
-          <i class="fa fa-date"></i>
-          2018
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      ORM程序技术
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-02-25T16:00:00.000Z" itemprop="datePublished">2021年02月26日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/article/20210226.html#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="JDBC操作数据库步骤"><a href="#JDBC操作数据库步骤" class="headerlink" title="JDBC操作数据库步骤"></a>JDBC操作数据库步骤</h2><p><a href="https://gengrui01.github.io/article/20181025.html">JDBC连接及操作数据库</a></p>
+<ol>
+<li>注册驱动</li>
+<li>获取连接</li>
+<li>获取statement对象</li>
+<li>执行SQL语句返回结果集</li>
+<li>遍历结果集</li>
+<li>关闭连接释放资源</li>
+</ol>
+<p>原生JDBC连接及操作数据库有几个缺点：</p>
+<ul>
+<li>某条语句执行失败时的处理逻辑非常复杂</li>
+<li>要对其中某些业务逻辑做修改，改动代码量较大</li>
+</ul>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ORM是对象(Object)、关系(Relational)、映射(Mapping)的缩写，是一种用于实现面向对象编程语言里不同类型系统的数据之间转换的程序技术</p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>Java是一门面向对象语言，几乎所有的程序中都存在对象和关系数据库</p>
+<p>当对象信息发生变化的时候，我们需要去改数据库中的数据</p>
+<p>ORM会把对SQL的操作转换为对象的操作，从而让程序员使用起来更加方便和易于接受</p>
+<p>一般情况下，一个持久化类和一个表对应，类的每个实例对应表中的一条记录，类的每个属性对应表的每个字段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    Integer id;</span><br><span class="line">    String name;</span><br><span class="line">    Integer gender;</span><br><span class="line">    Date birthday;</span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>gender</th>
+<th>birthday</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Anne</td>
+<td>female</td>
+<td>1999-01-01</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bob</td>
+<td>male</td>
+<td>1998-08-21</td>
+</tr>
+</tbody></table>
+<p>由于类和表之间、属性和字段之间建立起了映射关系，所以SQL对表的操作就可以转换为对象的操作</p>
+<p>程序员从此无需编写SQL语句，由框架根据对象的变化及映射关系自动生成SQL语句，这就是ORM的作用</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><ol>
+<li>提高了开发效率。由于ORM可以自动对Entity对象与数据库中的Table进行字段与属性的映射，所以我们实际可能已经不需要一个专用的、庞大的数据访问层。 </li>
+<li>ORM提供了对数据库的映射，不用SQL直接编码，能够像操作对象一样从数据库获取数据</li>
+</ol>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBC操作数据库步骤"><span class="toc-text">JDBC操作数据库步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优势"><span class="toc-text">优势</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://gengrui01.github.io/article/20210226.html">https://gengrui01.github.io/article/20210226.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/article/20210227.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          MyBatis简介
         
       </div>
-      <div class="archives">
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20181025.html">
-      <time class="dt-published" datetime="2018-10-24T16:00:00.000Z" itemprop="datePublished">2018年10月25日</time>
-      | <span class="archive-article-title">JDBC连接及操作数据库</span>
     </a>
-  </li>
-</ul>
-
-
   
   
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20180718.html">
-      <time class="dt-published" datetime="2018-07-17T16:00:00.000Z" itemprop="datePublished">2018年07月18日</time>
-      | <span class="archive-article-title">类加载机制</span>
+    <a href="/article/20210225.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">SpringMVC简介</div>
     </a>
-  </li>
-</ul>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
 
 
 
-  </div></section>
 
 
+
+
+
+      
+    </footer>
+  </div>
+</article>
 </section>
         
           <aside id="sidebar">
