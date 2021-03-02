@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://gengrui01.github.io/"/>
-  <updated>2021-03-02T13:30:23.313Z</updated>
+  <updated>2021-03-02T19:29:25.521Z</updated>
   <id>https://gengrui01.github.io/</id>
   
   <author>
@@ -21,17 +21,13 @@
     <link href="https://gengrui01.github.io/article/20210304.html"/>
     <id>https://gengrui01.github.io/article/20210304.html</id>
     <published>2021-03-03T16:00:00.000Z</published>
-    <updated>2021-03-02T13:30:23.313Z</updated>
+    <updated>2021-03-02T19:29:25.521Z</updated>
     
-    <content type="html"><![CDATA[<p>项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：</p><p><img src="https://gengrui01.github.io/picture/back-end-code-structure/1.png" alt=""></p><p>接下来主要讲这三层的功能划分</p><ul><li>Controller层（流程控制层）主要负责具体的业务模块流程的控制</li><li>Service层（业务逻辑层）主要负责业务模块的逻辑应用设计</li><li>DAO层（数据操作层）主要负责与数据库进行联络的一些任务</li></ul><p>总结这三者，通过例子来解释：</p><ul><li>Controller像是服务员，顾客点什么菜，菜上给几号桌，都是他的职责</li><li>Service是厨师，菜单上的菜全是他做的</li><li>Dao是厨房的小工，和原材料打交道的事情全是ta管</li></ul><p>为了方便后端与前端、后端与数据库的数据传输引入了一些定义类，如entity、vo、dto、po、jo等，常用的就是entity和vo</p><p><img src="https://gengrui01.github.io/picture/back-end-code-structure/2.png" alt=""></p><ul><li>vo为视图类，传递和接收前端的数据，与前端所需字段一一对应</li><li>entity为实体类，与数据库表一一对应</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：</p><a id="more"></a><p><img src="https://gengrui01.github.io/picture/back-end-code-structure/1.png" alt=""></p><p>接下来主要讲这三层的功能划分</p><ul><li>Controller层（流程控制层）主要负责具体的业务模块流程的控制</li><li>Service层（业务逻辑层）主要负责业务模块的逻辑应用设计</li><li>DAO层（数据操作层）主要负责与数据库进行联络的一些任务</li></ul><p>总结这三者，通过例子来解释：</p><ul><li>Controller像是服务员，顾客点什么菜，菜上给几号桌，都是他的职责</li><li>Service是厨师，菜单上的菜全是他做的</li><li>Dao是厨房的小工，和原材料打交道的事情全是ta管</li></ul><p>为了方便后端与前端、后端与数据库的数据传输引入了一些定义类，如entity、vo、dto、po、jo等，常用的就是entity和vo</p><p><img src="https://gengrui01.github.io/picture/back-end-code-structure/2.png" alt=""></p><ul><li>vo为视图类，传递和接收前端的数据，与前端所需字段一一对应</li><li>entity为实体类，与数据库表一一对应</li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://gengrui01.github.io/picture/back-end-code-structure/1.png&quot; alt=&quot;&quot;&gt;&lt;/p
-      
+      &lt;p&gt;项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：&lt;/p&gt;
     
     </summary>
     
