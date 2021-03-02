@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Spring IOC &amp; DI | 耿锐的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="耿锐的博客">
+  
+  
+    <meta name="keywords" content="GengRui, 耿锐, 博客, 耿锐的博客">
+  
+  
+    <link rel="alternate" href="/" title="耿锐的博客">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="耿锐的博客" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">耿锐的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">欢迎的来到耿锐的技术小栈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-sppring-ioc-di" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Spring IOC &amp; DI
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-03-02T16:00:00.000Z" itemprop="datePublished">2021年03月03日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/article/20210303.html#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是IOC-amp-DI"><a href="#什么是IOC-amp-DI" class="headerlink" title="什么是IOC &amp; DI"></a>什么是IOC &amp; DI</h2><p>IOC（Inversion of Control 控制反转）是面向对象编程中的一种设计模式</p>
+<p>其最常见的方式叫做DI（Dependency Injection 依赖注入）</p>
+<a id="more"></a>
+
+<p>通过控制反转，将实例化对象的控制权，由手动的new变成了Spring框架通过反射机制实例化</p>
+<p>需要使用的时候，依赖通过配置文件以及注解的方式注入到对象中</p>
+<p><a href="https://gengrui01.github.io/article/20210304.html">项目常用后端代码结构</a> 如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/back-end-code-structure/2.png" alt=""></p>
+<p>我们新建Maven项目名为“spring-ioc“，设置好Maven版本、配置文件以及Maven仓库</p>
+<p>以查询User数据为例对比IOC的引入前后程序耦合性</p>
+<h2 id="引入IOC之前"><a href="#引入IOC之前" class="headerlink" title="引入IOC之前"></a>引入IOC之前</h2><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>User模块实体类：User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer gender;</span><br><span class="line">    <span class="comment">// 省略getter&amp;setter方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块视图类：UserVo.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> vo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserVo</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer gender;</span><br><span class="line">    <span class="keyword">private</span> String genderName;</span><br><span class="line">    <span class="comment">// 省略getter&amp;setter方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserVo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserVo</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = user.getId();</span><br><span class="line">        <span class="keyword">this</span>.name = user.getName();</span><br><span class="line">        <span class="keyword">this</span>.gender = user.getGender();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 省略toString方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Dao层：UserDao.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function">User <span class="title">getEntity</span><span class="params">(Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Dao层实现类：UserDaoImpl.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getEntity</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 此处应该从数据库查询值 方便起见直接返回一个固定对象</span></span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setId(<span class="number">1</span>);</span><br><span class="line">        user.setName(<span class="string">"Anne"</span>);</span><br><span class="line">        user.setGender(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Service层：UserService.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> services;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="function">UserVo <span class="title">getVo</span><span class="params">(Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Service层实现类：UserServiceImpl.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> services.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 手动实例化Dao</span></span><br><span class="line">        userDao = <span class="keyword">new</span> UserDaoImpl();</span><br><span class="line">        <span class="comment">// 执行Dao层方法</span></span><br><span class="line">        User user = userDao.getEntity(id);</span><br><span class="line">        <span class="comment">// 省略业务逻辑处理。。。</span></span><br><span class="line">        UserVo userVo = <span class="keyword">new</span> UserVo(user);</span><br><span class="line">        userVo.setGenderName(userVo.getGender() == <span class="number">0</span> ? <span class="string">"female"</span> : <span class="string">"male"</span>);</span><br><span class="line">        <span class="keyword">return</span> userVo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Controller层：UserController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 手动实例化Service</span></span><br><span class="line">        userService = <span class="keyword">new</span> UserServiceImpl();</span><br><span class="line">        <span class="comment">// 执行Service层方法并返回</span></span><br><span class="line">        <span class="keyword">return</span> userService.getVo(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块测试类：UserTest.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 手动实例化Controller</span></span><br><span class="line">        UserController userController = <span class="keyword">new</span> UserController();</span><br><span class="line">        <span class="comment">// 执行Controller层方法</span></span><br><span class="line">        UserVo userVo = userController.getVo(<span class="number">1</span>);</span><br><span class="line">        System.out.println(userVo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/1.png" alt=""></p>
+<p>表示Dao层数据已经一层层传到Controller层并展示了出来</p>
+<h3 id="缺点分析"><a href="#缺点分析" class="headerlink" title="缺点分析"></a>缺点分析</h3><p>1.代码耦合性太强 不利于程序的测试<br>2. 代码也不利于扩展</p>
+<h3 id="解决方式："><a href="#解决方式：" class="headerlink" title="解决方式："></a>解决方式：</h3><p>Spring的IOC完美的解决了这一点</p>
+<p>对象的实例化由Spring框架加载实现，放到Spring容器中管理，避免了我们手动new对象</p>
+<p>有需要用到对象实例依赖，直接向Spring容器要，让他注入即可</p>
+<p>而一旦涉及到对象的实例修改，那么只需更改Spring加载实例化对象的地方，程序代码无需改动</p>
+<p>从而降低耦合，提升扩展性</p>
+<h2 id="引入IOC-XML"><a href="#引入IOC-XML" class="headerlink" title="引入IOC(XML)"></a>引入IOC(XML)</h2><h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><p>要想使用SpringIOC首先需要导入Spring框架基础包并且添加Spring核心配置文件</p>
+<p>将依赖交给Spring的beanFactory管理</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"userDao"</span> <span class="attr">class</span>=<span class="string">"dao.impl.UserDaoImpl"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"userService"</span> <span class="attr">class</span>=<span class="string">"services.impl.UserServiceImpl"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"userController"</span> <span class="attr">class</span>=<span class="string">"controller.UserController"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<p>User模块测试类：UserTest.java</p>
+<ol>
+<li>读取配置文件刷新Spring容器</li>
+<li>Controller由手动实例化改为从Spring容器拿取</li>
+<li>把ApplicationContext传到Controller层继续使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 读取配置文件刷新Spring容器</span></span><br><span class="line">        ApplicationContext context = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"classpath:applicationContext.xml"</span>);</span><br><span class="line">        <span class="comment">// 从Spring容器拿Controller</span></span><br><span class="line">        UserController userController = (UserController) context.getBean(<span class="string">"userController"</span>);</span><br><span class="line">        <span class="comment">// 执行Controller层方法，因为之后还需要用到context对象，故下传</span></span><br><span class="line">        UserVo userVo = userController.getVo(<span class="number">1</span>, context);</span><br><span class="line">        System.out.println(userVo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Controller层：UserController.java</p>
+<ol>
+<li>Service由手动实例化改为从Spring容器拿取</li>
+<li>把ApplicationContext传到Service层继续使用</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id, ApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 从Spring容器拿Service</span></span><br><span class="line">        userService = (UserService) context.getBean(<span class="string">"userService"</span>);</span><br><span class="line">        <span class="comment">// 执行Service层方法，因为之后还需要用到context对象，故下传</span></span><br><span class="line">        <span class="keyword">return</span> userService.getVo(id, context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Service层实现类：UserServiceImpl.java</p>
+<p>Dao由手动实例化改为从Spring容器拿取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> services.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id, ApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 从Spring容器拿Dao</span></span><br><span class="line">        userDao = (UserDao) context.getBean(<span class="string">"userDao"</span>);</span><br><span class="line">        <span class="comment">// 执行Dao层方法</span></span><br><span class="line">        User user = userDao.getEntity(id);</span><br><span class="line">        <span class="comment">// 省略业务逻辑处理。。。</span></span><br><span class="line">        UserVo userVo = <span class="keyword">new</span> UserVo(user);</span><br><span class="line">        userVo.setGenderName(userVo.getGender() == <span class="number">0</span> ? <span class="string">"female"</span> : <span class="string">"male"</span>);</span><br><span class="line">        <span class="keyword">return</span> userVo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果-1"><a href="#测试结果-1" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/1.png" alt=""></p>
+<p>表示已经将所有的依赖由手动实例化改为从Spring容器拿取</p>
+<h3 id="缺点分析-1"><a href="#缺点分析-1" class="headerlink" title="缺点分析"></a>缺点分析</h3><p>因为每一个类的实例化都需要一个bean标签，一个大型工程有很多类，配置文件的内容未免过于臃肿，维护成本高</p>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p>使用注解形式实现SpringIOC</p>
+<h2 id="XML改注解-IOC"><a href="#XML改注解-IOC" class="headerlink" title="XML改注解(IOC)"></a>XML改注解(IOC)</h2><h3 id="核心配置文件修改"><a href="#核心配置文件修改" class="headerlink" title="核心配置文件修改"></a>核心配置文件修改</h3><p>context-component-scan标签Spring框架自定义的xml标签，通过base-package属性指明需要被自动扫描实例化的类所在位置</p>
+<p>如下代码所示，我们在dao、services、controller下的类是需要扫描自动注入容器的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"dao"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"services"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"controller"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>修改好后运行项目发现<code>context.getBean()</code>代码报错</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/2.png" alt=""></p>
+<p>说明不是在base-package下的所有类都会自动注入到容器，而是要搭配注解使用</p>
+<h3 id="常用注解介绍"><a href="#常用注解介绍" class="headerlink" title="常用注解介绍"></a>常用注解介绍</h3><ul>
+<li>@Component：一般用于通用组件类上使用的注解</li>
+<li>@Service：一般用于业务逻辑层上使用的注解</li>
+<li>@Controller：一般用于流程控制层上使用的注解</li>
+<li>@Repository：一般用于数据持久层上使用的注解</li>
+</ul>
+<p>依次添加注解，添加之后运行再次报错找不到bean</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/3.png" alt=""></p>
+<p>其实我们在添加注解后，Spring会默认给每个bean设置id，值为类名首字母改为小写</p>
+<p>这次报错原因就是找不到名为”userService“的bean</p>
+<p>解决办法就是在注解时设置bean的id，保证可以找到bean</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/4.png" alt=""></p>
+<h3 id="测试结果-2"><a href="#测试结果-2" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/1.png" alt=""></p>
+<p>表示已经使用注解方式将对象放入Spring容器中</p>
+<h2 id="引入DI"><a href="#引入DI" class="headerlink" title="引入DI"></a>引入DI</h2><p>上面所有的内容都是将对象放入Spring容器中</p>
+<p>那么放入之后的使用呢，目前都是使用ApplicationContext拿取容器中的对象</p>
+<p>接下来讲解如何使用注解实现依赖注入</p>
+<h3 id="常用注解介绍-1"><a href="#常用注解介绍-1" class="headerlink" title="常用注解介绍"></a>常用注解介绍</h3><p>@Autowired注解自动按照类型注入</p>
+<p>会从容器中寻找符合依赖类型的实例，但是也有缺点：</p>
+<p>因为时按照类型匹配，如果找不到匹配的实例也会抛出异常</p>
+<p>如果容器中有多个匹配的类型也会抛出异常，需要指定引入的实例id</p>
+<p>@Qualifier注解作用是在按照类型注入的基础之上，再按照Bean的id注入。所以如果是使用了@Autowire注解自动注入，但是容器中却有多个匹配的实例，可以搭配此注解，指定需要注入的实例id</p>
+<p>@Resource注解作用是指定依赖按照id注入，还是按照类型注入。当只使用注解但是不指定注入方式的时候，默认按照id注入，找不到再按照类型注入。</p>
+<h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><p>User模块Controller层：UserController.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 改为自动注入</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id, ApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 执行Service层方法，因为之后还需要用到context对象，故下传</span></span><br><span class="line">        <span class="keyword">return</span> userService.getVo(id, context);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Dao层实现类：UserDaoImpl.java</p>
+<p>去除指定bean id，改为默认bean id（userDaoImpl）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dao.impl;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改为默认bean id“userDaoImpl”</span></span><br><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getEntity</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 此处应该从数据库查询值 方便起见直接返回一个固定对象</span></span><br><span class="line">        User user = <span class="keyword">new</span> User();</span><br><span class="line">        user.setId(<span class="number">1</span>);</span><br><span class="line">        user.setName(<span class="string">"Anne"</span>);</span><br><span class="line">        user.setGender(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>User模块Service层实现类：UserServiceImpl.java</p>
+<p>改为自动注入并指定需要注入的实例id</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> services.impl;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span>(<span class="string">"userService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title">UserService</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 改为自动注入并指定需要注入的实例id</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"userDaoImpl"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserVo <span class="title">getVo</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 执行Dao层方法</span></span><br><span class="line">        User user = userDao.getEntity(id);</span><br><span class="line">        <span class="comment">// 省略业务逻辑处理。。。</span></span><br><span class="line">        UserVo userVo = <span class="keyword">new</span> UserVo(user);</span><br><span class="line">        userVo.setGenderName(userVo.getGender() == <span class="number">0</span> ? <span class="string">"female"</span> : <span class="string">"male"</span>);</span><br><span class="line">        <span class="keyword">return</span> userVo;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果-3"><a href="#测试结果-3" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/spring-ioc-di/1.png" alt=""></p>
+<p>表示</p>
+<ol>
+<li>@Autowired注解已将UserService依赖自动注入UserController</li>
+<li>@Qualifier注解已指定UserDao依赖的bean id，并使用@Autowired注解自动注入UserServiceImpl</li>
+</ol>
+<h2 id="本文源码"><a href="#本文源码" class="headerlink" title="本文源码"></a>本文源码</h2><p><a href="https://github.com/GengRui01/spring-ioc" target="_blank" rel="noopener">GengRui01/spring-ioc</a></p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是IOC-amp-DI"><span class="toc-text">什么是IOC &amp; DI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入IOC之前"><span class="toc-text">引入IOC之前</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果"><span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点分析"><span class="toc-text">缺点分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式："><span class="toc-text">解决方式：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入IOC-XML"><span class="toc-text">引入IOC(XML)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-1"><span class="toc-text">测试结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点分析-1"><span class="toc-text">缺点分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解决方式"><span class="toc-text">解决方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML改注解-IOC"><span class="toc-text">XML改注解(IOC)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#核心配置文件修改"><span class="toc-text">核心配置文件修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用注解介绍"><span class="toc-text">常用注解介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-2"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入DI"><span class="toc-text">引入DI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用注解介绍-1"><span class="toc-text">常用注解介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-2"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-3"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文源码"><span class="toc-text">本文源码</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://gengrui01.github.io/article/20210303.html">https://gengrui01.github.io/article/20210303.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/article/20210304.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          项目常用后端代码结构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/article/20210302.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Spring工程搭建</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a href="https://chaooo.github.io/" target="_blank" rel="noopener">秋过冬漫长</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2021 耿锐.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '2b288de9939594e51d70',
+      clientSecret: '72c37a839721d882389905bbe5c73b51003585da',
+      repo: 'BLOG-COMMENTS',
+      owner: 'GengRui01',
+      admin: ['GengRui01'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
