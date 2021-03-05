@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>安装JDK并配置环境变量(以Java8为例) | 耿锐的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="耿锐的博客">
+  
+  
+    <meta name="keywords" content="GengRui, 耿锐, 博客, 耿锐的博客">
+  
+  
+    <link rel="alternate" href="/" title="耿锐的博客">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="耿锐的博客" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">耿锐的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">欢迎的来到耿锐的技术小栈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-jdk-install-configurate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      安装JDK并配置环境变量(以Java8为例)
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-02-16T16:00:00.000Z" itemprop="datePublished">2021年02月17日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/article/20210217.html#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>官方下载地址：<a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" rel="noopener">JavaSE-Downloads</a> </p>
+<p>这是所有版本JDK的下载页面，我们安装Java8版本，往下拉找到JavaSE8，单击JDK Download</p>
+<a id="more"></a>
+
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/1.png" alt=""></p>
+<p>在Java SE Development Kit 8u281中找到自己的电脑版本，点击右侧下载按钮</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/2.png" alt=""></p>
+<p>勾选接受协议，点击下载</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/3.png" alt=""></p>
+<p>此时需要注册用户并登录</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/4.png" alt=""></p>
+<p>登录成功后会自动下载，等待安装包下载完成</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>双击打开下载好的安装包，点击下一步即可</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/5.png" alt=""></p>
+<p>点击“更改”可以修改安装路径，修改时要注意路径中不能有中文</p>
+<p>也可以使用默认路径不做修改（要记住这个路径，之后配置环境变量会用到）</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/6.png" alt=""></p>
+<p>我们安装的JDK中已经包含了JRE，所以不需要安装“公共JRE”</p>
+<p>点击“公共JRE”前面的下拉框，选择第三项“此功能将不可用”</p>
+<p>选择好后如下图所示，“公共JRE”前面会变成红色的“X”，之后点击下一步</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/7.png" alt=""></p>
+<p>之后等待安装</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/8.png" alt=""></p>
+<p>安装完成会弹出如下页面，点击关闭</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/9.png" alt=""></p>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><h3 id="新建JAVA-HOME环境变量"><a href="#新建JAVA-HOME环境变量" class="headerlink" title="新建JAVA_HOME环境变量"></a>新建JAVA_HOME环境变量</h3><p>鼠标右键我的电脑-属性 会进入到可以查看计算机基本信息的系统页</p>
+<p>点击左侧“高级系统设置” 会弹出“系统属性”对话框</p>
+<p>之后点击“环境变量” 会弹出“环境变量”对话框</p>
+<p>在用户变量下点击“新增”</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/10.png" alt=""></p>
+<p>新建一个用户变量，变量名为 <code>JAVA_HOME</code> ，变量值为刚才的安装路径，之后点击确定</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/11.png" alt=""></p>
+<h3 id="编辑PATH变量"><a href="#编辑PATH变量" class="headerlink" title="编辑PATH变量"></a>编辑PATH变量</h3><p>选中PATH变量，点击“编辑”</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/12.png" alt=""></p>
+<p>弹出“编辑环境变量”对话框</p>
+<p>新建两个PATH变量分别是<code>%JAVA_HOME%\bin</code>和<code>%JAVA_HOME%\jre\bin</code></p>
+<p>两个PATH变量都新建好后点击确定</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/13.png" alt=""></p>
+<h3 id="新建JAVA-HOME环境变量-1"><a href="#新建JAVA-HOME环境变量-1" class="headerlink" title="新建JAVA_HOME环境变量"></a>新建JAVA_HOME环境变量</h3><p>继续在“环境变量”对话框中的用户变量下点击“新增”</p>
+<p>输入变量名<code>CLASSPATH</code>，变量值<code>.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\tools.jar;</code>，点击确定</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/14.png" alt=""></p>
+<p>依次点击“环境变量”对话框和“系统属性”对话框中的确定按钮，完成JDK环境变量配置</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/15.png" alt=""></p>
+<h3 id="检测环境变量是否配置成功"><a href="#检测环境变量是否配置成功" class="headerlink" title="检测环境变量是否配置成功"></a>检测环境变量是否配置成功</h3><p>WIN+R键打开运行框，输入<code>cmd</code>点击确定打开控制台</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/16.png" alt=""></p>
+<p>分别输入<code>java -version</code>和<code>javac -version</code>查看JDK版本，结果如图所示表示安装及配置成功</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-install-configurate/17.png" alt=""></p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载"><span class="toc-text">下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境变量"><span class="toc-text">环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建JAVA-HOME环境变量"><span class="toc-text">新建JAVA_HOME环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编辑PATH变量"><span class="toc-text">编辑PATH变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#新建JAVA-HOME环境变量-1"><span class="toc-text">新建JAVA_HOME环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#检测环境变量是否配置成功"><span class="toc-text">检测环境变量是否配置成功</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://gengrui01.github.io/article/20210217.html">https://gengrui01.github.io/article/20210217.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/article/20210218.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          IDEA安装破解教程(转发)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/article/20200718.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">博客改版</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a href="https://chaooo.github.io/" target="_blank" rel="noopener">秋过冬漫长</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2021 耿锐.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '2b288de9939594e51d70',
+      clientSecret: '72c37a839721d882389905bbe5c73b51003585da',
+      repo: 'BLOG-COMMENTS',
+      owner: 'GengRui01',
+      admin: ['GengRui01'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
