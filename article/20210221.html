@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>git的安装与配置 | 耿锐的博客</title>
+  <title>安装破解Navicat并连接本地数据库（for MySQL） | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-git-install-configurate" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-navicat-install-crack-connect" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      git的安装与配置
+      安装破解Navicat并连接本地数据库（for MySQL）
     </h1>
   
 
@@ -111,7 +111,7 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-02-18T16:00:00.000Z" itemprop="datePublished">2021年02月19日</time>
+  <time class="dt-published" datetime="2021-02-20T16:00:00.000Z" itemprop="datePublished">2021年02月21日</time>
 </span>
       
   <div class="article-category">
@@ -129,7 +129,7 @@
 
       
       
-<a href="/article/20210219.html#comments" class="article-comment-link">
+<a href="/article/20210221.html#comments" class="article-comment-link">
   
     
     
@@ -145,47 +145,76 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="下载并安装"><a href="#下载并安装" class="headerlink" title="下载并安装"></a>下载并安装</h2><p>官方下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">Git-Downloads</a> </p>
-<p>安装方法：无特殊需求直接下一步即可</p>
+        <p>本篇文章为安装破解教程</p>
+<p>鼓励大家支持正版 正版安装包下载链接如下</p>
+<p><a href="https://www.formysql.com/" target="_blank" rel="noopener">Navicat中文网站-Navicat Mysql数据库管理工具下载</a></p>
 <a id="more"></a>
 
-<h2 id="配置git"><a href="#配置git" class="headerlink" title="配置git"></a>配置git</h2><p>设置Git的用户名和邮件地址（邮箱就是注册Github时候的邮箱）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"gengrui01"</span></span><br><span class="line">$ git config --global user.email <span class="string">"12******09@qq.com"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Git-GitHub建立联系（SSH）"><a href="#Git-GitHub建立联系（SSH）" class="headerlink" title="Git-GitHub建立联系（SSH）"></a>Git-GitHub建立联系（SSH）</h2><h3 id="删除原有SSH配置"><a href="#删除原有SSH配置" class="headerlink" title="删除原有SSH配置"></a>删除原有SSH配置</h3><p>检查电脑是否有ssh配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al ~/.ssh</span><br></pre></td></tr></table></figure>
-
-<p>出现下面提示表示无ssh配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls: cannot access <span class="string">'/c/Users/HUAWEI/.ssh'</span>: No such file or directory</span><br></pre></td></tr></table></figure>
-
-<p>如果未提示上述内容表示已经有ssh配置，需要删除用户文件夹下.ssh文件夹中的所有文件</p>
-<h3 id="生成SSH密钥"><a href="#生成SSH密钥" class="headerlink" title="生成SSH密钥"></a>生成SSH密钥</h3><p>键入命令，注意这里需要输入注册Github时候的邮箱地址，停顿的地方一路回车</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"12******09@qq.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>之后键入命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent -s</span><br><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<p>如果出现如下错误</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Could not open a connection to your authentication agent.</span><br></pre></td></tr></table></figure>
-
-<p>先执行命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-agent bash</span><br></pre></td></tr></table></figure>
-
-<p>再重新执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
-
-<h3 id="添加SSH密钥到GitHub账户"><a href="#添加SSH密钥到GitHub账户" class="headerlink" title="添加SSH密钥到GitHub账户"></a>添加SSH密钥到GitHub账户</h3><p>执行如下命令复制密钥</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
-
-<p>之后打开GitHub<a href="https://github.com/GengRui01" target="_blank" rel="noopener">https://github.com/GengRui01</a> ，其中“GengRui01”为用户名</p>
-<p>按下图步骤打开设置页</p>
-<p><img src="https://gengrui01.github.io/picture/git-install-configurate/1.png" alt=""></p>
-<p>单击左边标签栏中的 SSH and GPG keys 打开密钥管理页</p>
-<p>单击 New SSH key 添加SSH密钥</p>
-<p><img src="https://gengrui01.github.io/picture/git-install-configurate/2.png" alt=""></p>
-<p>title可以随意输入，key直接粘贴刚才复制好的密钥即可</p>
-<p><img src="https://gengrui01.github.io/picture/git-install-configurate/3.png" alt=""></p>
-<p>最后点击添加按钮完成SSH密钥添加</p>
+<h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><p><a href="https://pan.baidu.com/s/1BoAuQwoj1TozxqOi23itfA" target="_blank" rel="noopener">百度网盘下载链接</a></p>
+<p>提取码:x4s8</p>
+<p>提取后有两个文件，其中一个是安装包，一个是破解文件</p>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/9.png" alt=""></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>双击安装包（navicat_trial.exe）点击下一步</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/1.png" alt=""></p>
+<ol start="2">
+<li>同意协议，再次点击下一步</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/2.png" alt=""></p>
+<ol start="3">
+<li>点击“浏览”修改安装路径，也可以直接使用默认安装路径，点击下一步</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/3.png" alt=""></p>
+<ol start="4">
+<li>点击下一步</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/4.png" alt=""></p>
+<ol start="5">
+<li>点击下一步</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/5.png" alt=""></p>
+<ol start="6">
+<li>点击“安装”开始安装</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/6.png" alt=""></p>
+<ol start="7">
+<li>等待安装完成</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/7.png" alt=""></p>
+<ol start="8">
+<li>出现这个界面表示安装完成，点击“完成”</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/8.png" alt=""></p>
+<h2 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h2><ol>
+<li>双击破解文件（PatchNavicat.exe）</li>
+</ol>
+<p>在安装目录下找到“navicat.exe”文件，选中后点击“打开”</p>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/10.png" alt=""></p>
+<ol start="2">
+<li>出现如下界面表示破解完成，点击确定</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/11.png" alt=""></p>
+<h2 id="连接本地数据库"><a href="#连接本地数据库" class="headerlink" title="连接本地数据库"></a>连接本地数据库</h2><ol>
+<li>新建MySQL连接 出现下图所示弹框</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/12.png" alt=""></p>
+<ol start="2">
+<li>输入连接名和密码 点击连接测试</li>
+</ol>
+<ul>
+<li>连接名随便输入即可</li>
+<li>密码一定要和MySQL的root用户密码一致</li>
+</ul>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/13.png" alt=""></p>
+<p>如果出现下图所示提示框表示密码输入错误，可点击确定后重新输入密码</p>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/14.png" alt=""></p>
+<p>出现下图所示提示框表示连接成功，点击确定建立连接</p>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/15.png" alt=""></p>
+<ol start="3">
+<li>双击自己设置的连接名，出现如下列表表示连接建立完成</li>
+</ol>
+<p><img src="https://gengrui01.github.io/picture/navicat-install-crack-connect/16.png" alt=""></p>
 
         
             <div id="toc-article">
@@ -193,7 +222,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载并安装"><span class="toc-text">下载并安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置git"><span class="toc-text">配置git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-GitHub建立联系（SSH）"><span class="toc-text">Git-GitHub建立联系（SSH）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#删除原有SSH配置"><span class="toc-text">删除原有SSH配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成SSH密钥"><span class="toc-text">生成SSH密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加SSH密钥到GitHub账户"><span class="toc-text">添加SSH密钥到GitHub账户</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#下载安装包"><span class="toc-text">下载安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#破解"><span class="toc-text">破解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#连接本地数据库"><span class="toc-text">连接本地数据库</span></a></li></ol>
     </div>
   </div>
 
@@ -202,7 +231,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="https://gengrui01.github.io/article/20210219.html">https://gengrui01.github.io/article/20210219.html</a></p>
+              <p>原文链接: <a href="https://gengrui01.github.io/article/20210221.html">https://gengrui01.github.io/article/20210221.html</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -245,19 +274,19 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210220.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/article/20210222.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          安装MySQL并配置环境变量(以MySQL8为例)
+          SSH和SSM的区别
         
       </div>
     </a>
   
   
-    <a href="/article/20210218.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210220.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">IDEA安装破解教程(转发)</div>
+      <div class="article-nav-title">安装MySQL并配置环境变量(以MySQL8为例)</div>
     </a>
   
 </nav>
