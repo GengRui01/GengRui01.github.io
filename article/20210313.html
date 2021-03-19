@@ -150,7 +150,7 @@
 <a id="more"></a>
 
 <p>Java 接口方法与 SQL 语句以及 mapper 之间的关系如下图所示：</p>
-<p><img src="https://gengrui01.github.io/picture/mybatis-mapper/3.png" alt="图片来源慕课网"></p>
+<p><img src="https://gengrui01.github.io/picture/mybatis-mapper/3.png" alt=""></p>
 <p>我们新建Maven项目名为“mybatis-mapper“，设置好Maven版本、配置文件以及Maven仓库</p>
 <p>以查询User数据为例感受Mapper引入后和JDBC执行SQL有什么区别</p>
 <h2 id="准备数据源"><a href="#准备数据源" class="headerlink" title="准备数据源"></a>准备数据源</h2><p>因为MyBatis是一个持久层框架，所以我们在使用之前需要准备好数据源</p>
@@ -205,6 +205,37 @@
 <h3 id="测试结果-1"><a href="#测试结果-1" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
 <p><img src="https://gengrui01.github.io/picture/mybatis-mapper/2.png" alt=""></p>
 <p>表示mapper已经通过XML的方式搭建好了Java方法和SQL语句之间的桥梁，并且查询出了所需要的数据</p>
+<h2 id="select-resultType"><a href="#select-resultType" class="headerlink" title="select-resultType"></a>select-resultType</h2><h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><p>在<code>UserMapper.xml</code>文件中，我们新增 selectUserById 标签，该 select 标签的作用是：通过id查询用户</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserById"</span> <span class="attr">resultType</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的内容返回的是所有字段值，我们需要自己创建实体类来存储查出来的值</p>
+<p>在entity包下创建User实体类：User.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="keyword">private</span> Integer score;</span><br><span class="line">    <span class="comment">// 省略getter&amp;setter方法</span></span><br><span class="line">    <span class="comment">// 省略toString方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>把<code>UserMapper.xml</code>文件中<code>selectUserById</code>标签的返回类型改为上面创建的实体类</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultType="entity.User"</span><br></pre></td></tr></table></figure>
+
+<p>User模块Mapper层：UserMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 通过用户id查询用户信息</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">User <span class="title">selectUserById</span><span class="params">(Integer id)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>User模块测试类：UserTest.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用通过用户id查询用户信息的方法</span></span><br><span class="line">User user = mapper.selectUserById(<span class="number">1</span>);</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果-2"><a href="#测试结果-2" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper/4.png" alt=""></p>
+<p>在上面这段select标签中，SQL语句返回的是一个复杂对象，即resultType上指定的 User</p>
+<h2 id="select-resultMap"><a href="#select-resultMap" class="headerlink" title="select-resultMap"></a>select-resultMap</h2><p>MyBatis自动帮助我们映射数据库数据和Java对象，其实这是MyBatis在幕后帮我们创建了resultMap对象，我们也可手动定义</p>
+<h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h3><p>User模块Mapper层配置文件：UserMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"userMap"</span> <span class="attr">type</span>=<span class="string">"entity.User"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">column</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"username"</span> <span class="attr">column</span>=<span class="string">"username"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"age"</span> <span class="attr">column</span>=<span class="string">"age"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">property</span>=<span class="string">"score"</span> <span class="attr">column</span>=<span class="string">"score"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上<resultMap></resultMap>标签中有<id></id>和<result></result>两个子标签</p>
+<p>其中<id></id>标签是主键，其它字段均使用 result 标签来映射</p>
+<p><result></result>标签有property和column两个属性</p>
+<p>其中 property 是 Java 对象中的属性名称，column 是数据表与之对应的字段名称</p>
+<p>把<code>UserMapper.xml</code>文件中<code>selectUserById</code>标签的返回类型改为上面创建的resultMap</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultMap="userMap"</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试结果-3"><a href="#测试结果-3" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper/4.png" alt=""></p>
+<p>测试结果和修改前一样，说明MyBatis确实自动帮助我们做了数据映射，但是对于复杂的对象，比如字段名和属性名不同的情况下，我们就必须自定义resultMap了</p>
 <h2 id="本文源码"><a href="#本文源码" class="headerlink" title="本文源码"></a>本文源码</h2><p><a href="https://github.com/GengRui01/mybatis-mapper" target="_blank" rel="noopener">GengRui01/mybatis-mapper</a></p>
 
         
@@ -213,7 +244,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Mapper"><span class="toc-text">什么是Mapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据源"><span class="toc-text">准备数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解方式使用Mapper"><span class="toc-text">注解方式使用Mapper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML方式使用Mapper"><span class="toc-text">XML方式使用Mapper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-1"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文源码"><span class="toc-text">本文源码</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是Mapper"><span class="toc-text">什么是Mapper</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备数据源"><span class="toc-text">准备数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注解方式使用Mapper"><span class="toc-text">注解方式使用Mapper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XML方式使用Mapper"><span class="toc-text">XML方式使用Mapper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-1"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-1"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select-resultType"><span class="toc-text">select-resultType</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-2"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-2"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select-resultMap"><span class="toc-text">select-resultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码实现-3"><span class="toc-text">代码实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试结果-3"><span class="toc-text">测试结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文源码"><span class="toc-text">本文源码</span></a></li></ol>
     </div>
   </div>
 
