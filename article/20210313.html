@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>MyBatis Mapper | 耿锐的博客</title>
+  <title>MyBatis实现Mapper配置并查询数据 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-mybatis-mapper" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-mybatis-mapper-select" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      MyBatis Mapper
+      MyBatis实现Mapper配置并查询数据
     </h1>
   
 
@@ -150,7 +150,7 @@
 <a id="more"></a>
 
 <p>Java 接口方法与 SQL 语句以及 mapper 之间的关系如下图所示：</p>
-<p><img src="https://gengrui01.github.io/picture/mybatis-mapper/3.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/mybatis-mapper-select/3.png" alt=""></p>
 <p>我们新建Maven项目名为“mybatis-mapper“，设置好Maven版本、配置文件以及Maven仓库</p>
 <p>以查询User数据为例感受Mapper引入后和JDBC执行SQL有什么区别</p>
 <h2 id="准备数据源"><a href="#准备数据源" class="headerlink" title="准备数据源"></a>准备数据源</h2><p>因为MyBatis是一个持久层框架，所以我们在使用之前需要准备好数据源</p>
@@ -169,15 +169,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Select</span>(<span class="string">"SELECT username FROM user WHERE id = #&#123;id&#125;"</span>)</span><br></pre></td></tr></table></figure>
 
 <p>User模块测试类：UserTest.java</p>
-<ol>
-<li>读取配置文件刷新Spring容器</li>
-<li>Controller由手动实例化改为从Spring容器拿取</li>
-<li>把ApplicationContext传到Controller层继续使用</li>
-</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"Duplicates"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, SQLException </span>&#123;</span><br><span class="line">        <span class="comment">// 读取配置文件</span></span><br><span class="line">        InputStream configuration = Resources.getResourceAsStream(<span class="string">"mybatis-config.xml"</span>);</span><br><span class="line">        <span class="comment">// 得到 SqlSessionFactory 核心类</span></span><br><span class="line">        SqlSessionFactory sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(configuration);</span><br><span class="line">        <span class="comment">// 开始一个 sql 会话</span></span><br><span class="line">        SqlSession session = sqlSessionFactory.openSession();</span><br><span class="line">        <span class="comment">// 得到 mapper</span></span><br><span class="line">        UserMapper mapper = session.getMapper(UserMapper<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        <span class="comment">// 调用注解的SQL</span></span><br><span class="line">        String username = mapper.selectUsernameById(<span class="number">1</span>);</span><br><span class="line">        System.out.println(<span class="string">"username: "</span> + username);</span><br><span class="line">        <span class="comment">// 关闭会话</span></span><br><span class="line">        session.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
-<p><img src="https://gengrui01.github.io/picture/mybatis-mapper/1.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/mybatis-mapper-select/1.png" alt=""></p>
 <p>表示mapper已经通过注解的方式搭建好了Java方法和SQL语句之间的桥梁，并且查询出了所需要的数据</p>
 <h2 id="XML方式使用Mapper"><a href="#XML方式使用Mapper" class="headerlink" title="XML方式使用Mapper"></a>XML方式使用Mapper</h2><p>XML方式是更加强大的一种使用方式，虽然它没有注解那么方便，但是功能更强、更易维护，是 MyBatis 官方推荐的一种方式</p>
 <h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3><p>因为我们在<code>mybatis-config.xml</code>配置文件中已经添加过了mapper配置，所以说不需要在配置文件中添加额外的配置</p>
@@ -203,7 +198,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用XML的SQL</span></span><br><span class="line">Integer age = mapper.selectUserAgeById(<span class="number">1</span>);</span><br><span class="line">System.out.println(<span class="string">"age: "</span> + age);</span><br></pre></td></tr></table></figure>
 
 <h3 id="测试结果-1"><a href="#测试结果-1" class="headerlink" title="测试结果"></a>测试结果</h3><p>测试结果如下图所示：</p>
-<p><img src="https://gengrui01.github.io/picture/mybatis-mapper/2.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/mybatis-mapper-select/2.png" alt=""></p>
 <p>表示mapper已经通过XML的方式搭建好了Java方法和SQL语句之间的桥梁，并且查询出了所需要的数据</p>
 <h2 id="select-resultType"><a href="#select-resultType" class="headerlink" title="select-resultType"></a>select-resultType</h2><h3 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h3><p>在<code>UserMapper.xml</code>文件中，我们新增 selectUserById 标签，该 select 标签的作用是：通过id查询用户</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserById"</span> <span class="attr">resultType</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    SELECT * FROM user WHERE id = #&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -221,7 +216,7 @@
 <p>User模块测试类：UserTest.java</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 调用通过用户id查询用户信息的方法</span></span><br><span class="line">User user = mapper.selectUserById(<span class="number">1</span>);</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
 
-<h3 id="测试结果-2"><a href="#测试结果-2" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper/4.png" alt=""></p>
+<h3 id="测试结果-2"><a href="#测试结果-2" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper-select/4.png" alt=""></p>
 <p>在上面这段select标签中，SQL语句返回的是一个复杂对象，即resultType上指定的 User</p>
 <h2 id="select-resultMap"><a href="#select-resultMap" class="headerlink" title="select-resultMap"></a>select-resultMap</h2><p>MyBatis自动帮助我们映射数据库数据和Java对象，其实这是MyBatis在幕后帮我们创建了resultMap对象，我们也可手动定义</p>
 <h3 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h3><p>User模块Mapper层配置文件：UserMapper.xml</p>
@@ -234,7 +229,7 @@
 <p>把<code>UserMapper.xml</code>文件中<code>selectUserById</code>标签的返回类型改为上面创建的resultMap</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultMap="userMap"</span><br></pre></td></tr></table></figure>
 
-<h3 id="测试结果-3"><a href="#测试结果-3" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper/4.png" alt=""></p>
+<h3 id="测试结果-3"><a href="#测试结果-3" class="headerlink" title="测试结果"></a>测试结果</h3><p><img src="https://gengrui01.github.io/picture/mybatis-mapper-select/4.png" alt=""></p>
 <p>测试结果和修改前一样，说明MyBatis确实自动帮助我们做了数据映射，但是对于复杂的对象，比如字段名和属性名不同的情况下，我们就必须自定义resultMap了</p>
 <h2 id="本文源码"><a href="#本文源码" class="headerlink" title="本文源码"></a>本文源码</h2><p><a href="https://github.com/GengRui01/mybatis-mapper" target="_blank" rel="noopener">GengRui01/mybatis-mapper</a></p>
 
@@ -296,6 +291,15 @@
         
 <nav id="article-nav">
   
+    <a href="/article/20210314.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          MyBatis操作数据库
+        
+      </div>
+    </a>
+  
   
     <a href="/article/20210309.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
@@ -328,7 +332,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -338,7 +342,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
