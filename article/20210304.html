@@ -145,7 +145,7 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：</p>
+        <h2 id="常用后端代码结构"><a href="#常用后端代码结构" class="headerlink" title="常用后端代码结构"></a>常用后端代码结构</h2><p>项目常用后端代码结构也就是Controller+Service+Dao，如下图所示：</p>
 <a id="more"></a>
 
 <p><img src="https://gengrui01.github.io/picture/back-end-code-structure/1.png" alt=""></p>
@@ -159,7 +159,7 @@
 <ul>
 <li>Controller像是服务员，顾客点什么菜，菜上给几号桌，都是他的职责</li>
 <li>Service是厨师，菜单上的菜全是他做的</li>
-<li>Dao是厨房的小工，和原材料打交道的事情全是ta管</li>
+<li>Dao是厨房的小工，和原材料打交道的事情全是他管</li>
 </ul>
 <p>为了方便后端与前端、后端与数据库的数据传输引入了一些定义类，如entity、vo、dto、po、jo等，常用的就是entity和vo</p>
 <p><img src="https://gengrui01.github.io/picture/back-end-code-structure/2.png" alt=""></p>
@@ -167,6 +167,13 @@
 <li>vo为视图类，传递和接收前端的数据，与前端所需字段一一对应</li>
 <li>entity为实体类，与数据库表一一对应</li>
 </ul>
+<h2 id="方法调用流程"><a href="#方法调用流程" class="headerlink" title="方法调用流程"></a>方法调用流程</h2><p>以查询操作为例数据流动方向如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/back-end-code-structure/3.png" alt=""></p>
+<ol>
+<li>Dao层去数据库查询基础数据，查到的基础数据用entity实体类存储</li>
+<li>Service层调用Dao层方法拿取基础数据加工处理，加工好的数据用vo视图类存储</li>
+<li>Controller层调用Service层方法拿取数据给前端</li>
+</ol>
 
         
             <div id="toc-article">
@@ -174,7 +181,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常用后端代码结构"><span class="toc-text">常用后端代码结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法调用流程"><span class="toc-text">方法调用流程</span></a></li></ol>
     </div>
   </div>
 
