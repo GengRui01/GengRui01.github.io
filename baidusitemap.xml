@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.gengruiblog.cn/article/20210224.html</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gengruiblog.cn/article/20210305.html</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gengruiblog.cn/article/20210306.html</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gengruiblog.cn/article/20210314.html</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>
+  <url>
     <loc>https://www.gengruiblog.cn/article/20210323.html</loc>
     <lastmod>2021-03-23</lastmod>
   </url>
@@ -9,16 +25,8 @@
     <lastmod>2021-03-23</lastmod>
   </url>
   <url>
-    <loc>https://www.gengruiblog.cn/article/20210305.html</loc>
-    <lastmod>2021-03-23</lastmod>
-  </url>
-  <url>
     <loc>https://www.gengruiblog.cn/article/20210304.html</loc>
     <lastmod>2021-03-23</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gengruiblog.cn/article/20210314.html</loc>
-    <lastmod>2021-03-21</lastmod>
   </url>
   <url>
     <loc>https://www.gengruiblog.cn/article/20210313.html</loc>
@@ -67,10 +75,6 @@
   <url>
     <loc>https://www.gengruiblog.cn/article/20210301.html</loc>
     <lastmod>2021-03-01</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gengruiblog.cn/article/20210224.html</loc>
-    <lastmod>2021-02-28</lastmod>
   </url>
   <url>
     <loc>https://www.gengruiblog.cn/article/20210225.html</loc>
