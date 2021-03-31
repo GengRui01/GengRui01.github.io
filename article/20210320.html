@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Spring简介 | 耿锐的博客</title>
+  <title>SpringMVC请求映射注解 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-spring-introduction" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-springmvc-request-mapping" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Spring简介
+      SpringMVC请求映射注解
     </h1>
   
 
@@ -111,12 +111,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-02-22T16:00:00.000Z" itemprop="datePublished">2021年02月23日</time>
+  <time class="dt-published" datetime="2021-03-19T16:00:00.000Z" itemprop="datePublished">2021年03月20日</time>
 </span>
       
   <div class="article-category">
     <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Spring/">Spring</a>
+    <a class="article-category-link" href="/categories/SpringMVC/">SpringMVC</a>
   </div>
 
       
@@ -129,7 +129,7 @@
 
       
       
-<a href="/article/20210223.html#comments" class="article-comment-link">
+<a href="/article/20210320.html#comments" class="article-comment-link">
   
     
     
@@ -145,47 +145,50 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="为什么使用Spring？"><a href="#为什么使用Spring？" class="headerlink" title="为什么使用Spring？"></a>为什么使用Spring？</h2><p><a href="https://spring.io/" target="_blank" rel="noopener">Spring官网</a></p>
-<p>Spring官网首页滚动显示如下内容：</p>
-<a id="more"></a>
-
-<p><em>Spring makes Java simple.</em></p>
-<p><em>Spring makes Java modern.</em></p>
-<p><em>Spring makes Java productive.</em></p>
-<p><em>Spring makes Java reactive.</em></p>
-<p><em>Spring makes Java cloud-ready.</em></p>
-<p>Spring使Java简单易用、紧跟时代、复用性强、快速响应、云就绪。</p>
-<p><img src="https://gengrui01.github.io/picture/spring-introduction/2.png" alt=""></p>
-<h2 id="体系结构介绍"><a href="#体系结构介绍" class="headerlink" title="体系结构介绍"></a>体系结构介绍</h2><p><img src="https://gengrui01.github.io/picture/spring-introduction/1.png" alt=""></p>
-<p>结构图阐释：</p>
-<ul>
-<li>Data Access/Integration：持久层 是Spring对数据持久化、事务管理的支持。SpringDataJpa就是其中的一种</li>
-<li>Web：表现层 是Spring对表现层数据的处理部分的支持。SpirngMVC就是其中的一种</li>
-<li>Test：测试层 是Spring对项目提供的一个完整测试环境</li>
-<li>中间的两部分 是Spring框架的核心功能</li>
-</ul>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>Spring刚出世时，仅提供了一些核心功能模块</p>
-<p>其中IOC&amp;DI和AOP两大两大核心模块对企业项目开发过程产生了巨大的影响</p>
-<p>后来，Spring在核心功能的的基础之上，延伸出更多的功能模块</p>
-<p>由这些功能模块为企业项目开发提供了较完整的、全方位的解决方案</p>
-<p>所以Spring概念在狭义及广义角度理解不同：</p>
-<ul>
-<li>狭义角度：Spring指的是Spring框架核心功能模块</li>
-<li>广义角度：Spring是一个提供了众多功能模块的生态圈</li>
-</ul>
-<h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><h3 id="控制反转-IOC-amp-依赖注入-DI"><a href="#控制反转-IOC-amp-依赖注入-DI" class="headerlink" title="控制反转(IOC) &amp; 依赖注入(DI)"></a>控制反转(IOC) &amp; 依赖注入(DI)</h3><h4 id="控制反转-IOC"><a href="#控制反转-IOC" class="headerlink" title="控制反转(IOC)"></a>控制反转(IOC)</h4><p>简单理解IOC是一种设计模式，将实例化对象的控制权由手动的new变成了Spring框架通过反射机制实例化，并将对象的实例存入在容器种进行管理</p>
-<h4 id="依赖注入-DI"><a href="#依赖注入-DI" class="headerlink" title="依赖注入(DI)"></a>依赖注入(DI)</h4><p>IOC是将对象实例化的动作交由了Spring框架，它的作用是降低了程序的耦合，不需要我们手动的创建对象，但是程序的耦合性还是存在</p>
-<p>对象中肯定会有一些其余对象的引用，那么这种引用就称为对象的依赖</p>
-<p>如果一个类中的某个属性是另一个类，该属性无需手动赋值，通过Spring的配置文件或者注解，通过Spring框架可以实现直接注入属性</p>
-<h4 id="IOC-amp-DI-关系"><a href="#IOC-amp-DI-关系" class="headerlink" title="IOC &amp; DI 关系"></a>IOC &amp; DI 关系</h4><p>未引入Spring框架B类中需要使用A类时</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    A a = <span class="keyword">new</span> A();</span><br><span class="line">    ......</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>引入Spring框架后，IOC容器在运行期间Spring动态地将B对象某种依赖关系（A对象）注入到B对象之中</p>
-<p><img src="https://gengrui01.github.io/picture/spring-introduction/3.png" alt=""></p>
-<h3 id="面向切面编程-AOP"><a href="#面向切面编程-AOP" class="headerlink" title="面向切面编程(AOP)"></a>面向切面编程(AOP)</h3><p>首先理解切面，切面是数学中的一个概念，和球面只有一个交点的平面称作球的切面，而接触点称作切点</p>
-<p>在Spring中，切面编程指的就是通过预编译和运行期动态代理的方式实现在程序运行某个方法的时候，不修改原始执行代码逻辑，由程序动态地执行某些额外的功能，对原有的方法做增强，这就叫做面向切面编程，那个被监测的执行方法，称呼为切入点。</p>
-<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>Spring框架以控制反转(IOC)和面向切面编程(AOP)为内核，提供了展现层(SpringMVC)、持久层(SpringJDBC)、业务层事务管理等众多的企业级应用技术，还能整合其他第三方开源框架和类库。</p>
-<p>对于对象的实例管理更加方便，代码编写更加优雅，降低代码的耦合性，提升代码的可扩展性。</p>
+        <p>Spring MVC 提供了以下这些请求映射注解：</p>
+<table>
+<thead>
+<tr>
+<th>请求映射注解</th>
+<th>说明</th>
+<th>类/方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@RequestMapping</td>
+<td>通用的请求处理</td>
+<td>类</td>
+</tr>
+<tr>
+<td>@GetMapping</td>
+<td>处理 HTTP GET 请求</td>
+<td>查询方法</td>
+</tr>
+<tr>
+<td>@PostMapping</td>
+<td>处理 HTTP POST 请求</td>
+<td>新增修改方法</td>
+</tr>
+<tr>
+<td>@PutMapping</td>
+<td>处理 HTTP PUT 请求</td>
+<td>新增修改方法</td>
+</tr>
+<tr>
+<td>@PatchMapping</td>
+<td>处理 HTTP PATCH 请求</td>
+<td>新增修改方法</td>
+</tr>
+<tr>
+<td>@DeleteMapping</td>
+<td>处理 HTTP DELETE 请求</td>
+<td>删除方法</td>
+</tr>
+</tbody></table>
+<p>除了 @RequestMapping ，其它类型的注解本质上是 @RequestMapping 的简写形式</p>
+<p>比如 @GetMapping 其实可以写为<code>@RequestMapping( method = RequestMethod.GET)</code></p>
+<p>建议在类级别上只使用 @RequestMapping ，用于指定基本路径</p>
+<p>而在每个处理器方法上，使用更具体的请求映射注解，比如 @GetMapping</p>
 
         
             <div id="toc-article">
@@ -193,7 +196,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么使用Spring？"><span class="toc-text">为什么使用Spring？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#体系结构介绍"><span class="toc-text">体系结构介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#核心功能"><span class="toc-text">核心功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#控制反转-IOC-amp-依赖注入-DI"><span class="toc-text">控制反转(IOC) &amp; 依赖注入(DI)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#控制反转-IOC"><span class="toc-text">控制反转(IOC)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#依赖注入-DI"><span class="toc-text">依赖注入(DI)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IOC-amp-DI-关系"><span class="toc-text">IOC &amp; DI 关系</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面向切面编程-AOP"><span class="toc-text">面向切面编程(AOP)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优势"><span class="toc-text">优势</span></a></li></ol>
+      
     </div>
   </div>
 
@@ -202,7 +205,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210223.html">https://www.gengruiblog.cn/article/20210223.html</a></p>
+              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210320.html">https://www.gengruiblog.cn/article/20210320.html</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -245,19 +248,19 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210224.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/article/20210323.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          MVC设计模式
+          if判断和三目运算符
         
       </div>
     </a>
   
   
-    <a href="/article/20210222.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210319.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">SSH和SSM的区别</div>
+      <div class="article-nav-title">SpringMVC工程搭建</div>
     </a>
   
 </nav>
