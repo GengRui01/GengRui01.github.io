@@ -63,26 +63,13 @@
     <link href="https://www.gengruiblog.cn/article/20210320.html"/>
     <id>https://www.gengruiblog.cn/article/20210320.html</id>
     <published>2021-03-19T16:00:00.000Z</published>
-    <updated>2021-03-31T05:49:40.253Z</updated>
+    <updated>2021-03-31T06:03:23.584Z</updated>
     
-    <content type="html"><![CDATA[<p>Spring MVC 提供了以下这些请求映射注解：</p><table><thead><tr><th>请求映射注解</th><th>说明</th><th>类/方法</th></tr></thead><tbody><tr><td>@RequestMapping</td><td>通用的请求处理</td><td>类</td></tr><tr><td>@GetMapping</td><td>处理 HTTP GET 请求</td><td>查询方法</td></tr><tr><td>@PostMapping</td><td>处理 HTTP POST 请求</td><td>新增修改方法</td></tr><tr><td>@PutMapping</td><td>处理 HTTP PUT 请求</td><td>新增修改方法</td></tr><tr><td>@PatchMapping</td><td>处理 HTTP PATCH 请求</td><td>新增修改方法</td></tr><tr><td>@DeleteMapping</td><td>处理 HTTP DELETE 请求</td><td>删除方法</td></tr></tbody></table><p>除了 @RequestMapping ，其它类型的注解本质上是 @RequestMapping 的简写形式</p><p>比如 @GetMapping 其实可以写为<code>@RequestMapping( method = RequestMethod.GET)</code></p><p>建议在类级别上只使用 @RequestMapping ，用于指定基本路径</p><p>而在每个处理器方法上，使用更具体的请求映射注解，比如 @GetMapping</p>]]></content>
+    <content type="html"><![CDATA[<p>Spring MVC 提供了以下这些请求映射注解：</p><a id="more"></a><table><thead><tr><th>请求映射注解</th><th>说明</th><th>类/方法</th></tr></thead><tbody><tr><td>@RequestMapping</td><td>通用的请求处理</td><td>类</td></tr><tr><td>@GetMapping</td><td>处理 HTTP GET 请求</td><td>查询方法</td></tr><tr><td>@PostMapping</td><td>处理 HTTP POST 请求</td><td>新增修改方法</td></tr><tr><td>@PutMapping</td><td>处理 HTTP PUT 请求</td><td>新增修改方法</td></tr><tr><td>@PatchMapping</td><td>处理 HTTP PATCH 请求</td><td>新增修改方法</td></tr><tr><td>@DeleteMapping</td><td>处理 HTTP DELETE 请求</td><td>删除方法</td></tr></tbody></table><p>除了 @RequestMapping ，其它类型的注解本质上是 @RequestMapping 的简写形式</p><p>比如 @GetMapping 其实可以写为<code>@RequestMapping( method = RequestMethod.GET)</code></p><p>建议在类级别上只使用 @RequestMapping ，用于指定基本路径</p><p>而在每个处理器方法上，使用更具体的请求映射注解，比如 @GetMapping</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;p&gt;Spring MVC 提供了以下这些请求映射注解：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;请求映射注解&lt;/th&gt;
-&lt;th&gt;说明&lt;/th&gt;
-&lt;th&gt;类/方法&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td&gt;@RequestMappi
-      
+      &lt;p&gt;Spring MVC 提供了以下这些请求映射注解：&lt;/p&gt;
     
     </summary>
     
