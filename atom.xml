@@ -38,29 +38,6 @@
   </entry>
   
   <entry>
-    <title>SpringMVC + Spring + MyBatis 框架搭建</title>
-    <link href="https://www.gengruiblog.cn/article/20210327.html"/>
-    <id>https://www.gengruiblog.cn/article/20210327.html</id>
-    <published>2021-03-26T16:00:00.000Z</published>
-    <updated>2021-03-31T12:21:17.877Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p><a href="https://gengrui01.github.io/article/20210228.html" target="_blank" rel="noopener">使用IDEA创建Maven工程</a></p><p><a href="https://gengrui01.github.io/article/20210301.html" target="_blank" rel="noopener">IDEA配置Maven</a></p><p>我们新建Maven项目名为“ssm-demo“，设置好Maven版本、配置文件以及Maven仓库</p><a id="more"></a><h3 id="后端代码结构"><a href="#后端代码结构" class="headerlink" title="后端代码结构"></a>后端代码结构</h3><p>根据 <a href="https://gengrui01.github.io/article/20210304.html" target="_blank" rel="noopener">项目常用后端代码结构</a> 创建后端代码相关包如下图所示：</p><h3 id="添加web"><a href="#添加web" class="headerlink" title="添加web"></a>添加web</h3><h3 id="前端代码结构"><a href="#前端代码结构" class="headerlink" title="前端代码结构"></a>前端代码结构</h3><h2 id="Spring搭建"><a href="#Spring搭建" class="headerlink" title="Spring搭建"></a>Spring搭建</h2><h3 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h3><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><h2 id="Mybatis搭建"><a href="#Mybatis搭建" class="headerlink" title="Mybatis搭建"></a>Mybatis搭建</h2><h3 id="导包-1"><a href="#导包-1" class="headerlink" title="导包"></a>导包</h3><h3 id="配置文件-1"><a href="#配置文件-1" class="headerlink" title="配置文件"></a>配置文件</h3><h2 id="SpringMVC搭建"><a href="#SpringMVC搭建" class="headerlink" title="SpringMVC搭建"></a>SpringMVC搭建</h2><h3 id="导包-2"><a href="#导包-2" class="headerlink" title="导包"></a>导包</h3><h3 id="修改Spring配置文件"><a href="#修改Spring配置文件" class="headerlink" title="修改Spring配置文件"></a>修改Spring配置文件</h3><h3 id="web-xml配置文件"><a href="#web-xml配置文件" class="headerlink" title="web.xml配置文件"></a>web.xml配置文件</h3><h2 id="本文源码"><a href="#本文源码" class="headerlink" title="本文源码"></a>本文源码</h2>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;创建项目&quot;&gt;&lt;a href=&quot;#创建项目&quot; class=&quot;headerlink&quot; title=&quot;创建项目&quot;&gt;&lt;/a&gt;创建项目&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://gengrui01.github.io/article/20210228.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;使用IDEA创建Maven工程&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://gengrui01.github.io/article/20210301.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;IDEA配置Maven&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;我们新建Maven项目名为“ssm-demo“，设置好Maven版本、配置文件以及Maven仓库&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="架构" scheme="https://www.gengruiblog.cn/categories/%E6%9E%B6%E6%9E%84/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>if判断和三目运算符</title>
     <link href="https://www.gengruiblog.cn/article/20210323.html"/>
     <id>https://www.gengruiblog.cn/article/20210323.html</id>
@@ -476,6 +453,28 @@
     
     
       <category term="Spring" scheme="https://www.gengruiblog.cn/categories/Spring/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>SSH和SSM的区别</title>
+    <link href="https://www.gengruiblog.cn/article/20210222.html"/>
+    <id>https://www.gengruiblog.cn/article/20210222.html</id>
+    <published>2021-02-21T16:00:00.000Z</published>
+    <updated>2021-03-12T01:39:25.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SSH-amp-SSM"><a href="#SSH-amp-SSM" class="headerlink" title="SSH &amp; SSM"></a>SSH &amp; SSM</h2><p>SSH是Spring+Struts2+Hibernate的缩写，是一种较主流的Java企业级应用框架。</p><p>SSM是Spring+SpringMVC+MyBatis的缩写，是继SSH之后，目前比较主流的Java企业级应用框架。</p><a id="more"></a><p>本质上都是Spring框架+MVC模式框架+ORM技术框架</p><h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><p><a href="https://gengrui01.github.io/article/20210223.html">Spring简介</a></p><h2 id="Struts2"><a href="#Struts2" class="headerlink" title="Struts2"></a>Struts2</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Struts2是一个基于 <a href="https://gengrui01.github.io/article/20210224.html">MVC设计模式</a> 的表现层框架，Struts2作为控制器来建立模型与视图的数据交互。</p><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul><li>校验较繁琐，多字段时出错返回不同。</li><li>安全性太低。</li><li>获取传参时较麻烦</li></ul><h2 id="SpringMVC"><a href="#SpringMVC" class="headerlink" title="SpringMVC"></a>SpringMVC</h2><p><a href="https://gengrui01.github.io/article/20210225.html">SpringMVC简介</a></p><h2 id="Hibernate"><a href="#Hibernate" class="headerlink" title="Hibernate"></a>Hibernate</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>Hibernate是一个基于 <a href="https://gengrui01.github.io/article/20210226.html">ORM程序技术</a> 的持久层框架，与各种数据库，SQL语句打交道，是数据持久化的一种解决方案。</p><h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul><li>持久层封装过于完整，导致开发人员无法对SQL进行优化，无法灵活应用原生SQL</li><li>批量数据处理能力较弱势</li><li>导致配置过于复杂，遇到大项目，维护和问题不断</li></ul><h2 id="MyBatis"><a href="#MyBatis" class="headerlink" title="MyBatis"></a>MyBatis</h2><p><a href="https://gengrui01.github.io/article/20210227.html">MyBatis简介</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;SSH-amp-SSM&quot;&gt;&lt;a href=&quot;#SSH-amp-SSM&quot; class=&quot;headerlink&quot; title=&quot;SSH &amp;amp; SSM&quot;&gt;&lt;/a&gt;SSH &amp;amp; SSM&lt;/h2&gt;&lt;p&gt;SSH是Spring+Struts2+Hibernate的缩写，是一种较主流的Java企业级应用框架。&lt;/p&gt;
+&lt;p&gt;SSM是Spring+SpringMVC+MyBatis的缩写，是继SSH之后，目前比较主流的Java企业级应用框架。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="https://www.gengruiblog.cn/categories/%E6%9E%B6%E6%9E%84/"/>
     
     
   </entry>
