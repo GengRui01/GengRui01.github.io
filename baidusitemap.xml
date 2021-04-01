@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.gengruiblog.cn/article/20210309.html</loc>
+    <lastmod>2021-04-01</lastmod>
+  </url>
+  <url>
     <loc>https://www.gengruiblog.cn/article/20210313.html</loc>
+    <lastmod>2021-04-01</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gengruiblog.cn/article/20210314.html</loc>
     <lastmod>2021-04-01</lastmod>
   </url>
   <url>
@@ -23,14 +31,6 @@
   <url>
     <loc>https://www.gengruiblog.cn/article/20210330.html</loc>
     <lastmod>2021-03-30</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gengruiblog.cn/article/20210314.html</loc>
-    <lastmod>2021-03-30</lastmod>
-  </url>
-  <url>
-    <loc>https://www.gengruiblog.cn/article/20210309.html</loc>
-    <lastmod>2021-03-29</lastmod>
   </url>
   <url>
     <loc>https://www.gengruiblog.cn/article/20210305.html</loc>
