@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>大厂面试：SpringMVC面试题 | 耿锐的博客</title>
+  <title>HR问及职业规划相关问题如何作答 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-springmvc-interview-question" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-career-planning-interview-question" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      大厂面试：SpringMVC面试题
+      HR问及职业规划相关问题如何作答
     </h1>
   
 
@@ -111,7 +111,7 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-04-04T16:00:00.000Z" itemprop="datePublished">2021年04月05日</time>
+  <time class="dt-published" datetime="2021-04-11T16:00:00.000Z" itemprop="datePublished">2021年04月12日</time>
 </span>
       
   <div class="article-category">
@@ -129,7 +129,7 @@
 
       
       
-<a href="/article/20210405.html#comments" class="article-comment-link">
+<a href="/article/20210412.html#comments" class="article-comment-link">
   
     
     
@@ -145,73 +145,39 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>大厂面试：SpringMVC面试题</p>
+        <p>你的职业规划是什么？</p>
+<p>你为什么来这个城市工作而不回家乡？</p>
+<p>这篇来讲一讲遇到这一类职业规划相关问题怎样的回答才会受到HR的欣赏</p>
 <a id="more"></a>
 
-<h2 id="1-MVC是什么的缩写？"><a href="#1-MVC是什么的缩写？" class="headerlink" title="1.MVC是什么的缩写？"></a>1.MVC是什么的缩写？</h2><p>MVC是模型(Model)、视图(View)、控制器(Controller)的缩写</p>
-<h2 id="2-根据下图描述MVC模式下的请求响应流程"><a href="#2-根据下图描述MVC模式下的请求响应流程" class="headerlink" title="2.根据下图描述MVC模式下的请求响应流程"></a>2.根据下图描述MVC模式下的请求响应流程</h2><p><img src="https://gengrui01.github.io/picture/springmvc-interview-question/1.png" alt=""></p>
-<p>1）    客户端浏览器请求发送到控制器</p>
-<p>2）    控制器调用模型层方法</p>
-<p>3）    模型层操作数据库</p>
-<p>4）    模型层告诉控制器操作完成 返回数据</p>
-<p>5）    控制器调用视图层渲染页面</p>
-<p>6）    视图层将渲染好的页面返回控制器</p>
-<p>7）    控制器发送响应到浏览器 浏览器展示页面</p>
-<h2 id="3-SpringMVC基础配置内容"><a href="#3-SpringMVC基础配置内容" class="headerlink" title="3.SpringMVC基础配置内容"></a>3.SpringMVC基础配置内容</h2><ul>
-<li><p>加载注解驱动： <code>&lt;mvc:annotation-driven/&gt;</code></p>
-</li>
-<li><p>静态资源过滤： <code>&lt;mvc:default-servlet-handler/&gt;</code></p>
-</li>
-<li><p>视图解析器：</p>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"internalResourceViewResolver"</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/WEB-INF/jsp/"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="4-web-xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？"><a href="#4-web-xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？" class="headerlink" title="4.web.xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？"></a>4.web.xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？</h2><p>url-pattern中的内容是用来标识请求拦截的</p>
-<ul>
-<li>/ 匹配所有的请求；（不包括.jsp）</li>
-<li>/* 匹配所有的请求；（包括.jsp）</li>
-<li>为空时所有请求都会被SpringMVC拦截</li>
-</ul>
-<h2 id="5-SpringMVC请求映射注解有哪些？"><a href="#5-SpringMVC请求映射注解有哪些？" class="headerlink" title="5.SpringMVC请求映射注解有哪些？"></a>5.SpringMVC请求映射注解有哪些？</h2><table>
-<thead>
-<tr>
-<th>请求映射注解</th>
-<th>说明</th>
-<th>类/方法</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>@RequestMapping</td>
-<td>通用的请求处理</td>
-<td>类</td>
-</tr>
-<tr>
-<td>@GetMapping</td>
-<td>处理 HTTP GET 请求</td>
-<td>查询方法</td>
-</tr>
-<tr>
-<td>@PostMapping</td>
-<td>处理 HTTP POST 请求</td>
-<td>新增修改方法</td>
-</tr>
-<tr>
-<td>@PutMapping</td>
-<td>处理 HTTP PUT 请求</td>
-<td>新增修改方法</td>
-</tr>
-<tr>
-<td>@PatchMapping</td>
-<td>处理 HTTP PATCH 请求</td>
-<td>新增修改方法</td>
-</tr>
-<tr>
-<td>@DeleteMapping</td>
-<td>处理 HTTP DELETE 请求</td>
-<td>删除方法</td>
-</tr>
-</tbody></table>
+<h2 id="你的职业规划是什么？"><a href="#你的职业规划是什么？" class="headerlink" title="你的职业规划是什么？"></a>你的职业规划是什么？</h2><h3 id="HR想了解什么？"><a href="#HR想了解什么？" class="headerlink" title="HR想了解什么？"></a>HR想了解什么？</h3><ol>
+<li>了解求职者的求职动机和对自己中长期职业发展的思考</li>
+<li>求职者的稳定性</li>
+<li>对自己的职业定位和发展判断是否准确</li>
+</ol>
+<h3 id="面试前需要了解的内容"><a href="#面试前需要了解的内容" class="headerlink" title="面试前需要了解的内容"></a>面试前需要了解的内容</h3><ol>
+<li>这个职位对面试者的关键需求是什么？主要工作内容是什么？</li>
+<li>职位的长期发展方向如何？类似职位的现有员工，在公司的成长经历如何？</li>
+<li>从此职位出发，更进一步，需要哪些方面的能力与素质？</li>
+<li>公司的企业文化？精神？</li>
+<li>自己哪些优点和特点能够和上述四个问题中的答案挂上钩？</li>
+</ol>
+<h3 id="回答的重点"><a href="#回答的重点" class="headerlink" title="回答的重点"></a>回答的重点</h3><p>要表明自己是有备而来的，有着良好的职业规划，清楚地知道未来三到五年的计划和打算，表明你是符合企业要求的稳定型员工</p>
+<p>表达时要注意添加面试前已了解的内容，尽量让自己的优势和公司发展、职业发展相融合</p>
+<h2 id="你为什么来这个城市工作而不回家乡？"><a href="#你为什么来这个城市工作而不回家乡？" class="headerlink" title="你为什么来这个城市工作而不回家乡？"></a>你为什么来这个城市工作而不回家乡？</h2><h3 id="HR想了解什么？-1"><a href="#HR想了解什么？-1" class="headerlink" title="HR想了解什么？"></a>HR想了解什么？</h3><ol>
+<li>考察你工作的稳定性，看你是否想把目前所在城市做为职业发展的长远目标城市，是否会长期在这里发展</li>
+<li>是否存在还没解决的生活问题？会不会影响入职时间或者其他。比如外地实习生租房就是一个很大的难题</li>
+<li>考察原因，你来这个城市的原因有很大的信息量。例如：男/女朋友在这个城市(因为感情结束而离职的人也不少 判定为不稳定)</li>
+</ol>
+<h3 id="回答的重点-1"><a href="#回答的重点-1" class="headerlink" title="回答的重点"></a>回答的重点</h3><p>记住这五个大字 <strong><em>为了我自己！</em></strong></p>
+<p>一定要体现出自己是有准备有决心有能力在外地工作生活的，请提供一些让自己看起来稳定的理由</p>
+<h3 id="参考回答方向"><a href="#参考回答方向" class="headerlink" title="参考回答方向"></a>参考回答方向</h3><p>1.这个城市的工作机会更多，薪资也不错，我还年轻，想给自己 <strong>几年</strong> 的时间锻炼一下<br>2.我 <strong>一直</strong> 想来这个城市生活，大学期间就做了 <strong>很多的准备</strong> ，打工存钱，实习现在自己一个人生活是没有问题的<br>3.我的亲戚/朋友在这里， <strong>我会和他们一起住，生活上有个照顾比较方便，爸妈也放心</strong><br>4.我和男/女朋友恋爱多年已经 <strong>有结婚的打算</strong> ，我们打算在这里 <strong>结婚定居</strong></p>
+<h3 id="错误示例"><a href="#错误示例" class="headerlink" title="错误示例"></a>错误示例</h3><p>1.因为男朋友在这，我们想结束异地我就辞职过来了</p>
+<p>点评：如果分手，是不是又要离职换地方了？如果两人还没有结婚的打算，可以换个其他的理由</p>
+<p>2.还不确定能呆多久呢，想先来试试看在考虑要不要留下来</p>
+<p>点评：太不稳定了，可能今天上班，明天工作的不开心就走了</p>
+<p>3.脑袋一热，买票就来了，还没找好住的地方。先来面试吧，找到工作再说</p>
+<p>点评：明显的没有计划，没有准备</p>
 
         
             <div id="toc-article">
@@ -219,7 +185,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MVC是什么的缩写？"><span class="toc-text">1.MVC是什么的缩写？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-根据下图描述MVC模式下的请求响应流程"><span class="toc-text">2.根据下图描述MVC模式下的请求响应流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-SpringMVC基础配置内容"><span class="toc-text">3.SpringMVC基础配置内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-web-xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？"><span class="toc-text">4.web.xml文件中设置SpringMVC拦截请求时url-pattern中的内容有何含义？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-SpringMVC请求映射注解有哪些？"><span class="toc-text">5.SpringMVC请求映射注解有哪些？</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#你的职业规划是什么？"><span class="toc-text">你的职业规划是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HR想了解什么？"><span class="toc-text">HR想了解什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#面试前需要了解的内容"><span class="toc-text">面试前需要了解的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回答的重点"><span class="toc-text">回答的重点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你为什么来这个城市工作而不回家乡？"><span class="toc-text">你为什么来这个城市工作而不回家乡？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HR想了解什么？-1"><span class="toc-text">HR想了解什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回答的重点-1"><span class="toc-text">回答的重点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参考回答方向"><span class="toc-text">参考回答方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#错误示例"><span class="toc-text">错误示例</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -228,7 +194,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210405.html">https://www.gengruiblog.cn/article/20210405.html</a></p>
+              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210412.html">https://www.gengruiblog.cn/article/20210412.html</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -271,19 +237,10 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210410.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          一张好的求职照所需要具备什么要素
-        
-      </div>
-    </a>
   
-  
-    <a href="/article/20210404.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210411.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">大厂面试：MyBatis面试题</div>
+      <div class="article-nav-title">如何写简历经历</div>
     </a>
   
 </nav>
