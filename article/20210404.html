@@ -148,18 +148,9 @@
         <p>大厂面试：MyBatis面试题</p>
 <a id="more"></a>
 
-<ol>
-<li>ORM是什么的缩写？</li>
-</ol>
-<p>ORM是对象(Object)、关系(Relational)、映射(Mapping)的缩写</p>
-<ol start="2">
-<li>ORM有什么作用？</li>
-</ol>
-<p>ORM会把对SQL的操作转换为对象的操作，从而让程序员使用起来更加方便和易于接受</p>
-<ol start="3">
-<li>Hibernate与MyBatis的区别？</li>
-</ol>
-<ul>
+<h2 id="1-ORM是什么的缩写？"><a href="#1-ORM是什么的缩写？" class="headerlink" title="1.ORM是什么的缩写？"></a>1.ORM是什么的缩写？</h2><p>ORM是对象(Object)、关系(Relational)、映射(Mapping)的缩写</p>
+<h2 id="2-ORM有什么作用？"><a href="#2-ORM有什么作用？" class="headerlink" title="2.ORM有什么作用？"></a>2.ORM有什么作用？</h2><p>ORM会把对SQL的操作转换为对象的操作，从而让程序员使用起来更加方便和易于接受</p>
+<h2 id="3-Hibernate与MyBatis的区别？"><a href="#3-Hibernate与MyBatis的区别？" class="headerlink" title="3.Hibernate与MyBatis的区别？"></a>3.Hibernate与MyBatis的区别？</h2><ul>
 <li>Hibernate<ul>
 <li>全自动化ORM框架，数据库移植性好，基础业务几乎不需要写SQL</li>
 <li>易学难精，上手简单但熟练使用需要阅读大量文档，框架结构复杂</li>
@@ -171,46 +162,28 @@
 </ul>
 </li>
 </ul>
-<ol start="4">
-<li>要想使用MyBatis需要导入的包有哪些？</li>
-</ol>
-<ul>
+<h2 id="4-要想使用MyBatis需要导入的包有哪些？"><a href="#4-要想使用MyBatis需要导入的包有哪些？" class="headerlink" title="4.要想使用MyBatis需要导入的包有哪些？"></a>4.要想使用MyBatis需要导入的包有哪些？</h2><ul>
 <li>mysql-connector-java：MySQL驱动包</li>
 <li>mybatis：MyBatis基础包</li>
 </ul>
-<ol start="5">
-<li>MyBatis配置用到哪些标签？</li>
-</ol>
-<ul>
+<h2 id="5-MyBatis配置用到哪些标签？"><a href="#5-MyBatis配置用到哪些标签？" class="headerlink" title="5.MyBatis配置用到哪些标签？"></a>5.MyBatis配置用到哪些标签？</h2><ul>
 <li>configuration 标签对应 Configuration 类，负责 MyBatis 架构中的配置部分</li>
 <li>environment 标签对应 Environment 类，是环境变量，必须有唯一的 id</li>
 <li>transactionManager 标签对应 JdbcTransactionFactory 类，表示事务工厂，当 MyBatis 需要新建事务的时候，会通过它来新建</li>
 <li>dataSource 标签对应 PooledDataSource 类，表示数据源，通过其构造参数，我们传入了数据库 url，数据库用户和密码等配置</li>
 </ul>
-<ol start="6">
-<li>mapper文件中常用标签</li>
-</ol>
-<ul>
+<h2 id="6-mapper文件中常用标签"><a href="#6-mapper文件中常用标签" class="headerlink" title="6.mapper文件中常用标签"></a>6.mapper文件中常用标签</h2><ul>
 <li>新增数据：<insert></insert></li>
 <li>删除数据：<delete></delete></li>
 <li>修改数据：<update></update></li>
 <li>查询数据：<select></select></li>
 </ul>
-<ol start="7">
-<li>mapper文件中的SQL语句使用什么符号引用传入参数？</li>
-</ol>
-<p>mapper文件中的SQL语句使用 <strong><em>#{}</em></strong> 符号引用传入参数</p>
-<ol start="8">
-<li>写通过id查询表中单条数据的Dao层代码</li>
-</ol>
-<p>java代码：</p>
+<h2 id="7-mapper文件中的SQL语句使用什么符号引用传入参数？"><a href="#7-mapper文件中的SQL语句使用什么符号引用传入参数？" class="headerlink" title="7.mapper文件中的SQL语句使用什么符号引用传入参数？"></a>7.mapper文件中的SQL语句使用什么符号引用传入参数？</h2><p>mapper文件中的SQL语句使用 <strong><em>#{}</em></strong> 符号引用传入参数</p>
+<h2 id="8-写通过id查询表中单条数据的Dao层代码"><a href="#8-写通过id查询表中单条数据的Dao层代码" class="headerlink" title="8.写通过id查询表中单条数据的Dao层代码"></a>8.写通过id查询表中单条数据的Dao层代码</h2><p>java代码：</p>
 <p><img src="https://gengrui01.github.io/picture/mybatis-interview-question/1.png" alt=""></p>
 <p>xml代码：</p>
 <p><img src="https://gengrui01.github.io/picture/mybatis-interview-question/6.png" alt=""></p>
-<ol start="9">
-<li>写查询表中所有数据的Dao层代码</li>
-</ol>
-<p>java代码：</p>
+<h2 id="9-写查询表中所有数据的Dao层代码"><a href="#9-写查询表中所有数据的Dao层代码" class="headerlink" title="9.写查询表中所有数据的Dao层代码"></a>9.写查询表中所有数据的Dao层代码</h2><p>java代码：</p>
 <p><img src="https://gengrui01.github.io/picture/mybatis-interview-question/2.png" alt=""></p>
 <p>xml代码：</p>
 <p><img src="https://gengrui01.github.io/picture/mybatis-interview-question/7.png" alt=""></p>
@@ -221,7 +194,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ORM是什么的缩写？"><span class="toc-text">1.ORM是什么的缩写？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ORM有什么作用？"><span class="toc-text">2.ORM有什么作用？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hibernate与MyBatis的区别？"><span class="toc-text">3.Hibernate与MyBatis的区别？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-要想使用MyBatis需要导入的包有哪些？"><span class="toc-text">4.要想使用MyBatis需要导入的包有哪些？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-MyBatis配置用到哪些标签？"><span class="toc-text">5.MyBatis配置用到哪些标签？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-mapper文件中常用标签"><span class="toc-text">6.mapper文件中常用标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-mapper文件中的SQL语句使用什么符号引用传入参数？"><span class="toc-text">7.mapper文件中的SQL语句使用什么符号引用传入参数？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-写通过id查询表中单条数据的Dao层代码"><span class="toc-text">8.写通过id查询表中单条数据的Dao层代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-写查询表中所有数据的Dao层代码"><span class="toc-text">9.写查询表中所有数据的Dao层代码</span></a></li></ol>
     </div>
   </div>
 
