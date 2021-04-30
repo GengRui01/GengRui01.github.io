@@ -154,13 +154,13 @@
 <li>增强程序可读性 拒绝硬编码</li>
 <li>提高了对程序的修改效率</li>
 </ol>
-<h2 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h2><ol>
+<h2 id="变量命名"><a href="#变量命名" class="headerlink" title="变量命名"></a>变量命名</h2><h3 id="变量命名规则"><a href="#变量命名规则" class="headerlink" title="变量命名规则"></a>变量命名规则</h3><ol>
 <li>变量名必须以字母或者下划线(_)或者汉字开头</li>
 <li>变量名中可以包括字母、下划线(_)、数字、汉字</li>
 <li>变量名中不能出现Python关键字和保留字</li>
 <li>变量名中要区分大小写，即 abc 和 Abc 不是同一个变量</li>
 </ol>
-<h2 id="常用变量命名法则"><a href="#常用变量命名法则" class="headerlink" title="常用变量命名法则"></a>常用变量命名法则</h2><p>在学习工作中，给变量命名的最高境界是见名知意</p>
+<h3 id="常用变量命名法则"><a href="#常用变量命名法则" class="headerlink" title="常用变量命名法则"></a>常用变量命名法则</h3><p>在学习工作中，给变量命名的最高境界是见名知意</p>
 <p>所以汉字、汉语拼音、单个字母、个别无意义的单词不推荐作为变量名，例如：年龄、xingming、a、the……</p>
 <p>推荐使用英文单词或者缩写对变量命名，例如：age、name……</p>
 <p>当一个单词不能准确表达变量含义，变量名由多个单词构成时通常使用如下法则进行变量命名：</p>
@@ -176,14 +176,14 @@
 <li>posix命名法很少用到</li>
 </ul>
 <h2 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h2><p>定义变量的方式很简单，通过 <code>变量名=数据</code> ，即可定义一个变量</p>
-<p>例如：<code>a = 1</code></p>
-<p>在这个例子里面，a就是变量，它的值是整数1</p>
-<p>例如：<code>hel = &#39;Hello&#39;</code></p>
-<p>在这个例子里面，hel就是变量，它的值是字符串’Hello’</p>
+<p>例如：<code>temp = 1</code></p>
+<p>在这个例子里面，temp就是变量，它的值是整数1</p>
+<p>例如：<code>hello = &#39;Hello&#39;</code></p>
+<p>在这个例子里面，hello就是变量，它的值是字符串’Hello’</p>
 <p>在Python里面，一个变量可以先后存储多种不同类型的数据，比如下面的代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">print(a)</span><br><span class="line">a = <span class="string">'ABC'</span></span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">temp = <span class="number">1</span></span><br><span class="line">print(temp)</span><br><span class="line">temp = <span class="string">'ABC'</span></span><br><span class="line">print(temp)</span><br></pre></td></tr></table></figure>
 
-<p>起初a存储的是整数1，之后存储的是字符串’ABC’</p>
+<p>起初temp存储的是整数1，之后存储的是字符串’ABC’</p>
 <p>这是Python这类语言特有的特性，我们称之为动态语言，Python、Javascript等等都是动态语言</p>
 <p>与之对应的是静态语言，Java、C、C++等等属于静态语言</p>
 
@@ -193,7 +193,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是变量"><span class="toc-text">什么是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的作用"><span class="toc-text">变量的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量命名规则"><span class="toc-text">变量命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用变量命名法则"><span class="toc-text">常用变量命名法则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义变量"><span class="toc-text">定义变量</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是变量"><span class="toc-text">什么是变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量的作用"><span class="toc-text">变量的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量命名"><span class="toc-text">变量命名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#变量命名规则"><span class="toc-text">变量命名规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用变量命名法则"><span class="toc-text">常用变量命名法则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定义变量"><span class="toc-text">定义变量</span></a></li></ol>
     </div>
   </div>
 

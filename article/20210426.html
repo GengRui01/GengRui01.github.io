@@ -162,12 +162,10 @@
 </ul>
 <p>十进制数、二进制数和十六进制数之间是可以相互转换的，如果感兴趣的可以自己了解更多转换的细节</p>
 <h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数对应我们生活的是小数，例如：0.1, 3.1415926, -0.5, -12.34 等等都是浮点数</p>
-<p><strong>为什么小数在计算机领域被称为浮点数呢？</strong></p>
-<p>这是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的（可浮动的），例如：1.23x10^9和12.3x10^8是相等的，因此称为浮点数</p>
+<h3 id="为什么小数在计算机领域被称为浮点数？"><a href="#为什么小数在计算机领域被称为浮点数？" class="headerlink" title="为什么小数在计算机领域被称为浮点数？"></a>为什么小数在计算机领域被称为浮点数？</h3><p>这是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的（可浮动的），例如：1.23x10^9和12.3x10^8是相等的，因此称为浮点数</p>
 <p>浮点数可以用数学写法，例如：1.23，3.14，-9.01，但是对于很大或很小的浮点数，就必须用科学计数法表示</p>
 <p>在Python中，把10^用e替代，例如：1.23x10^9就可写为1.23e9或者12.3e8，0.000012可以写成1.2e-5</p>
-<p><strong><em>TIPS:</em></strong> </p>
-<p>整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的，而浮点数运算可能会有四舍五入的误差</p>
+<h3 id="关于浮点数运算的误差"><a href="#关于浮点数运算的误差" class="headerlink" title="关于浮点数运算的误差"></a>关于浮点数运算的误差</h3><p>整数和浮点数在计算机内部存储的方式是不同的，整数运算永远是精确的，而浮点数运算可能会有四舍五入的误差</p>
 <p>我们在Python终端中输入<code>0.1 + 0.2</code>，期望的结果是0.3，看看得到的真实结果：</p>
 <p><img src="https://gengrui01.github.io/picture/python-datatype/1.png" alt=""></p>
 <p>真实结果和我们所期望的值不一样，这就是浮点数运算所带来的误差</p>
@@ -176,10 +174,10 @@
 <p>在Python中，字符串是用单引号（’’）或者双引号（””）括起来的任意文本，例如：’abc’, “xyz”等等都是字符串</p>
 <p><strong><em>TIPS:</em></strong> 单双引号只是一种表示方式，不是字符串的一部分，因此字符串’abc’只有a，b，c这3个字符</p>
 <p>比如之前练习过的第一个Python程序：print(‘Hello World’)，其中的Hello World就是字符串</p>
-<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>布尔值对应于生活中的就是对和错</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><h3 id="什么是布尔值"><a href="#什么是布尔值" class="headerlink" title="什么是布尔值"></a>什么是布尔值</h3><p>布尔值对应于生活中的就是对和错</p>
 <p>在计算机的世界里，大部分判断都是非错则对的，一个布尔值只有True、False两种值，要么是True，要么是False</p>
 <p>在Python中，可以直接用True、False表示布尔值（请注意大小写，不需要使用字符串符号括起来）</p>
-<p>布尔值可以用and、or和not运算（注意and,or,not都是Python语言本身的关键字）</p>
+<h3 id="布尔值运算"><a href="#布尔值运算" class="headerlink" title="布尔值运算"></a>布尔值运算</h3><p>布尔值可以用and、or和not运算（注意and,or,not都是Python语言本身的关键字）</p>
 <ul>
 <li>and运算（与运算）：只有所有都为 True，and运算结果才是 True</li>
 <li>or运算（或运算）：只要其中有一个为 True，or 运算结果就是 True。</li>
@@ -196,7 +194,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空值"><span class="toc-text">空值</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数"><span class="toc-text">浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么小数在计算机领域被称为浮点数？"><span class="toc-text">为什么小数在计算机领域被称为浮点数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于浮点数运算的误差"><span class="toc-text">关于浮点数运算的误差</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是布尔值"><span class="toc-text">什么是布尔值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔值运算"><span class="toc-text">布尔值运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空值"><span class="toc-text">空值</span></a></li></ol>
     </div>
   </div>
 
