@@ -157,11 +157,12 @@
 <p>对于整数，除了生活中常用的十进制以外，计算机由于使用二进制，所以，在计算机中也常用二进制或者十六进制表示整数</p>
 <p>在Python中使用以下方式表示二进制数和十六进制数：</p>
 <ul>
-<li>二进制数只使用数字0、1表示，在Python中，二进制整数使用前缀0b表示，例如：0b0110, 0b1100</li>
-<li>十六进制数除了0~9十个数字以外，还使用a、b、c、d、e、f，在Python中，十六进制使用前缀0x，例如：0x12ef, 0xde2431af</li>
+<li>二进制数都是由数字0、1组成，逢2进1。在Python中，二进制整数使用前缀0b表示，例如：0b0110, 0b1100</li>
+<li>八进制数都是由数字0~7的数字组成，逢8进1。在Python中，八进制整数使用前缀0o表示，例如：0o123, 0o657</li>
+<li>十六进制数除了0<del>9十个数字以外，还使用a</del>f表示10~15的数字，逢16进1。在Python中，十六进制使用前缀0x，例如：0x12ef, 0xde24</li>
 </ul>
-<p>十进制数、二进制数和十六进制数之间是可以相互转换的，如果感兴趣的可以自己了解更多转换的细节</p>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数对应我们生活的是小数，例如：0.1, 3.1415926, -0.5, -12.34 等等都是浮点数</p>
+<p>十进制数、二进制数和十六进制数之间是可以相互转换的，下篇文章会讲解python中不同进制转换的函数</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><h3 id="什么是浮点数"><a href="#什么是浮点数" class="headerlink" title="什么是浮点数"></a>什么是浮点数</h3><p>浮点数对应我们生活的是小数，例如：0.1, 3.1415926, -0.5, -12.34 等等都是浮点数</p>
 <h3 id="为什么小数在计算机领域被称为浮点数？"><a href="#为什么小数在计算机领域被称为浮点数？" class="headerlink" title="为什么小数在计算机领域被称为浮点数？"></a>为什么小数在计算机领域被称为浮点数？</h3><p>这是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的（可浮动的），例如：1.23x10^9和12.3x10^8是相等的，因此称为浮点数</p>
 <p>浮点数可以用数学写法，例如：1.23，3.14，-9.01，但是对于很大或很小的浮点数，就必须用科学计数法表示</p>
 <p>在Python中，把10^用e替代，例如：1.23x10^9就可写为1.23e9或者12.3e8，0.000012可以写成1.2e-5</p>
@@ -170,23 +171,22 @@
 <p><img src="https://gengrui01.github.io/picture/python-datatype/1.png" alt=""></p>
 <p>真实结果和我们所期望的值不一样，这就是浮点数运算所带来的误差</p>
 <p>这里的原理涉及到了科学计数法底层的运算，如果感兴趣的可以自己进一步的学习原理层面的知识</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串对应生活中的就是非数字类型的内容，比如一个句子，一段话在Python中就是字符串</p>
-<p>在Python中，字符串是用单引号（’’）或者双引号（””）括起来的任意文本，例如：’abc’, “xyz”等等都是字符串</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串表示记录文本信息的一种形式，对应生活中的就是非数字类型的内容，比如一个句子，一段话在Python中就是字符串</p>
+<p>在Python中，字符串是用单引号（’ ‘）或者双引号（” “）括起来的任意文本，例如：<code>&#39;abc&#39;</code>, <code>&quot;xyz&quot;</code>等等都是字符串</p>
 <p><strong><em>TIPS:</em></strong> 单双引号只是一种表示方式，不是字符串的一部分，因此字符串’abc’只有a，b，c这3个字符</p>
-<p>比如之前练习过的第一个Python程序：print(‘Hello World’)，其中的Hello World就是字符串</p>
-<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><h3 id="什么是布尔值"><a href="#什么是布尔值" class="headerlink" title="什么是布尔值"></a>什么是布尔值</h3><p>布尔值对应于生活中的就是对和错</p>
+<p>如果要表示多行字符串，可以直接在需要换行的地方添加 <code>\n</code> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#39;Line 1\nLine 2\nLine 3&#39;</span><br></pre></td></tr></table></figure>
+
+<p>也可以用叁引号（’’’ ‘’’）括起来表示，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#39;&#39;&#39;Line 1</span><br><span class="line">Line 2</span><br><span class="line">Line 3&#39;&#39;&#39;</span><br></pre></td></tr></table></figure>
+
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>布尔值对应于生活中的就是对和错</p>
 <p>在计算机的世界里，大部分判断都是非错则对的，一个布尔值只有True、False两种值，要么是True，要么是False</p>
 <p>在Python中，可以直接用True、False表示布尔值（请注意大小写，不需要使用字符串符号括起来）</p>
-<h3 id="布尔值运算"><a href="#布尔值运算" class="headerlink" title="布尔值运算"></a>布尔值运算</h3><p>布尔值可以用and、or和not运算（注意and,or,not都是Python语言本身的关键字）</p>
-<ul>
-<li>and运算（与运算）：只有所有都为 True，and运算结果才是 True</li>
-<li>or运算（或运算）：只要其中有一个为 True，or 运算结果就是 True。</li>
-<li>not运算（非运算）：是一个单目运算符，把 True 变成 False，False 变成 True</li>
-</ul>
 <h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>空值是Python里一个特殊的值，用None表示</p>
-<p><strong><em>TIPS:</em></strong> </p>
-<p>None和0是不一样的，None不能理解为0，因为0是有意义的</p>
-<p>比如我有0个苹果表示我没有苹果，0表达的是数值0的意思，而不能表示为我有None个苹果，None是一个特殊的空值</p>
+<p><strong><em>TIPS:</em></strong> None和0是不一样的，None不能理解为0，因为0是有意义的</p>
+<p>比如我有0个苹果表示我没有苹果，0表达的是数值0的意思</p>
+<p>而不能表示为我有None个苹果，None是一个特殊的空值</p>
 
         
             <div id="toc-article">
@@ -194,7 +194,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数"><span class="toc-text">浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么小数在计算机领域被称为浮点数？"><span class="toc-text">为什么小数在计算机领域被称为浮点数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于浮点数运算的误差"><span class="toc-text">关于浮点数运算的误差</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是布尔值"><span class="toc-text">什么是布尔值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔值运算"><span class="toc-text">布尔值运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空值"><span class="toc-text">空值</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#整数"><span class="toc-text">整数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浮点数"><span class="toc-text">浮点数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是浮点数"><span class="toc-text">什么是浮点数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么小数在计算机领域被称为浮点数？"><span class="toc-text">为什么小数在计算机领域被称为浮点数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于浮点数运算的误差"><span class="toc-text">关于浮点数运算的误差</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔值"><span class="toc-text">布尔值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空值"><span class="toc-text">空值</span></a></li></ol>
     </div>
   </div>
 
@@ -287,7 +287,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -297,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
