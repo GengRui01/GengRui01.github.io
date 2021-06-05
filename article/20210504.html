@@ -145,7 +145,46 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>市面上的软件硬件之所以能自动化的完成任务，能够智能的为大家服务是因为</p>
+        <p>市面上的软件硬件之所以能自动化的完成任务、智能的为大家服务，是因为它可以自己通过程序判断自己该执行什么操作</p>
+<p>在代码里我们常用条件判断语句来设定程序在不同场景下应该执行的操作</p>
+<a id="more"></a>
+
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if-else"></a>if-else</h2><h3 id="语句格式"><a href="#语句格式" class="headerlink" title="语句格式"></a>语句格式</h3><figure class="highlight plain"><figcaption><span>条件判断语句格式如下：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">if 判断条件:</span><br><span class="line">    if子逻辑分支</span><br><span class="line">else:</span><br><span class="line">    else子逻辑分支</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>TIPS:</em></strong> 语句格式中需要注意的点有两个:</p>
+<ol>
+<li>在if语句的最后，有一个 <code>:</code></li>
+<li>子逻辑分支代码 明显比上一行代码缩进了4个字符</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>是条件判断的格式，表示接下来是if模块或者else模块的子分支代码块</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">也正是因为是子分支代码块，所以需要缩进</span><br><span class="line"></span><br><span class="line">在Python规范中，一般使用 **1个Tab键（推荐）** 或者 4个空格键 作为缩进</span><br><span class="line"></span><br><span class="line">### 执行流程</span><br><span class="line"></span><br><span class="line">判断条件是否为真</span><br><span class="line"></span><br><span class="line">当if条件为真（True）时，执行if的子逻辑分支</span><br><span class="line"></span><br><span class="line">在if条件为假（False）时，执行else的子逻辑分支</span><br><span class="line"></span><br><span class="line">![](https:&#x2F;&#x2F;gengrui01.github.io&#x2F;picture&#x2F;python-if-else&#x2F;2.png)</span><br><span class="line"></span><br><span class="line">### 使用示例</span><br><span class="line"></span><br><span class="line">例如在满分100分的考试中，小于60分的记为不及格，大于60分的记为及格</span><br><span class="line"></span><br><span class="line">现在我们来写一段代码，在输入成绩后自动判断成绩是否及格</span><br><span class="line"></span><br><span class="line">代码：</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">score &#x3D; 59</span><br><span class="line">if score &lt; 60:</span><br><span class="line">    print(&#39;不及格&#39;)</span><br><span class="line">else:</span><br><span class="line">    print(&#39;及格&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://gengrui01.github.io/picture/python-if-else/1.png" alt=""></p>
+<p>可以看到程序就会根据score的值判断，走不同的子分支打印出不同的内容</p>
+<p>如果想对达到或者超过60分的学生再进行不同的分类，比如超过90分是卓越，超过80分是优秀超过70分良好</p>
+<p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">score = <span class="number">59</span></span><br><span class="line"><span class="keyword">if</span> score &lt; <span class="number">60</span>:</span><br><span class="line">    print(<span class="string">'不及格'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">if</span> score &lt; <span class="number">70</span>:</span><br><span class="line">        print(<span class="string">'及格'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> score &lt; <span class="number">80</span>:</span><br><span class="line">            print(<span class="string">'良好'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> score &lt; <span class="number">90</span>:</span><br><span class="line">                print(<span class="string">'优秀'</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                print(<span class="string">'卓越'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://gengrui01.github.io/picture/python-if-else/3.png" alt=""></p>
+<p>虽然我们得出了自己需要的结果，但是随着判断条件的增多代码缩进也越来越多，导致代码逻辑看起来也不够清晰</p>
+<p>为了简化以上逻辑我们使用 <code>if-elif-else</code> 语句，其中 <code>elif</code> 相当于 <code>else if</code> 的意思</p>
+<h2 id="if-elif-else"><a href="#if-elif-else" class="headerlink" title="if-elif-else"></a>if-elif-else</h2><h3 id="语句格式-1"><a href="#语句格式-1" class="headerlink" title="语句格式"></a>语句格式</h3><figure class="highlight plain"><figcaption><span>条件判断语句格式如下：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">if 条件A:</span><br><span class="line">    if子逻辑分支</span><br><span class="line">elif 条件B:</span><br><span class="line">    elif子逻辑分支1</span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line">elif 条件C:</span><br><span class="line">    elif子逻辑分支2</span><br><span class="line">else:</span><br><span class="line">    else子逻辑分支</span><br></pre></td></tr></table></figure>
+
+<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>判断条件A是否为真</p>
+<p>条件A为真（True）时，执行if子逻辑分支</p>
+<p>条件A为假（False）时，判断条件B是否为真</p>
+<p>条件B为真（True）时，执行elif子逻辑分支1</p>
+<p>条件B为假（False）时，判断条件C是否为真</p>
+<p>条件C为真（True）时，elif子逻辑分支2</p>
+<p>条件C为假（False）时，执行else的子逻辑分支</p>
+<p><img src="https://gengrui01.github.io/picture/python-if-else/4.png" alt=""></p>
+<p><strong><em>TIPS:</em></strong> 这一系列条件判断会从上到下依次判断，如果某个判断为 <code>True</code> 就会直接执行对应的代码块，后面的条件判断就忽略不再执行了</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">score = <span class="number">80</span></span><br><span class="line"><span class="keyword">if</span> score &lt; <span class="number">60</span>:</span><br><span class="line">    print(<span class="string">'不及格'</span>)</span><br><span class="line"><span class="keyword">elif</span> score &lt; <span class="number">70</span>:</span><br><span class="line">    print(<span class="string">'及格'</span>)</span><br><span class="line"><span class="keyword">elif</span> score &lt; <span class="number">80</span>:</span><br><span class="line">    print(<span class="string">'良好'</span>)</span><br><span class="line"><span class="keyword">elif</span> score &lt; <span class="number">90</span>:</span><br><span class="line">    print(<span class="string">'优秀'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'卓越'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://gengrui01.github.io/picture/python-if-else/5.png" alt=""></p>
 
         
             <div id="toc-article">
@@ -153,7 +192,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#if-else"><span class="toc-text">if-else</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语句格式"><span class="toc-text">语句格式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#if-elif-else"><span class="toc-text">if-elif-else</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语句格式-1"><span class="toc-text">语句格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例"><span class="toc-text">使用示例</span></a></li></ol></li></ol>
     </div>
   </div>
 
@@ -205,6 +244,15 @@
         
 <nav id="article-nav">
   
+    <a href="/article/20210507.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Python循环语句
+        
+      </div>
+    </a>
+  
   
     <a href="/article/20210502.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
@@ -237,7 +285,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -247,7 +295,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
