@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-python-datatype-string-format" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-python-string-format" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -156,19 +156,19 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">template = <span class="string">'Hello &#123;&#125;'</span></span><br><span class="line">world = <span class="string">'World'</span></span><br><span class="line">print(template.format(world))</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-datatype-string-format/1.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-string-format/1.png" alt=""></p>
 <h2 id="字符串format包含多模板"><a href="#字符串format包含多模板" class="headerlink" title="字符串format包含多模板"></a>字符串format包含多模板</h2><p>如果模板中{}比较多则容易错乱，我们在定义模板的时候可以指定模板数据内容的顺序或者数据内容名，使得在format过程更加清晰</p>
 <h3 id="指定模板数据顺序"><a href="#指定模板数据顺序" class="headerlink" title="指定模板数据顺序"></a>指定模板数据顺序</h3><p>代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template = <span class="string">'* &#123;0&#125; * &#123;1&#125; * &#123;2&#125; * &#123;3&#125; * &#123;4&#125; * &#123;5&#125; * &#123;6&#125; *'</span></span><br><span class="line">print(template.format(<span class="string">'你'</span>, <span class="string">'是'</span>, <span class="string">'年'</span>, <span class="string">'少'</span>, <span class="string">'的'</span>, <span class="string">'欢'</span>, <span class="string">'喜'</span>))</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-datatype-string-format/2.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-string-format/2.png" alt=""></p>
 <p>调整模板顺序后打印，打印时的输入顺序不变</p>
 <p>代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">template = <span class="string">'* &#123;6&#125; * &#123;5&#125; * &#123;4&#125; * &#123;3&#125; * &#123;2&#125; * &#123;1&#125; * &#123;0&#125; *'</span></span><br><span class="line">print(template.format(<span class="string">'你'</span>, <span class="string">'是'</span>, <span class="string">'年'</span>, <span class="string">'少'</span>, <span class="string">'的'</span>, <span class="string">'欢'</span>, <span class="string">'喜'</span>))</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-datatype-string-format/3.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-string-format/3.png" alt=""></p>
 <h3 id="指定模板数据名"><a href="#指定模板数据名" class="headerlink" title="指定模板数据名"></a>指定模板数据名</h3><p>定义模板：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">template = <span class="string">'Hello&#123;w&#125;\nHello&#123;c&#125;\nHello&#123;b&#125;'</span></span><br></pre></td></tr></table></figure>
 
@@ -179,7 +179,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(template.format(w = world, c = china, b = beijing))</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-datatype-string-format/4.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-string-format/4.png" alt=""></p>
 
         
             <div id="toc-article">
@@ -280,7 +280,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JVM/">JVM</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -290,7 +290,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
