@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Python循环语句 | 耿锐的博客</title>
+  <title>Python跳出循环 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-python-loop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-python-outof-loop" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Python循环语句
+      Python跳出循环
     </h1>
   
 
@@ -145,38 +145,40 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>程序在一般情况下是按顺序执行的，在需要执行一个语句或语句组多次的场景中会用到循环语句</p>
-<p>代码里的循环语句主要有两种，一种是while循环一种是for循环</p>
+        <p>循环语句中，while循环条件为真 或者 for循环序列中还有新的元素，循环就会一直进行下去</p>
+<p>如果在循环中需要终止循环就会用到 <code>break</code> 语句或者 <code>continue</code> 语句，两者区别如下：</p>
+<ul>
+<li><code>break</code> 语句：跳出整个循环</li>
+<li><code>continue</code> 语句：跳出本次循环，执行下次循环</li>
+</ul>
 <a id="more"></a>
 
-<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight plain"><figcaption><span>循环语句格式如下：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">while 判断条件：</span><br><span class="line">    while子逻辑分支</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>判断条件是否为真</p>
-<p>判断条件为真时执行子逻辑分支操作</p>
-<p>判断条件为假时循环结束</p>
-<p><img src="https://gengrui01.github.io/picture/python-loop/1.png" alt=""></p>
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>现在我们来写一段代码，使用while循环计算1~100的和</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">0</span></span><br><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> num &lt; <span class="number">100</span>:</span><br><span class="line">    num = num + <span class="number">1</span></span><br><span class="line">    sum = sum + num</span><br><span class="line"></span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<h2 id="break"><a href="#break" class="headerlink" title="break"></a>break</h2><h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>在while循环（左图）和for循环（右图）中加入 <code>break</code> 之后的执行流程如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/1.png" alt=""></p>
+<p>可以看到两种循环都会在 <code>break</code> 之后跳出整个循环</p>
+<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><h4 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h4><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var = <span class="number">10</span></span><br><span class="line"><span class="keyword">while</span> var &gt; <span class="number">0</span>:</span><br><span class="line">   var = var - <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> var == <span class="number">5</span>:</span><br><span class="line">      <span class="keyword">break</span>            </span><br><span class="line">   print(var)</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-loop/2.png" alt=""></p>
-<p>在上述代码中，while的判断条件是num&lt;100</p>
-<p>也就是说，当num&lt;100时循环会继续下去，当num&gt;=100时将跳出循环</p>
-<p>因为num在while循环里面不断加1，最终一定会大于等于100</p>
-<p>因此while循环不会无限进行下去</p>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><h3 id="语法格式-1"><a href="#语法格式-1" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight plain"><figcaption><span>循环语句格式如下：</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">for 元素 in 序列:</span><br><span class="line">   for子逻辑分支</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行流程-1"><a href="#执行流程-1" class="headerlink" title="执行流程"></a>执行流程</h3><p>判断序列中是否还有新元素</p>
-<p>有新元素时取新元素执行子逻辑分支操作</p>
-<p>没有新元素结束循环</p>
-<p><img src="https://gengrui01.github.io/picture/python-loop/3.png" alt=""></p>
-<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><p>现在我们来写一段代码，数一数单词 <code>sunny</code> 中有多少个字母</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str = <span class="string">'sunny'</span></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> s <span class="keyword">in</span> str:</span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(count)</span><br></pre></td></tr></table></figure>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/3.png" alt=""></p>
+<h4 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h4><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:</span><br><span class="line">   <span class="keyword">if</span> letter == <span class="string">'h'</span>:</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">   print(letter)</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-loop/4.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/4.png" alt=""></p>
+<h2 id="continue"><a href="#continue" class="headerlink" title="continue"></a>continue</h2><h3 id="执行流程-1"><a href="#执行流程-1" class="headerlink" title="执行流程"></a>执行流程</h3><p>在while循环（左图）和for循环（右图）中加入 <code>continue</code> 之后的执行流程如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/2.png" alt=""></p>
+<p>可以看到两种循环都会在 <code>continue</code> 之后跳出本次循环，执行下次循环</p>
+<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><h4 id="while循环-1"><a href="#while循环-1" class="headerlink" title="while循环"></a>while循环</h4><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var = <span class="number">10</span></span><br><span class="line"><span class="keyword">while</span> var &gt; <span class="number">0</span>:</span><br><span class="line">   var = var - <span class="number">1</span></span><br><span class="line">   <span class="keyword">if</span> var == <span class="number">5</span>:</span><br><span class="line">      <span class="keyword">continue</span>            </span><br><span class="line">   print(var)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/5.png" alt=""></p>
+<h4 id="for循环-1"><a href="#for循环-1" class="headerlink" title="for循环"></a>for循环</h4><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:</span><br><span class="line">   <span class="keyword">if</span> letter == <span class="string">'h'</span>:</span><br><span class="line">      <span class="keyword">continue</span></span><br><span class="line">   print(letter)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="https://gengrui01.github.io/picture/python-outof-loop/6.png" alt=""></p>
 
         
             <div id="toc-article">
@@ -184,7 +186,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#while"><span class="toc-text">while</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法格式"><span class="toc-text">语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例"><span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for"><span class="toc-text">for</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法格式-1"><span class="toc-text">语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程-1"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-1"><span class="toc-text">使用示例</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#break"><span class="toc-text">break</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例"><span class="toc-text">使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while循环"><span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for循环"><span class="toc-text">for循环</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#continue"><span class="toc-text">continue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程-1"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-1"><span class="toc-text">使用示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#while循环-1"><span class="toc-text">while循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for循环-1"><span class="toc-text">for循环</span></a></li></ol></li></ol></li></ol>
     </div>
   </div>
 
@@ -240,15 +242,15 @@
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Python跳出循环
+          Python循环嵌套
         
       </div>
     </a>
   
   
-    <a href="/article/20210504.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210506.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Python条件判断</div>
+      <div class="article-nav-title">Python循环语句</div>
     </a>
   
 </nav>

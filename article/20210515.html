@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Python访问List容器的三种方式 | 耿锐的博客</title>
+  <title>Python二维列表 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-python-list-select" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-python-list-two-dimensional" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Python访问List容器的三种方式
+      Python二维列表
     </h1>
   
 
@@ -145,51 +145,23 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>列表(List)是一种有序的容器，放入List中的元素，将会按照一定顺序排列</p>
-<p>我们在访问List中元素的时候有 <strong>顺序 倒序 使用索引号</strong> 三种访问方式</p>
+        <h2 id="什么是二维列表"><a href="#什么是二维列表" class="headerlink" title="什么是二维列表"></a>什么是二维列表</h2><p>首先来回顾一下什么时列表(List)，List本质上就是一个容器，可以存放不同类型的元素</p>
+<p>并没有规定里面必须要放什么东西，所以可以在大容器里放小容器（小容器就是大容器的元素）</p>
+<p>在List里面存放List，就会得到二维列表</p>
 <a id="more"></a>
 
-<h2 id="顺序访问List"><a href="#顺序访问List" class="headerlink" title="顺序访问List"></a>顺序访问List</h2><p>在for循环的练习中我们使用 <a href="https://www.gengruiblog.cn/article/20210507.html#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B-1">for循环访问字符串中的每一个字符</a></p>
-<p>在这里我们同样使用 for循环访问列表每一个元素 的方法，这种方式又称为 <strong>迭代</strong></p>
-<h3 id="语法格式"><a href="#语法格式" class="headerlink" title="语法格式"></a>语法格式</h3><p>顺序访问List格式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list = [item0, item1, item2, ... , itemN]</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list:</span><br><span class="line">    <span class="keyword">for</span>循环子分支</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><p>判断List中是否还有新item</p>
-<p>有新item时取新item执行子逻辑分支操作</p>
-<p>没有新item结束循环</p>
-<p><img src="https://gengrui01.github.io/picture/python-loop/3.png" alt=""></p>
-<h3 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h3><p>学生成绩分别是 95.5, 85, 81, 78, 72, 69, 66.5, 61, 59</p>
-<p>求学生平均分</p>
+<h2 id="创建二维列表"><a href="#创建二维列表" class="headerlink" title="创建二维列表"></a>创建二维列表</h2><p>如下图所示是Alice、Bob、David三人的成绩单，请把他们存入List中并顺序打印</p>
+<p><img src="https://gengrui01.github.io/picture/python-list-two-dimensional/1.png" alt=""></p>
 <p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">95.5</span>, <span class="number">85</span>, <span class="number">81</span>, <span class="number">78</span>, <span class="number">72</span>, <span class="number">69</span>, <span class="number">66.5</span>, <span class="number">61</span>, <span class="number">59</span>]</span><br><span class="line">sum = <span class="number">0</span></span><br><span class="line">count = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> list:</span><br><span class="line">    sum = sum + item</span><br><span class="line">    count = count + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">print(sum/count)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">aliceScore = [<span class="number">100</span>, <span class="number">89</span>, <span class="number">92</span>]</span><br><span class="line">bobScore = [<span class="number">70</span>, <span class="number">65</span>, <span class="number">81</span>]</span><br><span class="line">davidScore = [<span class="number">88</span>, <span class="number">72</span>, <span class="number">77</span>]</span><br><span class="line">scoreList = [aliceScore, bobScore, davidScore]</span><br><span class="line"><span class="keyword">for</span> score <span class="keyword">in</span> scoreList:</span><br><span class="line">    print(score)</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-list-select/1.png" alt=""></p>
-<h2 id="使用索引号访问List"><a href="#使用索引号访问List" class="headerlink" title="使用索引号访问List"></a>使用索引号访问List</h2><p>在List里面，每一个元素都有一个唯一的位置，我们称之为索引(index)</p>
-<p>在字符串切片的练习中我们使用 <a href="https://www.gengruiblog.cn/article/20210502.html#%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6">位置取字符串中的单个字符</a></p>
-<p>在这里我们同样使用 索引取List中的单个元素 的方法</p>
-<h3 id="语法格式-1"><a href="#语法格式-1" class="headerlink" title="语法格式"></a>语法格式</h3><p>使用索引号访问List格式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list = [item0, item1, item2, ... , itemN]</span><br><span class="line">print(list[<span class="number">0</span>])</span><br><span class="line">print(list[<span class="number">1</span>])</span><br><span class="line">print(list[<span class="number">2</span>])</span><br><span class="line">...</span><br><span class="line">print(list[N])</span><br></pre></td></tr></table></figure>
+<p><img src="https://gengrui01.github.io/picture/python-list-two-dimensional/2.png" alt=""></p>
+<h2 id="访问指定位置"><a href="#访问指定位置" class="headerlink" title="访问指定位置"></a>访问指定位置</h2><p>比如说要打印出Bob的英语成绩可以这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(scoreList[<span class="number">1</span>][<span class="number">2</span>])</span><br></pre></td></tr></table></figure>
 
-<h3 id="使用示例-1"><a href="#使用示例-1" class="headerlink" title="使用示例"></a>使用示例</h3><p>学生成绩分别是 95.5, 85, 81, 78, 72, 69, 66.5, 61, 59</p>
-<p>求前三名成绩</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">95.5</span>, <span class="number">85</span>, <span class="number">81</span>, <span class="number">78</span>, <span class="number">72</span>, <span class="number">69</span>, <span class="number">66.5</span>, <span class="number">61</span>, <span class="number">59</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">3</span>):</span><br><span class="line">    print(list[i])</span><br><span class="line"></span><br><span class="line">print(list[<span class="number">0</span>:<span class="number">3</span>])</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-list-select/2.png" alt=""></p>
-<h2 id="倒序访问List"><a href="#倒序访问List" class="headerlink" title="倒序访问List"></a>倒序访问List</h2><p>Python的列表，除了支持正向顺序索引获取列表中的每一个元素以外，也支持倒序访问list中的每一个元素</p>
-<p>可以使用-1来表示最后一个元素，-2表示倒数第二个元素，以此类推</p>
-<h3 id="语法格式-2"><a href="#语法格式-2" class="headerlink" title="语法格式"></a>语法格式</h3><p>倒序访问List格式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list = [item0, item1, item2, ... , itemN]</span><br><span class="line">print(list[-N<span class="number">-1</span>])</span><br><span class="line">print(list[-N])</span><br><span class="line">print(list[-N+<span class="number">1</span>])</span><br><span class="line">...</span><br><span class="line">print(list[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
-
-<h3 id="使用示例-2"><a href="#使用示例-2" class="headerlink" title="使用示例"></a>使用示例</h3><p>学生成绩分别是 95.5, 85, 81, 78, 72, 69, 66.5, 61, 59</p>
-<p>求前三名成绩</p>
-<p>代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">list = [<span class="number">95.5</span>, <span class="number">85</span>, <span class="number">81</span>, <span class="number">78</span>, <span class="number">72</span>, <span class="number">69</span>, <span class="number">66.5</span>, <span class="number">61</span>, <span class="number">59</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-9</span>,<span class="number">-6</span>):</span><br><span class="line">    print(list[i])  </span><br><span class="line"></span><br><span class="line">print(list[<span class="number">-9</span>:<span class="number">-6</span>])</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<p><img src="https://gengrui01.github.io/picture/python-list-select/3.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/python-list-two-dimensional/3.png" alt=""></p>
+<p>其中scoreList[1]得到Bob的成绩列表，再通过下标[2]得到Bob的英语成绩</p>
 
         
             <div id="toc-article">
@@ -197,7 +169,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#顺序访问List"><span class="toc-text">顺序访问List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法格式"><span class="toc-text">语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行流程"><span class="toc-text">执行流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例"><span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用索引号访问List"><span class="toc-text">使用索引号访问List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法格式-1"><span class="toc-text">语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-1"><span class="toc-text">使用示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#倒序访问List"><span class="toc-text">倒序访问List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#语法格式-2"><span class="toc-text">语法格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用示例-2"><span class="toc-text">使用示例</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是二维列表"><span class="toc-text">什么是二维列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建二维列表"><span class="toc-text">创建二维列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问指定位置"><span class="toc-text">访问指定位置</span></a></li></ol>
     </div>
   </div>
 
@@ -249,19 +221,19 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210516.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/article/20210517.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          Python新增、修改、删除List容器中的数据
+          Python元组(Tuple)的特性
         
       </div>
     </a>
   
   
-    <a href="/article/20210513.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210514.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">Python容器</div>
+      <div class="article-nav-title">Python新增、修改、删除List容器中的数据</div>
     </a>
   
 </nav>
