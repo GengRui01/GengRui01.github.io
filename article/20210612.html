@@ -162,8 +162,11 @@
 
 <p><strong><em>TIPS:</em></strong> </p>
 <blockquote>
-<figure class="highlight plain"><figcaption><span>方法的第一个参数必须是 self（也可以用别的名字，但建议使用习惯用法）</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">后续参数则可以自由指定，和定义函数没有任何区别</span><br><span class="line"></span><br><span class="line">定义类后，就可以相应的实例化对象了，在实例化的时候需要提供除self以外的所有参数</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">zhangsan &#x3D; Person(&#39;zhang san&#39;, &#39;boy&#39;, 18)</span><br><span class="line">lisi &#x3D; Person(&#39;li si&#39;, &#39;girl&#39;, 18) </span><br></pre></td></tr></table></figure>
+<p><code>__init__()</code> 方法的第一个参数必须是 self（也可以用别的名字，但建议使用习惯用法）<br>后续参数则可以自由指定，和定义函数没有任何区别</p>
 </blockquote>
+<p>定义类后，就可以相应的实例化对象了，在实例化的时候需要提供除self以外的所有参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zhangsan = Person(<span class="string">'zhang san'</span>, <span class="string">'boy'</span>, <span class="number">18</span>)</span><br><span class="line">lisi = Person(<span class="string">'li si'</span>, <span class="string">'girl'</span>, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
 <p>使用方法还是和上面一样</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(zhangsan.age)</span><br></pre></td></tr></table></figure>
 
