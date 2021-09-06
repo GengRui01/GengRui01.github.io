@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.gengruiblog.cn/"/>
-  <updated>2021-07-24T04:02:36.455Z</updated>
+  <updated>2021-09-04T06:58:49.029Z</updated>
   <id>https://www.gengruiblog.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Swing 概述</title>
+    <link href="https://www.gengruiblog.cn/article/20210824.html"/>
+    <id>https://www.gengruiblog.cn/article/20210824.html</id>
+    <published>2021-08-23T16:00:00.000Z</published>
+    <updated>2021-09-04T06:58:49.029Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="图形用户界面-GUI"><a href="#图形用户界面-GUI" class="headerlink" title="图形用户界面(GUI)"></a>图形用户界面(GUI)</h2><p>GUI 是指给用户操作的图形界面，也可以称为桌面程序</p><p>比如我们常常使用的 QQ 就是非常典型的桌面程序</p><a id="more"></a><p><img src="https://gengrui01.github.io/picture/java-swing-overview/1.png" alt=""></p><p>甚至任何一种浏览器都是桌面程序,虽然浏览器里面展示的是 html 页面,但浏览这些 web 页面的浏览器是不折不扣的桌面程序</p><p><img src="https://gengrui01.github.io/picture/java-swing-overview/2.png" alt=""></p><p>除此之外任何客户端程序也是图形用户界面程序,比如我们常玩的端游,游戏就是最复杂的桌面程序之一了</p><p><img src="https://gengrui01.github.io/picture/java-swing-overview/3.jpg" alt=""></p><h2 id="Swing-特点"><a href="#Swing-特点" class="headerlink" title="Swing 特点"></a>Swing 特点</h2><p>Java 语言编写桌面程序用到的组件有两种,一种是 AWT , AWT 组件的Java应用程序在不同操作系统上执行时界面的显示是不同的</p><p>另一种就是 Swing , Swing 组件是新一代的图形界面工具, 使用 Swing 来开发图形界面比 AWT 更加优秀</p><p>因为 Swing 是一种轻量级组件，它采用纯 Java 实现，不再依赖于本地平台的图形界面，所以可以在所有平台上保持相同的运行效果，对跨平台支持比较出色</p><p>除此之外，Swing 提供了比 AWT 更多的图形界面组件，因此可以开发出美观的图形界面程序</p><blockquote><p>特点1：轻量级组件—–采用纯 Java 实现<br>特点2：可插入外观组件—–允许编程人员改变外观，且外观不会随操作系统的改变而改变</p></blockquote><h2 id="Swing-包"><a href="#Swing-包" class="headerlink" title="Swing 包"></a>Swing 包</h2><p><img src="https://gengrui01.github.io/picture/java-swing-overview/4.png" alt=""></p><ul><li>java.awt.Component(图形对象):定义所有图形对象都有的方法,比如添加背景/调整大小/添加监听事件等<ul><li>java.awt.Container(容器对象):是Component的子类,容器中可以包含其他的图形,添加了add/remove方法<ul><li>java.awt.Window(窗口):可以展示的窗体,有如下俩子类:<ul><li>java.awt.Dialog(对话框):是一个可弹出的对话窗口,可在其中添加组件<ul><li>javax.swing.JDialog(对话框):sun公司在原Dialog基础上扩展出来的窗口类,是本章学东西的重点</li></ul></li><li>java.awt.Frame(窗体):是一个窗体<ul><li>javax.swing.JFrame(窗体):sun公司在原Frame基础上扩展出来的窗口类,是本章学东西的重点</li></ul></li></ul></li><li>javax.swing.JComponent(组件):组件时一个抽象的概念,在下面有很多子类(JPanel面板/JButton按钮/JLabel标签 等待)</li></ul></li></ul></li></ul><p>一般情况下将组件放入面板中,面板放入窗口中,就会展示出我们看到的桌面程序</p><h2 id="常用Swing组件"><a href="#常用Swing组件" class="headerlink" title="常用Swing组件"></a>常用Swing组件</h2><h3 id="常用容器"><a href="#常用容器" class="headerlink" title="常用容器"></a>常用容器</h3><p><img src="https://gengrui01.github.io/picture/java-swing-overview/5.png" alt=""></p><ul><li>JFrame窗体:右上角有最小化最大化关闭三个按钮</li><li>JDialog对话框:右上角只有关闭按钮</li><li>JPanel面板:没有窗体外框没有按钮,只是一个空荡荡的容器,只有放在窗体中才可以显示</li></ul><h3 id="其他常用组件"><a href="#其他常用组件" class="headerlink" title="其他常用组件"></a>其他常用组件</h3><p><img src="https://gengrui01.github.io/picture/java-swing-overview/6.png" alt=""></p><p><img src="https://gengrui01.github.io/picture/java-swing-overview/7.png" alt=""></p><ul><li>JButton按钮:可以用鼠标点击</li><li>JLabel标签:可以显示文字内容</li><li>JCheckBox多选按钮:可以一次选多条</li><li>JRadioButton单选按钮:一次只能选一个</li><li>JTextField文本框:可以输入一行文本</li><li>JPassword密码框:可以输入文本,会隐藏输入的内容</li><li>JComBox下拉框:展示选中的值,会有默认值,点击右侧三角后展示所有选项,可以选择其他值</li><li>JTextArea文本域:可以输入多行文本</li><li>JList列表框:展示所有可以选择的选项,可以单选也可以多选</li><li>JOptionPane小对话框:用来弹出小提示,其中可以有输入框</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;图形用户界面-GUI&quot;&gt;&lt;a href=&quot;#图形用户界面-GUI&quot; class=&quot;headerlink&quot; title=&quot;图形用户界面(GUI)&quot;&gt;&lt;/a&gt;图形用户界面(GUI)&lt;/h2&gt;&lt;p&gt;GUI 是指给用户操作的图形界面，也可以称为桌面程序&lt;/p&gt;
+&lt;p&gt;比如我们常常使用的 QQ 就是非常典型的桌面程序&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Java" scheme="https://www.gengruiblog.cn/categories/Java/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Python类的继承</title>
@@ -429,32 +451,6 @@
     
       &lt;p&gt;列表(List)是一种有序的容器，放入List中的元素，将会按照一定顺序排列&lt;/p&gt;
 &lt;p&gt;我们在访问List中元素的时候有 &lt;strong&gt;顺序 倒序 使用索引号&lt;/strong&gt; 三种访问方式&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Python" scheme="https://www.gengruiblog.cn/categories/Python/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Python容器</title>
-    <link href="https://www.gengruiblog.cn/article/20210511.html"/>
-    <id>https://www.gengruiblog.cn/article/20210511.html</id>
-    <published>2021-05-10T16:00:00.000Z</published>
-    <updated>2021-06-09T11:14:20.443Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="什么是容器"><a href="#什么是容器" class="headerlink" title="什么是容器"></a>什么是容器</h2><ul><li>在生活中，容器指的是可以容纳多个物品的收纳器</li><li>在程序中，容器指的是可以把多个元素放在一起的数据结构</li></ul><p>容器中的元素可以用for循环逐个地迭代获取</p><p>还可以用in, not in等关键字来判断某个元素是否包含在容器中</p><a id="more"></a><p>因为Python是动态语言，所以容器里可以同时同时放入数字、字符串等任意类型的元素</p><p>在Python中，列表(List)、元组(Tuple)、字典(Dict)、集合(Set)都可以放入多个元素，因此都可以算作是容器</p><h2 id="列表-List"><a href="#列表-List" class="headerlink" title="列表(List)"></a>列表(List)</h2><p>列表(List)是一种有序的容器，放入List中的元素，将会按照一定顺序排列</p><p>定义List的方法非常简单，使用中括号[]把需要放在容器里面的元素括起来就可以定义一个列表，代码格式如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list = [item0, item1, item2, ... , itemN]</span><br></pre></td></tr></table></figure><h2 id="元组-Tuple"><a href="#元组-Tuple" class="headerlink" title="元组(Tuple)"></a>元组(Tuple)</h2><p>元组(Tuple)和List一样，也是一个有序容器</p><p>在Tuple中，同样可以包含0个或者多个元素，并且也支持索引访问、切片等操作</p><p>定义Tuple的方式是使用小括号()将Tuple内的元素括起来，代码格式如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tuple = (item0, item1, item2, ... , itemN)</span><br></pre></td></tr></table></figure><h2 id="List和Tuple相互转换"><a href="#List和Tuple相互转换" class="headerlink" title="List和Tuple相互转换"></a>List和Tuple相互转换</h2><p>Tuple可以使用 <code>list()</code> 方法转换成List，代码格式如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list = list(tuple)</span><br></pre></td></tr></table></figure><p>List可以使用 <code>tuple()</code> 方法转换成Tuple，代码格式如下：</p> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tuple = tuple(list)</span><br></pre></td></tr></table></figure><p>##字典(Dict)</p><p>Dict是专门保存映射的，在Dict中，每一项包含一个key和一个value，key和value是一一对应的</p><p>定义Dict的方式是使用花括号{}将Dict内的元素(key-value对)包起来，key和value之间使用冒号:分割，并且每一组key:value后用逗号,表示这一组的结束，代码格式如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;</span><br><span class="line">    <span class="string">'key0'</span>: <span class="string">'value0'</span>,</span><br><span class="line">    <span class="string">'key1'</span>: <span class="string">'value1'</span>,</span><br><span class="line">    <span class="string">'key2'</span>: <span class="string">'value2'</span>,</span><br><span class="line">    ......</span><br><span class="line">    <span class="string">'keyN'</span>: <span class="string">'valueN'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="集合-Set"><a href="#集合-Set" class="headerlink" title="集合(Set)"></a>集合(Set)</h2><p>Set和List类似，是可以放入一系列元素的容器，他们也有区别：</p><ul><li>Set里面的元素是不允许重复的，而List里面可以包含相同的元素</li><li>Set里面的元素是没有顺序的，而List里面的元素是有顺序的</li></ul><p>定义Set的方法set()，并传入一个List，List的元素将会被转换成Set的元素，代码格式如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set = set([item0, item1, item2, ... , itemN])</span><br></pre></td></tr></table></figure><p>如果传入的List中有重复的元素，转成Set后只会保留一个</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;什么是容器&quot;&gt;&lt;a href=&quot;#什么是容器&quot; class=&quot;headerlink&quot; title=&quot;什么是容器&quot;&gt;&lt;/a&gt;什么是容器&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;在生活中，容器指的是可以容纳多个物品的收纳器&lt;/li&gt;
-&lt;li&gt;在程序中，容器指的是可以把多个元素放在一起的数据结构&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;容器中的元素可以用for循环逐个地迭代获取&lt;/p&gt;
-&lt;p&gt;还可以用in, not in等关键字来判断某个元素是否包含在容器中&lt;/p&gt;
     
     </summary>
     
