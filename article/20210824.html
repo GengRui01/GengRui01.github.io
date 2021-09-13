@@ -218,16 +218,15 @@
 <p>我们在main方法中输出Constants2所有枚举成员的索引</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Constants2 enumArray = Constants2.values();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; enumArray.length; i++) &#123;</span><br><span class="line">    System.out.println(enumArray[i] + <span class="string">"在枚举类型中位置索引值是"</span> + enumArray[i].ordinal());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="枚举类型的优势"><a href="#枚举类型的优势" class="headerlink" title="枚举类型的优势"></a>枚举类型的优势</h2><p>枚举类型提供了一个非常友好的定义常量的方法</p>
-<p>媒体类型呢有以下几个特点</p>
+<h2 id="枚举类型的优势"><a href="#枚举类型的优势" class="headerlink" title="枚举类型的优势"></a>枚举类型的优势</h2><p>枚举类型提供了一种非常友好的定义常量的方法</p>
+<p>枚举类型有以下几个特点</p>
 <ol>
 <li>它是类型安全的，因为每一个枚举都是一个枚举对象而不是一个具体的数值，所以它不会被其他数值所替代</li>
 <li>它是紧凑有效的数据定义</li>
 <li>枚举还可以和程序的其他部分完美的交互，比如说switch语句就直接可以用枚举来作为参数</li>
 <li>它的运行效率高</li>
 </ol>
-<p>第1点和第4点是枚举最大的优势类型</p>
-<p>所以我们通常定义常量的时候建议大家多使用枚举类型，而不是使用传统的常量数字</p>
+<p>第1点和第4点是枚举最大的优势类型,所以我们通常定义常量的时候建议大家多使用枚举类型，而不是使用传统的常量数字</p>
 
         
             <div id="toc-article">
