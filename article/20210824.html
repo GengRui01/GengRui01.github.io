@@ -209,6 +209,13 @@
 
 <p>会报找不到枚举值的错误</p>
 <p><img src="https://gengrui01.github.io/picture/java-enum/7.png" alt=""></p>
+<h3 id="ordinal-方法"><a href="#ordinal-方法" class="headerlink" title="ordinal()方法"></a>ordinal()方法</h3><p>枚举成员的是有索引位置的,第一个索引为0,第二个为1,以此类推</p>
+<p><img src="https://gengrui01.github.io/picture/java-enum/2.png" alt=""></p>
+<p>ordinal()方法就是用来得到枚举成员的位置索引</p>
+<p>我们在main方法中输出Constants2所有枚举成员的索引</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Constants2[] enumArray = Constants2.values();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; enumArray.length; i++) &#123;</span><br><span class="line">    System.out.println(enumArray[i] + <span class="string">"在枚举类型中位置索引值是"</span> + enumArray[i].ordinal());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://gengrui01.github.io/picture/java-enum/9.png" alt=""></p>
 <h3 id="compareTo-方法"><a href="#compareTo-方法" class="headerlink" title="compareTo()方法"></a>compareTo()方法</h3><p>该方法用来比较两个枚举对象在定义时的顺序</p>
 <p>仍然以Constants2为例</p>
 <p><img src="https://gengrui01.github.io/picture/java-enum/1.png" alt=""></p>
@@ -218,13 +225,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Constants2 c = Constants2.Constants_B;</span><br><span class="line">Constants2 enumArray = Constants2.values();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; enumArray.length; i++) &#123;</span><br><span class="line">    System.out.println(c + <span class="string">"与枚举类型成员"</span> + enumArray[i] + <span class="string">"的比较结果为"</span> + c.compareTo(enumArray[i]));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gengrui01.github.io/picture/java-enum/8.png" alt=""></p>
-<h3 id="ordinal-方法"><a href="#ordinal-方法" class="headerlink" title="ordinal()方法"></a>ordinal()方法</h3><p>枚举成员的是有索引位置的,第一个索引为0,第二个为1,以此类推</p>
-<p><img src="https://gengrui01.github.io/picture/java-enum/2.png" alt=""></p>
-<p>ordinal()方法就是用来得到枚举成员的位置索引</p>
-<p>我们在main方法中输出Constants2所有枚举成员的索引</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Constants2[] enumArray = Constants2.values();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; enumArray.length; i++) &#123;</span><br><span class="line">    System.out.println(enumArray[i] + <span class="string">"在枚举类型中位置索引值是"</span> + enumArray[i].ordinal());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://gengrui01.github.io/picture/java-enum/9.png" alt=""></p>
 <h2 id="枚举类型的优势"><a href="#枚举类型的优势" class="headerlink" title="枚举类型的优势"></a>枚举类型的优势</h2><p>枚举类型提供了一种非常友好的定义常量的方法</p>
 <p>枚举类型有以下几个特点</p>
 <ol>
@@ -241,7 +241,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建枚举"><span class="toc-text">创建枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#普通常量-VS-枚举常量"><span class="toc-text">普通常量 VS 枚举常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通常量"><span class="toc-text">普通常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举常量"><span class="toc-text">枚举常量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举类型的常用方法"><span class="toc-text">枚举类型的常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#values-方法"><span class="toc-text">values()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#valueOf-方法"><span class="toc-text">valueOf()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#compareTo-方法"><span class="toc-text">compareTo()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ordinal-方法"><span class="toc-text">ordinal()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举类型的优势"><span class="toc-text">枚举类型的优势</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建枚举"><span class="toc-text">创建枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#普通常量-VS-枚举常量"><span class="toc-text">普通常量 VS 枚举常量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#普通常量"><span class="toc-text">普通常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#枚举常量"><span class="toc-text">枚举常量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举类型的常用方法"><span class="toc-text">枚举类型的常用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#values-方法"><span class="toc-text">values()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#valueOf-方法"><span class="toc-text">valueOf()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ordinal-方法"><span class="toc-text">ordinal()方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#compareTo-方法"><span class="toc-text">compareTo()方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举类型的优势"><span class="toc-text">枚举类型的优势</span></a></li></ol>
     </div>
   </div>
 
