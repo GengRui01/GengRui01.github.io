@@ -214,12 +214,18 @@
 <ol start="2">
 <li>泛型的类型个数呢可以是多个</li>
 </ol>
-<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注意泛型最好呢是要写一个单个的英文字母</span><br><span class="line"></span><br><span class="line">3. 使用extends关键字限制泛型使用的范围</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;Demo&lt;T extends Number&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&lt;T,K,V&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意泛型最好呢是要写一个单个的英文字母</p>
+<ol start="3">
+<li>使用extends关键字限制泛型使用的范围</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&lt;T extends Number&gt;</span><br></pre></td></tr></table></figure>
 
 <ol start="4">
 <li>使用通配符来限制泛型的上下界</li>
 </ol>
-<p><code>Demo&lt;?&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Demo&lt;?&gt;</span><br></pre></td></tr></table></figure>
 
         
             <div id="toc-article">
