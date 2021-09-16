@@ -195,8 +195,9 @@
 </ol>
 <h2 id="程序的算法表示"><a href="#程序的算法表示" class="headerlink" title="程序的算法表示"></a>程序的算法表示</h2><h3 id="什么是算法"><a href="#什么是算法" class="headerlink" title="什么是算法"></a>什么是算法</h3><p>“软件的主体是程序，程序的核心是算法”。瑞士计算机科学家尼·沃思（N·Wirth）有一句名言：“计算机科学就是研究算法的学问”。     </p>
 <p>通俗地讲，算法就是解决问题的方法与步骤。</p>
-<p><em><strong>例：交换两个变量a和b的值</strong></em></p>
-<p>按照下面的步骤就可以完成交换：</p>
+<blockquote>
+<p>例如要交换两个变量a和b的值，按照下面的步骤就可以完成交换：</p>
+</blockquote>
 <ol>
 <li>输入变量a和b的值；</li>
 <li>将变量a的值赋给变量t；</li>
@@ -227,14 +228,31 @@
 </ol>
 <p>算法的目的是为了求“解”，“解”只有通过输出才能得到</p>
 <h3 id="算法的描述"><a href="#算法的描述" class="headerlink" title="算法的描述"></a>算法的描述</h3><p><strong>1. 用文字描述算法</strong></p>
-<p><em><strong>例：有10个两位的正整数，找出其中最大的数，写出其算法。</strong></em></p>
-<p>文字描述算法如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 输入第一个数，放入<span class="built_in">max</span>中；</span><br><span class="line"><span class="number">2.</span> 用i统计比较的次数，其初值置为<span class="number">1</span>；</span><br><span class="line"><span class="number">3.</span> 若i≤<span class="number">9</span>，转第<span class="number">4</span>步，否则转第<span class="number">8</span>步；</span><br><span class="line"><span class="number">4.</span> 再输入一个数，放在x中；</span><br><span class="line"><span class="number">5.</span> 比较x和<span class="built_in">max</span>中的数，若x&gt;<span class="built_in">max</span>，则将x的值赋给<span class="built_in">max</span>；否则<span class="built_in">max</span>的值不变；</span><br><span class="line"><span class="number">6.</span> i增加<span class="number">1</span>；</span><br><span class="line"><span class="number">7.</span> 返回到第<span class="number">3</span>步；</span><br><span class="line"><span class="number">8.</span> 输出<span class="built_in">max</span>中的数，此时<span class="built_in">max</span>中的数即为<span class="number">10</span>个数中最大的数。</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>例：写出求两个自然数的最大公约数的算法</strong></em></p>
-<p>文字描述算法如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">采用古希腊数学家欧几里得提出的“欧几里得算法”描述如下：</span><br><span class="line"><span class="number">1.</span> 输入两个自然数a、b；</span><br><span class="line"><span class="number">2.</span> 求a除以b的余数r；</span><br><span class="line"><span class="number">3.</span> 使a = b，即用b代替a；</span><br><span class="line"><span class="number">4.</span> 使b = r，即用r代替b；</span><br><span class="line"><span class="number">5.</span> 若r≠<span class="number">0</span>，则重复执行步骤<span class="number">2</span>、<span class="number">3</span>、<span class="number">4</span>，否则转第<span class="number">6</span>步；</span><br><span class="line"><span class="number">6.</span> 输出a，a即为a和b的最大公约数。</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>例：有10个两位的正整数，找出其中最大的数，写出其算法。</p>
+</blockquote>
+<ol>
+<li>输入第一个数，放入max中；</li>
+<li>用i统计比较的次数，其初值置为1；</li>
+<li>若i≤9，转第4步，否则转第8步；</li>
+<li>再输入一个数，放在x中；</li>
+<li>比较x和max中的数，若x&gt;max，则将x的值赋给max；否则max的值不变；</li>
+<li>i增加1；</li>
+<li>返回到第3步；</li>
+<li>输出max中的数，此时max中的数即为10个数中最大的数。</li>
+</ol>
+<blockquote>
+<p>例：写出求两个自然数的最大公约数的算法</p>
+</blockquote>
+<p>采用古希腊数学家欧几里得提出的“欧几里得算法”描述如下：</p>
+<ol>
+<li>输入两个自然数a、b；</li>
+<li>求a除以b的余数r；</li>
+<li>使a = b，即用b代替a；</li>
+<li>使b = r，即用r代替b；</li>
+<li>若r≠0，则重复执行步骤2、3、4，否则转第6步；</li>
+<li>输出a，a即为a和b的最大公约数。</li>
+</ol>
 <p>用文字描述算法的缺点：</p>
 <p>很难“系统”并“精确”地表达算法，且有时叙述冗长，别人不容易理解。</p>
 <p><strong>2. 用流程图描述算法</strong></p>
@@ -242,19 +260,26 @@
 <p><img src="https://gengrui01.github.io/picture/c-program-language/1.png" alt=""></p>
 <p>三种基本的控制结构图示例：</p>
 <p><img src="https://gengrui01.github.io/picture/c-program-language/2.png" alt=""></p>
-<p><em><strong>例：有10个两位的正整数，找出其中最大的数，画出其流程图。</strong></em></p>
+<blockquote>
+<p>例：有10个两位的正整数，找出其中最大的数，画出其流程图。</p>
+</blockquote>
 <p><img src="https://gengrui01.github.io/picture/c-program-language/3.png" alt=""></p>
-<p><em><strong>例：画出求两个自然数的最大公约数的流程图</strong></em></p>
+<blockquote>
+<p>例：画出求两个自然数的最大公约数的流程图</p>
+</blockquote>
 <p><img src="https://gengrui01.github.io/picture/c-program-language/4.png" alt=""></p>
+<p>画流程图网站推荐：<a href="https://www.processon.com/i/5aff91c9e4b0ad4428891336" target="_blank" rel="noopener">ProcessOn免费在线作图</a></p>
 <p><strong>3. 伪代码表示</strong></p>
 <p>伪代码是一种近似高级语言但又不受语法约束的语言描述方式，它不能在计算机中运行，但可以用来描述算法。</p>
-<p><em><strong>例：有10个两位的正整数，找出其中最大的数，用伪代码写出其算法。</strong></em></p>
-<p>伪代码表示算法如下：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    输入第<span class="number">1</span>个数赋给<span class="built_in">max</span>；</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=<span class="number">9</span>;i++)</span><br><span class="line">    &#123;	输入第i+<span class="number">1</span>个数赋给x；</span><br><span class="line">        <span class="keyword">if</span>(x&gt;<span class="built_in">max</span>)</span><br><span class="line">            <span class="built_in">max</span>=x;</span><br><span class="line">    &#125;</span><br><span class="line">    输出<span class="built_in">max</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例：有10个两位的正整数，找出其中最大的数，用伪代码写出其算法。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    输入第1个数赋给max；</span><br><span class="line">    for(i&#x3D;1;i&lt;&#x3D;9;i++)</span><br><span class="line">    &#123;	输入第i+1个数赋给x；</span><br><span class="line">        if(x&gt;max)</span><br><span class="line">            max&#x3D;x;</span><br><span class="line">    &#125;</span><br><span class="line">    输出max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>4. 程序设计语言表示</strong></p>
-<p><em><strong>例：写代码交换两个变量a和b的值</strong></em></p>
-<p>代码如下：</p>
+<blockquote>
+<p>例：写代码交换两个变量a和b的值</p>
+</blockquote>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b,t;			<span class="comment">/* 定义所用的变量 */</span></span><br><span class="line">    a=<span class="number">3</span>;b=<span class="number">5</span>;			<span class="comment">/* 给变量赋值 */</span></span><br><span class="line">    t=a; 				<span class="comment">/* 变量a的值存入变量t中 */</span></span><br><span class="line">    a=b;	 			<span class="comment">/* 变量b的值赋予变量a */</span></span><br><span class="line">    b=t; 				<span class="comment">/* 变量t的值赋予变量b */</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d"</span>,a,b);	<span class="comment">/* 输出交换后的变量的值 */</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         
             <div id="toc-article">
