@@ -197,7 +197,39 @@
 <p>通俗地讲，算法就是解决问题的方法与步骤。</p>
 <p><em><strong>例：交换两个变量a和b的值</strong></em></p>
 <p>按照下面的步骤就可以完成交换：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 输入变量a和b的值；</span><br><span class="line"><span class="number">2.</span> 将变量a的值赋给变量t；</span><br><span class="line"><span class="number">3.</span> 将变量b的值赋给变量a；</span><br><span class="line"><span class="number">4.</span> 将变量t的值赋给变量b；</span><br><span class="line"><span class="number">5.</span> 输出变量a与b的值。</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">### 算法的特征</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 确定性：</span><br><span class="line"></span><br><span class="line">算法的每条指令必须有明确的含义，不能有二义性</span><br><span class="line"></span><br><span class="line">对于相同的输入必须得出相同的执行结果</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 有穷性：</span><br><span class="line"></span><br><span class="line">一个算法应包含有限个操作步骤</span><br><span class="line"></span><br><span class="line">也就是说，在执行若干个操作步骤之后，算法将结束</span><br><span class="line"></span><br><span class="line">而且每一步都在有限的时间内完成</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 可行性：</span><br><span class="line"></span><br><span class="line">算法中指定的操作都可以通过已经实现的基本运算执行有限次后实现</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span> 有零个或多个输入</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span> 有一个或多个输出</span><br><span class="line"></span><br><span class="line">算法的目的是为了求“解”，“解”只有通过输出才能得到</span><br><span class="line"></span><br><span class="line">### 算法的描述</span><br><span class="line"></span><br><span class="line">**<span class="number">1.</span> 用文字描述算法**</span><br><span class="line"></span><br><span class="line">_**例：有<span class="number">10</span>个两位的正整数，找出其中最大的数，写出其算法。**_</span><br><span class="line"></span><br><span class="line">文字描述算法如下：</span><br><span class="line"></span><br><span class="line">```c</span><br><span class="line"><span class="number">1.</span> 输入第一个数，放入<span class="built_in">max</span>中；</span><br><span class="line"><span class="number">2.</span> 用i统计比较的次数，其初值置为<span class="number">1</span>；</span><br><span class="line"><span class="number">3.</span> 若i≤<span class="number">9</span>，转第<span class="number">4</span>步，否则转第<span class="number">8</span>步；</span><br><span class="line"><span class="number">4.</span> 再输入一个数，放在x中；</span><br><span class="line"><span class="number">5.</span> 比较x和<span class="built_in">max</span>中的数，若x&gt;<span class="built_in">max</span>，则将x的值赋给<span class="built_in">max</span>；否则<span class="built_in">max</span>的值不变；</span><br><span class="line"><span class="number">6.</span> i增加<span class="number">1</span>；</span><br><span class="line"><span class="number">7.</span> 返回到第<span class="number">3</span>步；</span><br><span class="line"><span class="number">8.</span> 输出<span class="built_in">max</span>中的数，此时<span class="built_in">max</span>中的数即为<span class="number">10</span>个数中最大的数。</span><br></pre></td></tr></table></figure>
+<ol>
+<li>输入变量a和b的值；</li>
+<li>将变量a的值赋给变量t；</li>
+<li>将变量b的值赋给变量a；</li>
+<li>将变量t的值赋给变量b；</li>
+<li>输出变量a与b的值。</li>
+</ol>
+<h3 id="算法的特征"><a href="#算法的特征" class="headerlink" title="算法的特征"></a>算法的特征</h3><ol>
+<li>确定性：</li>
+</ol>
+<p>算法的每条指令必须有明确的含义，不能有二义性</p>
+<p>对于相同的输入必须得出相同的执行结果</p>
+<ol start="2">
+<li>有穷性：</li>
+</ol>
+<p>一个算法应包含有限个操作步骤</p>
+<p>也就是说，在执行若干个操作步骤之后，算法将结束</p>
+<p>而且每一步都在有限的时间内完成</p>
+<ol start="3">
+<li>可行性：</li>
+</ol>
+<p>算法中指定的操作都可以通过已经实现的基本运算执行有限次后实现</p>
+<ol start="4">
+<li><p>有零个或多个输入</p>
+</li>
+<li><p>有一个或多个输出</p>
+</li>
+</ol>
+<p>算法的目的是为了求“解”，“解”只有通过输出才能得到</p>
+<h3 id="算法的描述"><a href="#算法的描述" class="headerlink" title="算法的描述"></a>算法的描述</h3><p><strong>1. 用文字描述算法</strong></p>
+<p><em><strong>例：有10个两位的正整数，找出其中最大的数，写出其算法。</strong></em></p>
+<p>文字描述算法如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 输入第一个数，放入<span class="built_in">max</span>中；</span><br><span class="line"><span class="number">2.</span> 用i统计比较的次数，其初值置为<span class="number">1</span>；</span><br><span class="line"><span class="number">3.</span> 若i≤<span class="number">9</span>，转第<span class="number">4</span>步，否则转第<span class="number">8</span>步；</span><br><span class="line"><span class="number">4.</span> 再输入一个数，放在x中；</span><br><span class="line"><span class="number">5.</span> 比较x和<span class="built_in">max</span>中的数，若x&gt;<span class="built_in">max</span>，则将x的值赋给<span class="built_in">max</span>；否则<span class="built_in">max</span>的值不变；</span><br><span class="line"><span class="number">6.</span> i增加<span class="number">1</span>；</span><br><span class="line"><span class="number">7.</span> 返回到第<span class="number">3</span>步；</span><br><span class="line"><span class="number">8.</span> 输出<span class="built_in">max</span>中的数，此时<span class="built_in">max</span>中的数即为<span class="number">10</span>个数中最大的数。</span><br></pre></td></tr></table></figure>
 
 <p><em><strong>例：写出求两个自然数的最大公约数的算法</strong></em></p>
 <p>文字描述算法如下：</p>
@@ -230,7 +262,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序设计语言的发展"><span class="toc-text">程序设计语言的发展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器语言"><span class="toc-text">机器语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇编语言"><span class="toc-text">汇编语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级语言"><span class="toc-text">高级语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序设计语言的功能"><span class="toc-text">程序设计语言的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据表达"><span class="toc-text">数据表达</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制"><span class="toc-text">流程控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序的算法表示"><span class="toc-text">程序的算法表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是算法"><span class="toc-text">什么是算法</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#程序设计语言的发展"><span class="toc-text">程序设计语言的发展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#机器语言"><span class="toc-text">机器语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇编语言"><span class="toc-text">汇编语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高级语言"><span class="toc-text">高级语言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序设计语言的功能"><span class="toc-text">程序设计语言的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据表达"><span class="toc-text">数据表达</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#流程控制"><span class="toc-text">流程控制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#程序的算法表示"><span class="toc-text">程序的算法表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是算法"><span class="toc-text">什么是算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法的特征"><span class="toc-text">算法的特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#算法的描述"><span class="toc-text">算法的描述</span></a></li></ol></li></ol>
     </div>
   </div>
 
