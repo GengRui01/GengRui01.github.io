@@ -279,8 +279,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">char</span> b,c,d,e;</span><br><span class="line">	b='\43';</span><br><span class="line">	c=<span class="string">'\103'</span>;</span><br><span class="line">	d=<span class="string">'\x2a'</span>;</span><br><span class="line">	e=<span class="string">'\x41'</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"b=%c,c=%c,d=%c,e=%c\n"</span>,b,c,d,e);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\"good\0morning!\b\"!\n"</span>);	</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\123456"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b&#x3D;#,c&#x3D;C,d&#x3D;*,e&#x3D;A</span><br><span class="line">&quot;good morning&quot;!</span><br><span class="line">S456</span><br></pre></td></tr></table></figure>
-
+<p>b=#,c=C,d=*,e=A<br>“good morning”!<br>S456</p>
 <p><strong>4. 字符串常量</strong></p>
 <p>字符串常量是由一对双引号””括起来的零个或多个字符序列，如：”HelloWorld”</p>
 <p>字符串中可以使用空格字符、转义字符和其他字符，也可以使用汉字等文字符号</p>
@@ -306,31 +305,157 @@
 </ul>
 <h3 id="符号常量"><a href="#符号常量" class="headerlink" title="符号常量"></a>符号常量</h3><p>在C语言中，可以用一个标识符来表示一个常量，称之为符号常量</p>
 <p>符号常量在使用之前必须先定义，其一般形式为：</p>
-<figure class="highlight plain"><figcaption><span>标识符 常量值```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一个#define命令只能定义一个符号常量，若要定义多个符号常量，需使用多个#define命令</span><br><span class="line"></span><br><span class="line">&gt; 例：某程序需要使用一个代表常数3.145的符号常量名xp，则以下定义中正确的是          。</span><br><span class="line">&gt; A．#define xp 3.145;       B．#define xp(3.145)</span><br><span class="line">&gt; C．#define xp&#x3D;3.145        D．#define xp 3.145</span><br><span class="line"></span><br><span class="line">答案：D</span><br><span class="line"></span><br><span class="line">&gt; 例：已知某程序如下： </span><br><span class="line">&gt; #define P 2.5</span><br><span class="line">&gt; void main( )</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     printf(&quot;%f&quot;, P);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; 则main函数中标识符P代表的操作数是________。</span><br><span class="line"></span><br><span class="line">答案：2.5</span><br><span class="line"></span><br><span class="line">&gt; 例：利用符号常量计算价格</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; #define PRICE 20</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     int num,total;</span><br><span class="line">&gt;     num&#x3D;10;</span><br><span class="line">&gt; 	  total&#x3D;num* PRICE;</span><br><span class="line">&gt; 	  printf(&quot;总价格为：%d\n&quot;,total);</span><br><span class="line">&gt; 	  return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：&#96;&#96;&#96;总价格为：200</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>标识符 常量值 ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一个#define命令只能定义一个符号常量，若要定义多个符号常量，需使用多个#define命令</span><br><span class="line"></span><br><span class="line">&gt; 例：某程序需要使用一个代表常数3.145的符号常量名xp，则以下定义中正确的是          。</span><br><span class="line">&gt; A．#define xp 3.145;       B．#define xp(3.145)</span><br><span class="line">&gt; C．#define xp&#x3D;3.145        D．#define xp 3.145</span><br><span class="line"></span><br><span class="line">答案：D</span><br><span class="line"></span><br><span class="line">&gt; 例：已知某程序如下： </span><br><span class="line">&gt; #define P 2.5</span><br><span class="line">&gt; void main( )</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     printf(&quot;%f&quot;, P);</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; 则main函数中标识符P代表的操作数是________。</span><br><span class="line"></span><br><span class="line">答案：2.5</span><br><span class="line"></span><br><span class="line">&gt; 例：利用符号常量计算价格</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; #define PRICE 20</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     int num,total;</span><br><span class="line">&gt;     num&#x3D;10;</span><br><span class="line">&gt; 	  total&#x3D;num* PRICE;</span><br><span class="line">&gt; 	  printf(&quot;总价格为：%d\n&quot;,total);</span><br><span class="line">&gt; 	  return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br><span class="line"></span><br><span class="line">总价格为：200</span><br><span class="line"></span><br><span class="line">**符号常量的使用，可以为编写程序提供很多好处：**</span><br><span class="line"></span><br><span class="line">- 增加程序的可读性</span><br><span class="line">- 提高程序的可维护性</span><br><span class="line">- 简化程序代码</span><br><span class="line">- 方便数组的定义</span><br><span class="line"></span><br><span class="line">## C语言的变量</span><br><span class="line"></span><br><span class="line">在程序的运行过程中，其值可以被改变的量称为变量</span><br><span class="line"></span><br><span class="line">变量用于从外部接收数据、保存一些不断变化的值、保存中间结果及最终结果，而这些都无法用常量来实现</span><br><span class="line"></span><br><span class="line">### 变量的定义与使用</span><br><span class="line"></span><br><span class="line">**1. 变量的定义**</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96; [存储类型] 类型说明符 变量名表；</span><br></pre></td></tr></table></figure>
 
-<p><strong>符号常量的使用，可以为编写程序提供很多好处：</strong></p>
 <ul>
-<li>增加程序的可读性</li>
-<li>提高程序的可维护性</li>
-<li>简化程序代码</li>
-<li>方便数组的定义</li>
+<li>定义四个静态的整型变量a,b,c,d：<code>static int a,b,c,d;</code></li>
+<li>定义两个字符型变量ch1,ch2：<code>char ch1,ch2;</code></li>
+<li>定义一个单精度浮点数变量f：<code>float f;</code></li>
 </ul>
-<h2 id="C语言的变量"><a href="#C语言的变量" class="headerlink" title="C语言的变量"></a>C语言的变量</h2><p>在程序的运行过程中，其值可以被改变的量称为变量</p>
-<p>变量用于从外部接收数据、保存一些不断变化的值、保存中间结果及最终结果，而这些都无法用常量来实现</p>
-<h3 id="变量的定义与使用"><a href="#变量的定义与使用" class="headerlink" title="变量的定义与使用"></a>变量的定义与使用</h3><p><strong>1. 变量的定义</strong></p>
-<figure class="highlight plain"><figcaption><span>类型说明符 变量名表；```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 定义四个静态的整型变量a,b,c,d：&#96;static int a,b,c,d;&#96;</span><br><span class="line">- 定义两个字符型变量ch1,ch2：&#96;char ch1,ch2;&#96;</span><br><span class="line">- 定义一个单精度浮点数变量f：&#96;float f;&#96;</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">1. 类型说明符必须是C语言中的有效数据类型，如int、float、double、char等，用于指定变量的类型，该类型决定了编译时分配给变量的内存单元的多少</span><br><span class="line">2. 变量名表可以由一个或多个变量名组成，各变量名之间用“，”分隔。变量名必须是合法的C语言标识符，变量名一般使用小写字母</span><br><span class="line">3. 变量的定义必须放在变量的使用之前，一般在函数体的开头部分进行定义</span><br><span class="line"></span><br><span class="line">**2. 变量的初始化**</span><br><span class="line"></span><br><span class="line">C语言允许在定义变量的同时对变量赋值，这个过程称为变量的初始化</span><br><span class="line"></span><br><span class="line">- 定义一个整型变量x并赋初值为2：&#96;int x&#x3D;2;&#96;</span><br><span class="line">- 定义两个整型变量s和t，分别赋初值为1：&#96;int s&#x3D;1,t&#x3D;1;&#96;</span><br><span class="line">- 定义一个单精度型变量f并赋初值为3.68：&#96;float f &#x3D;3.68;&#96;</span><br><span class="line">- 定义一个字符型变量ch并赋初值为字符x：&#96;char ch&#x3D;&#39;x&#39;;&#96;</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">- 对一个变量赋初值之后，该值被存储在分配给该变量的内存空间中</span><br><span class="line">- 不允许对多个未定义的同类型变量连续初始化</span><br><span class="line">- 初始化时，“&#x3D;”右边表达式的数据类型和“&#x3D;”左边的变量的类型如果不一致，系统会进行自动赋值转换</span><br><span class="line">- 没有进行初始化的变量，其值是由定义时所使用的存储类型决定的</span><br><span class="line"></span><br><span class="line">3. 变量的使用</span><br><span class="line"></span><br><span class="line">变量应该先赋值，后引用</span><br><span class="line"></span><br><span class="line">&gt; 例：变量使用示例</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     int a,b,c;</span><br><span class="line">&gt;     char ch&#x3D;&#39;A&#39;;</span><br><span class="line">&gt;     a&#x3D;10;</span><br><span class="line">&gt; 	  b&#x3D;a+ch;</span><br><span class="line">&gt;     scanf(&quot;%d&quot;,&amp;c);</span><br><span class="line">&gt; 	  printf(&quot;%d,%d,%d,%c\n&quot;,a,b,c,ch);</span><br><span class="line">&gt; 	  return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<p><strong><em>TIPS:</em></strong></p>
+<ol>
+<li>类型说明符必须是C语言中的有效数据类型，如int、float、double、char等，用于指定变量的类型，该类型决定了编译时分配给变量的内存单元的多少</li>
+<li>变量名表可以由一个或多个变量名组成，各变量名之间用“，”分隔。变量名必须是合法的C语言标识符，变量名一般使用小写字母</li>
+<li>变量的定义必须放在变量的使用之前，一般在函数体的开头部分进行定义</li>
+</ol>
+<p><strong>2. 变量的初始化</strong></p>
+<p>C语言允许在定义变量的同时对变量赋值，这个过程称为变量的初始化</p>
+<ul>
+<li>定义一个整型变量x并赋初值为2：<code>int x=2;</code></li>
+<li>定义两个整型变量s和t，分别赋初值为1：<code>int s=1,t=1;</code></li>
+<li>定义一个单精度型变量f并赋初值为3.68：<code>float f =3.68;</code></li>
+<li>定义一个字符型变量ch并赋初值为字符x：<code>char ch=&#39;x&#39;;</code></li>
+</ul>
+<p><strong><em>TIPS:</em></strong></p>
+<ul>
+<li>对一个变量赋初值之后，该值被存储在分配给该变量的内存空间中</li>
+<li>不允许对多个未定义的同类型变量连续初始化</li>
+<li>初始化时，“=”右边表达式的数据类型和“=”左边的变量的类型如果不一致，系统会进行自动赋值转换</li>
+<li>没有进行初始化的变量，其值是由定义时所使用的存储类型决定的</li>
+</ul>
+<ol start="3">
+<li>变量的使用</li>
+</ol>
+<p>变量应该先赋值，后引用</p>
+<blockquote>
+<p>例：变量使用示例<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>    int a,b,c;<br>    char ch=’A’;<br>    a=10;<br>      b=a+ch;<br>    scanf(“%d”,&amp;c);<br>      printf(“%d,%d,%d,%c\n”,a,b,c,ch);<br>      return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>若程序运行时输入：<br>10↙<br>则程序的运行结果如下：<br>10,75,10,A</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 整形变量</span><br><span class="line"></span><br><span class="line">Visual C++ 2010环境下，各种整型的关键字及占用内存字节数和取值范围如下表：</span><br><span class="line"></span><br><span class="line">|  关键字  |  类型  |  占用字节数  |  取值范围  |</span><br><span class="line">|  ----  |  ----  |  ----  |  ----  |</span><br><span class="line">|  short int  |  短整型  |  2  |  -32768~32767  |</span><br><span class="line">|  int  |  整型  |  4  |  -2147483648~2147483647  |</span><br><span class="line">|  long int  |  长整型  |  4  |  -2147483648~2147483647  |</span><br><span class="line">|  unsigned short  |  无符号短整型  |  2  |  0~65535  |</span><br><span class="line">|  unsigned int  |  无符号整型  |  4  |  0~4294964295  |</span><br><span class="line">|  unsigned long  |  无符号长整型  |  4  |  0~4294964295  |</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">- 各种无符号整数所占的字节数与相应的有符号整数相同。但由于省去了符号位，故不能表示负数。</span><br><span class="line">- 有符号整数以二进制补码形式存储。最左边第1位表示符号，该位为0，表示正数，该位为1，表示负数。</span><br><span class="line">- 无符号整数以二进制原码形式存储。</span><br><span class="line"></span><br><span class="line">&gt; 例：不同类型整型变量的定义与使用示例</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     int a,b,c,d;</span><br><span class="line">&gt;     unsigned long e;</span><br><span class="line">&gt;     a&#x3D;5;b&#x3D;6;e&#x3D;10;</span><br><span class="line">&gt;     c&#x3D;a+e;</span><br><span class="line">&gt;     d&#x3D;b+e;</span><br><span class="line">&gt;     printf(&quot;c&#x3D;%d,d&#x3D;%d\n&quot;,c,d);</span><br><span class="line">&gt;     return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<h3 id="整形变量"><a href="#整形变量" class="headerlink" title="整形变量"></a>整形变量</h3><p>Visual C++ 2010环境下，各种整型的关键字及占用内存字节数和取值范围如下表：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>类型</th>
+<th>占用字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>short int</td>
+<td>短整型</td>
+<td>2</td>
+<td>-32768~32767</td>
+</tr>
+<tr>
+<td>int</td>
+<td>整型</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>long int</td>
+<td>长整型</td>
+<td>4</td>
+<td>-2147483648~2147483647</td>
+</tr>
+<tr>
+<td>unsigned short</td>
+<td>无符号短整型</td>
+<td>2</td>
+<td>0~65535</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>无符号整型</td>
+<td>4</td>
+<td>0~4294964295</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>无符号长整型</td>
+<td>4</td>
+<td>0~4294964295</td>
+</tr>
+</tbody></table>
+<p><strong><em>TIPS:</em></strong></p>
+<ul>
+<li>各种无符号整数所占的字节数与相应的有符号整数相同。但由于省去了符号位，故不能表示负数。</li>
+<li>有符号整数以二进制补码形式存储。最左边第1位表示符号，该位为0，表示正数，该位为1，表示负数。</li>
+<li>无符号整数以二进制原码形式存储。</li>
+</ul>
+<blockquote>
+<p>例：不同类型整型变量的定义与使用示例<br>#include&lt;stdio.h&gt;<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>    int a,b,c,d;<br>    unsigned long e;<br>    a=5;b=6;e=10;<br>    c=a+e;<br>    d=b+e;<br>    printf(“c=%d,d=%d\n”,c,d);<br>    return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>c=15,d=16</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 例：短整型变量的溢出</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     int a,b,c,d;</span><br><span class="line">&gt;     unsigned long e;</span><br><span class="line">&gt;     a&#x3D;5;b&#x3D;6;e&#x3D;10;</span><br><span class="line">&gt;     c&#x3D;a+e;</span><br><span class="line">&gt;     d&#x3D;b+e;</span><br><span class="line">&gt;     printf(&quot;c&#x3D;%d,d&#x3D;%d\n&quot;,c,d);</span><br><span class="line">&gt;     return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例：短整型变量的溢出<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>    int a,b,c,d;<br>    unsigned long e;<br>    a=5;b=6;e=10;<br>    c=a+e;<br>    d=b+e;<br>    printf(“c=%d,d=%d\n”,c,d);<br>    return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>a=32767,b=-32768</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 实型变量</span><br><span class="line"></span><br><span class="line">实型的关键字及占用内存字节数和取值范围如表所示：</span><br><span class="line"></span><br><span class="line">|  关键字  |  类型  |  占用字节数  |  取值范围  |</span><br><span class="line">|  ----  |  ----  |  ----  |  ----  |</span><br><span class="line">|  float  |  单精度型  |  4  |  3.4E-38~3.4E+38  |</span><br><span class="line">|  double  |  双精度型  |  8  |  1.7E-308~1.7E+308  |</span><br><span class="line"></span><br><span class="line">- 单精度型数据能保留7位有效数字</span><br><span class="line">- 双精度型数据能保留16位有效数字</span><br><span class="line"></span><br><span class="line">&gt; 例：短整型变量的溢出</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     float a&#x3D;1234.56789;</span><br><span class="line">&gt;     double b&#x3D;1234.567895678;</span><br><span class="line">&gt;     printf(&quot;a&#x3D;%f,b&#x3D;%f\n&quot;,a,b);</span><br><span class="line">&gt;     return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<h3 id="实型变量"><a href="#实型变量" class="headerlink" title="实型变量"></a>实型变量</h3><p>实型的关键字及占用内存字节数和取值范围如表所示：</p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>类型</th>
+<th>占用字节数</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>单精度型</td>
+<td>4</td>
+<td>3.4E-38~3.4E+38</td>
+</tr>
+<tr>
+<td>double</td>
+<td>双精度型</td>
+<td>8</td>
+<td>1.7E-308~1.7E+308</td>
+</tr>
+</tbody></table>
+<ul>
+<li>单精度型数据能保留7位有效数字</li>
+<li>双精度型数据能保留16位有效数字</li>
+</ul>
+<blockquote>
+<p>例：短整型变量的溢出<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>    float a=1234.56789;<br>    double b=1234.567895678;<br>    printf(“a=%f,b=%f\n”,a,b);<br>    return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>a=1234.567871,b=1234.567896</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 字符型变量</span><br><span class="line"></span><br><span class="line">- 字符型变量的值是字符常量，即用单引号引起来的单个字符</span><br><span class="line">- 字符型变量的类型说明符是char，其类型说明的格式和命名规则与整型变量相同</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">&gt; 由于字符常量在内存中占用一个字节，用于存储它的ASCII码值</span><br><span class="line">&gt; 所以C语言中的字符具有数值特征，可以像整数一样参加运算</span><br><span class="line">&gt; 允许对整型变量赋以字符值，也允许对字符变量赋以整型值。</span><br><span class="line"></span><br><span class="line">&gt; 例：字符变量的使用示例</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;     char c1,c2;</span><br><span class="line">&gt;     c1&#x3D;&#39;A&#39;;</span><br><span class="line">&gt;     c2&#x3D;65;</span><br><span class="line">&gt;     printf(&quot;%c,%c\n&quot;,c1,c2);</span><br><span class="line">&gt;     printf(&quot;%d,%d\n&quot;,c1,c2);</span><br><span class="line">&gt;     return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<h3 id="字符型变量"><a href="#字符型变量" class="headerlink" title="字符型变量"></a>字符型变量</h3><ul>
+<li>字符型变量的值是字符常量，即用单引号引起来的单个字符</li>
+<li>字符型变量的类型说明符是char，其类型说明的格式和命名规则与整型变量相同</li>
+</ul>
+<p><strong><em>TIPS:</em></strong></p>
+<blockquote>
+<p>由于字符常量在内存中占用一个字节，用于存储它的ASCII码值<br>所以C语言中的字符具有数值特征，可以像整数一样参加运算<br>允许对整型变量赋以字符值，也允许对字符变量赋以整型值。</p>
+</blockquote>
+<blockquote>
+<p>例：字符变量的使用示例<br>#include&lt;stdio.h&gt;<br>int main()<br>{<br>    char c1,c2;<br>    c1=’A’;<br>    c2=65;<br>    printf(“%c,%c\n”,c1,c2);<br>    printf(“%d,%d\n”,c1,c2);<br>    return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>A,A<br>65,65</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&gt; 例：字符变量的使用示例</span><br><span class="line">&gt; #include&lt;stdio.h&gt;</span><br><span class="line">&gt; int main()</span><br><span class="line">&gt; &#123;	char c1,c2;</span><br><span class="line">&gt;     c1&#x3D;&#39;A&#39;;</span><br><span class="line">&gt;     c2&#x3D;&#39;B&#39;;</span><br><span class="line">&gt;     c1&#x3D;c1+32;</span><br><span class="line">&gt;     c2&#x3D;c2+32;</span><br><span class="line">&gt;     printf(&quot;%c,%c\n&quot;,c1,c2);</span><br><span class="line">&gt;     printf(&quot;%d,%d\n&quot;,c1,c2);</span><br><span class="line">&gt;     return 0;</span><br><span class="line">&gt; &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行结果：</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例：字符变量的使用示例<br>#include&lt;stdio.h&gt;<br>int main()<br>{    char c1,c2;<br>    c1=’A’;<br>    c2=’B’;<br>    c1=c1+32;<br>    c2=c2+32;<br>    printf(“%c,%c\n”,c1,c2);<br>    printf(“%d,%d\n”,c1,c2);<br>    return 0;<br>}</p>
+</blockquote>
+<p>运行结果：</p>
 <p>a,b<br>97,98</p>
-<pre><code></code></pre>
+
         
         
           <blockquote id="copyright">
