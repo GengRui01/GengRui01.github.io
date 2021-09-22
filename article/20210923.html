@@ -334,7 +334,41 @@
 <h2 id="C语言的变量"><a href="#C语言的变量" class="headerlink" title="C语言的变量"></a>C语言的变量</h2><p>在程序的运行过程中，其值可以被改变的量称为变量</p>
 <p>变量用于从外部接收数据、保存一些不断变化的值、保存中间结果及最终结果，而这些都无法用常量来实现</p>
 <h3 id="变量的定义与使用"><a href="#变量的定义与使用" class="headerlink" title="变量的定义与使用"></a>变量的定义与使用</h3><p><strong>1. 变量的定义</strong></p>
-<figure class="highlight plain"><figcaption><span>类型说明符 变量名表； ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 定义四个静态的整型变量a,b,c,d：&#96;static int a,b,c,d;&#96;</span><br><span class="line">- 定义两个字符型变量ch1,ch2：&#96;char ch1,ch2;&#96;</span><br><span class="line">- 定义一个单精度浮点数变量f：&#96;float f;&#96;</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">1. 类型说明符必须是C语言中的有效数据类型，如int、float、double、char等，用于指定变量的类型，该类型决定了编译时分配给变量的内存单元的多少</span><br><span class="line">2. 变量名表可以由一个或多个变量名组成，各变量名之间用“，”分隔。变量名必须是合法的C语言标识符，变量名一般使用小写字母</span><br><span class="line">3. 变量的定义必须放在变量的使用之前，一般在函数体的开头部分进行定义</span><br><span class="line"></span><br><span class="line">**2. 变量的初始化**</span><br><span class="line"></span><br><span class="line">C语言允许在定义变量的同时对变量赋值，这个过程称为变量的初始化</span><br><span class="line"></span><br><span class="line">- 定义一个整型变量x并赋初值为2：&#96;int x&#x3D;2;&#96;</span><br><span class="line">- 定义两个整型变量s和t，分别赋初值为1：&#96;int s&#x3D;1,t&#x3D;1;&#96;</span><br><span class="line">- 定义一个单精度型变量f并赋初值为3.68：&#96;float f &#x3D;3.68;&#96;</span><br><span class="line">- 定义一个字符型变量ch并赋初值为字符x：&#96;char ch&#x3D;&#39;x&#39;;&#96;</span><br><span class="line"></span><br><span class="line">**_TIPS:_**</span><br><span class="line"></span><br><span class="line">- 对一个变量赋初值之后，该值被存储在分配给该变量的内存空间中</span><br><span class="line">- 不允许对多个未定义的同类型变量连续初始化</span><br><span class="line">- 初始化时，“&#x3D;”右边表达式的数据类型和“&#x3D;”左边的变量的类型如果不一致，系统会进行自动赋值转换</span><br><span class="line">- 没有进行初始化的变量，其值是由定义时所使用的存储类型决定的</span><br><span class="line"></span><br><span class="line">3. 变量的使用</span><br><span class="line"></span><br><span class="line">变量应该先赋值，后引用</span><br><span class="line"></span><br><span class="line">&gt; 例：变量使用示例</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;c</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a,b,c;</span><br><span class="line">    char ch&#x3D;&#39;A&#39;;</span><br><span class="line">    a&#x3D;10;</span><br><span class="line">	  b&#x3D;a+ch;</span><br><span class="line">    scanf(&quot;%d&quot;,&amp;c);</span><br><span class="line">	  printf(&quot;%d,%d,%d,%c\n&quot;,a,b,c,ch);</span><br><span class="line">	  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>[存储类型] 类型说明符 变量名；</code></p>
+<ul>
+<li>定义四个静态的整型变量a,b,c,d：<code>static int a,b,c,d;</code></li>
+<li>定义两个字符型变量ch1,ch2：<code>char ch1,ch2;</code></li>
+<li>定义一个单精度浮点数变量f：<code>float f;</code></li>
+</ul>
+<p><strong><em>TIPS:</em></strong></p>
+<ol>
+<li>类型说明符必须是C语言中的有效数据类型，如int、float、double、char等，用于指定变量的类型，该类型决定了编译时分配给变量的内存单元的多少</li>
+<li>变量名表可以由一个或多个变量名组成，各变量名之间用“，”分隔。变量名必须是合法的C语言标识符，变量名一般使用小写字母</li>
+<li>变量的定义必须放在变量的使用之前，一般在函数体的开头部分进行定义</li>
+</ol>
+<p><strong>2. 变量的初始化</strong></p>
+<p>C语言允许在定义变量的同时对变量赋值，这个过程称为变量的初始化</p>
+<ul>
+<li>定义一个整型变量x并赋初值为2：<code>int x=2;</code></li>
+<li>定义两个整型变量s和t，分别赋初值为1：<code>int s=1,t=1;</code></li>
+<li>定义一个单精度型变量f并赋初值为3.68：<code>float f =3.68;</code></li>
+<li>定义一个字符型变量ch并赋初值为字符x：<code>char ch=&#39;x&#39;;</code></li>
+</ul>
+<p><strong><em>TIPS:</em></strong></p>
+<ul>
+<li>对一个变量赋初值之后，该值被存储在分配给该变量的内存空间中</li>
+<li>不允许对多个未定义的同类型变量连续初始化</li>
+<li>初始化时，“=”右边表达式的数据类型和“=”左边的变量的类型如果不一致，系统会进行自动赋值转换</li>
+<li>没有进行初始化的变量，其值是由定义时所使用的存储类型决定的</li>
+</ul>
+<ol start="3">
+<li>变量的使用</li>
+</ol>
+<p>变量应该先赋值，后引用</p>
+<blockquote>
+<p>例：变量使用示例</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a,b,c;</span><br><span class="line">    <span class="keyword">char</span> ch=<span class="string">'A'</span>;</span><br><span class="line">    a=<span class="number">10</span>;</span><br><span class="line">	  b=a+ch;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;c);</span><br><span class="line">	  <span class="built_in">printf</span>(<span class="string">"%d,%d,%d,%c\n"</span>,a,b,c,ch);</span><br><span class="line">	  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
 <p>若程序运行时输入：<br>10↙<br>则程序的运行结果如下：<br>10,75,10,A</p>
 <h3 id="整形变量"><a href="#整形变量" class="headerlink" title="整形变量"></a>整形变量</h3><p>Visual C++ 2010环境下，各种整型的关键字及占用内存字节数和取值范围如下表：</p>
