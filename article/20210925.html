@@ -195,6 +195,22 @@
 <blockquote>
 <p>需强制类型转换中的表达式一定要括起来，否则只对紧随括号后的量进行类型转换<br>强制类型转换是一种不安全的转换，如果是从高级类型转换成低级类型，则会损失数据的精度</p>
 </blockquote>
+<h2 id="类型转换只是临时性的"><a href="#类型转换只是临时性的" class="headerlink" title="类型转换只是临时性的"></a>类型转换只是临时性的</h2><p>无论是自动类型转换还是强制类型转换，都只是为了本次运算而进行的临时性转换</p>
+<p>转换的结果也会保存到临时的内存空间，不会改变数据本来的类型或者值</p>
+<blockquote>
+<p>例如：</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> total = <span class="number">400.8</span>;  <span class="comment">/* 总价 */</span></span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">5</span>;  <span class="comment">/* 数目 */</span></span><br><span class="line">    <span class="keyword">double</span> unit;  <span class="comment">/* 单价 */</span></span><br><span class="line">    <span class="keyword">int</span> total_int = (<span class="keyword">int</span>)total;</span><br><span class="line">    unit = total / count;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"total=%lf, total_int=%d, unit=%lf\n"</span>, total, total_int, unit);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p>total=400.800000, total_int=400, unit=80.160000</p>
+<p>分析：</p>
+<ul>
+<li>第 6 行代码，total 变量被转换成了 int 类型才赋值给 total_int 变量</li>
+<li>而这种转换并未影响 total 变量本身的类型和值</li>
+<li>如果 total 的值变了，那么 total 的输出结果将变为 400.000000</li>
+<li>如果 total 的类型变了，那么 unit 的输出结果将变为 80.000000</li>
+</ul>
 
         
             <div id="toc-article">
@@ -202,7 +218,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动类型转换"><span class="toc-text">自动类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强制类型转换"><span class="toc-text">强制类型转换</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动类型转换"><span class="toc-text">自动类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强制类型转换"><span class="toc-text">强制类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类型转换只是临时性的"><span class="toc-text">类型转换只是临时性的</span></a></li></ol>
     </div>
   </div>
 
