@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>Java语言程序设计架构 | 耿锐的博客</title>
+  <title>数据类型转换 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-java-programming-architecture" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-c-datatype-conversion" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Java语言程序设计架构
+      数据类型转换
     </h1>
   
 
@@ -111,12 +111,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-06-06T16:00:00.000Z" itemprop="datePublished">2021年06月07日</time>
+  <time class="dt-published" datetime="2021-09-24T16:00:00.000Z" itemprop="datePublished">2021年09月25日</time>
 </span>
       
   <div class="article-category">
     <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/Java/">Java</a>
+    <a class="article-category-link" href="/categories/C/">C</a>
   </div>
 
       
@@ -129,7 +129,7 @@
 
       
       
-<a href="/article/20210607.html#comments" class="article-comment-link">
+<a href="/article/20210925.html#comments" class="article-comment-link">
   
     
     
@@ -145,39 +145,56 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>这篇文章用来记录Java语言从 <strong>面向对象编程</strong>、<strong>基于组件开发</strong>、<strong>面向切面编程</strong> 到 <strong>面向服务架构</strong> 的全过程</p>
+        <p>C语言规定，不同类型的数据进行运算时要先转换成相同类型的数据才能进行运算</p>
+<p>数据类型转换就是将数据（变量、数值、表达式的结果等）从一种类型转换为另一种类型</p>
+<p>数据类型的各种转换只影响表达式的运算结果，并不改变原变量的定义类型，并且其数据值也不会发生任何改变</p>
 <a id="more"></a>
 
-<h2 id="面向对象编程-OOP"><a href="#面向对象编程-OOP" class="headerlink" title="面向对象编程(OOP)"></a>面向对象编程(OOP)</h2><p>面向对象编程(Object-Oriented Programming)是一种编程范式，指在设计程序时大量运用类实例对象的方式</p>
-<p>在面向对象中，算法与数据结构被看做是一个整体，称作对象</p>
-<p>现实世界中任何类的对象都具有一定的属性和操作，也总能用数据结构与算法两者合一地来描述</p>
-<p>所以可以用下面的等式来定义对象和程序：</p>
+<h2 id="自动类型转换"><a href="#自动类型转换" class="headerlink" title="自动类型转换"></a>自动类型转换</h2><p>自动类型转换就是编译器默默地、隐式地、偷偷地进行的数据类型转换</p>
+<p>这种转换不需要程序员干预，会由C语言编译系统自动完成</p>
+<p>转换规则是：</p>
+<p>把占用内存空间少的（低级）类型向占用空间多的（高级）类型转换，以保证运算的精度</p>
+<p><img src="https://gengrui01.github.io/picture/c-datatype-conversion/1.png" alt=""></p>
+<ul>
+<li>图中的纵向箭头表示必定的转换</li>
+<li>图中的横向箭头表示当经过纵向的转换后，进行运算的数据类型仍然不同时进行的转换方式</li>
+</ul>
 <blockquote>
-<p>对象 = （算法 + 数据结构）<br>程序 = （对象 + 对象 + ……）</p>
+<p>例：若有定义“double d=153;int i=10;float f=3.8;”，则表达式d+’a’+i*d/f的值的类型是<strong>___</strong>。</p>
 </blockquote>
-<p>从上面的等式可以看出，程序就是许多对象在计算机中相继表现自己，而对象则是一个个程序实体</p>
-<p>过去的面向过程编程常常会导致所有的代码都包含在几个模块中，在做一些修改时常常牵一动百，使程序难以阅读和维护</p>
-<p>使用OOP技术常常要使用许多代码模块，每个模块都只提供特定的功能，它们是彼此独立的</p>
-<p>这样就增大了代码重用的几率，更加有利于软件的开发、维护和升级</p>
-<p>当企业的系统很小的时候，用简单的面向对象编程，数据库+服务端+浏览器就可以满足系统需求</p>
-<h2 id="基于组件开发-CBD"><a href="#基于组件开发-CBD" class="headerlink" title="基于组件开发(CBD)"></a>基于组件开发(CBD)</h2><p>随着系统变得越来越复杂和庞大，有很多重复功能的代码，当这些重复的功能模块有变化时代码中就有很多地方要修改</p>
-<p>这时会想到基于组件开发(Component-Based Development)，他是一种软件工程实践，设计时通常要求组件之间高内聚，松耦合</p>
-<p>把系统中那些重复的代码统一起来，约定好接口开发成组件，基于组件再做开发</p>
-<p>基于组件开发时更关注系统层次、子系统边界和子系统间通讯的设计</p>
-<p>组件比起对象的进步在于他定义了一种通用的处理方式，通用规范的引入导致组件是可以替代的</p>
-<h2 id="面向切面编程-AOP"><a href="#面向切面编程-AOP" class="headerlink" title="面向切面编程(AOP)"></a>面向切面编程(AOP)</h2><p>再随着企业变大，基于组件开发时某些方法都会用到同一个组件，每次要用到的时候都需要写一遍调用该组件的语句或者实现接口等</p>
-<p>这时会想到面向切面编程(Aspect-Oriented Programming)，他是指通过预编译和运行期动态代理的方式实现给程序统一添加功能的目的</p>
-<p>把重复的代码或者通用组件调用统一写入与业务代码匹配的切面中，这样业务代码中不需要重复编写或调用组件</p>
-<p>以后再有需要调用的功能模块，直接把这个模块配置为对应切面，该切面的所有功能都会添加到此模块</p>
-<h2 id="面向服务架构-SOA"><a href="#面向服务架构-SOA" class="headerlink" title="面向服务架构(SOA)"></a>面向服务架构(SOA)</h2><p>后来企业变成了集团公司，上线了很多套各种各样的系统</p>
-<p>虽然大部分系统都实现了组件化，但做为一个集团公司仍然有很多共同的业务，不同系统中有很多功能重复的模块</p>
-<p>此时又面临一个业务需求变更可能涉及多套系统升级的问题</p>
-<p>这时会想到面向服务架构(Service-Oriented Architecture)，他是一套软件设计的原则或方法论</p>
-<p>架构师把各个系统功能类似的模块抽象成服务，重复的模块再也没有了，不同系统间互相调用服务接口</p>
-<p>以前要自己写一大堆代码，现在甚至不必关心所需调用服务的实现，只要知道服务接口如何调用，直接调用另一套服务的接口就OK了</p>
-<p><strong>参考链接：</strong></p>
-<p><a href="https://www.zhihu.com/question/20478119/answer/25292423" target="_blank" rel="noopener">面向对象、面向服务、面向组件三种编程模式有什么区别？分别适用于哪些领域的开发？ - 李黄河的回答 - 知乎</a></p>
-<p><a href="https://blog.csdn.net/ocean181/article/details/6720371" target="_blank" rel="noopener">面向对象编程（OOP）、面向组件编程（COP）、面向方面编程（AOP）和面向服务编程（SOP）_始则转俗成真，终乃回真向俗！-CSDN博客_面向组件编程</a></p>
+<p>分析：</p>
+<ol>
+<li>将int型变量i和float型变量f转换为double型后，进行i*d/f的运算，结果为double型。</li>
+<li>将char型常量’a’转换为int型，进行d+’a’的计算，此时“+”左右两边数据的类型不同，则再将int型转换为double型，进行加法运算，结果为double型。</li>
+<li>将（1）的结果和（2）的结果进行加法计算，最终结果为double型</li>
+</ol>
+<blockquote>
+<p>自动类型转换示例</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">float</span> PI = <span class="number">3.14159</span>;</span><br><span class="line">    <span class="keyword">int</span> s1, r = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">double</span> s2;</span><br><span class="line">    s1 = r * r * PI;</span><br><span class="line">    s2 = r * r * PI;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"s1=%d, s2=%f\n"</span>, s1, s2);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：s1=78, s2=78.539749</p>
+<p>分析：</p>
+<ul>
+<li>在计算表达式r<em>r</em>PI时，r 和 PI 都被转换成 double 类型，表达式的结果也是 double 类型</li>
+<li>但由于 s1 为整型，所以赋值运算的结果仍为整型，舍去了小数部分，导致数据失真</li>
+</ul>
+<h2 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h2><p>采用强制类型转换运算符将某种数据类型强制转换成指定的数据类型</p>
+<p>其一般形式为：</p>
+<p><code>(类型说明符)(表达式)</code></p>
+<p>例如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">float</span>) a;  <span class="comment">/* 将变量 a 转换为 float 类型 */</span></span><br><span class="line">(<span class="keyword">int</span>)(x+y);  <span class="comment">/* 把表达式 x+y 的结果转换为 int 整型 */</span></span><br><span class="line">(<span class="keyword">float</span>) <span class="number">100</span>;  <span class="comment">/* 将数值 100（默认为int类型）转换为 float 类型 */</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>例：强制类型转换示例</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">3</span>,b=<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">float</span> c;</span><br><span class="line">    c=(<span class="keyword">float</span>)(a+b)/<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"c=%f\n"</span>,c);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：c=3.500000</p>
+<p><strong><em>TIPS:</em></strong> </p>
+<blockquote>
+<p>需强制类型转换中的表达式一定要括起来，否则只对紧随括号后的量进行类型转换<br>强制类型转换是一种不安全的转换，如果是从高级类型转换成低级类型，则会损失数据的精度</p>
+</blockquote>
 
         
             <div id="toc-article">
@@ -185,7 +202,7 @@
   <div class="widget-wrap" id="toc-wrap">
     <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
     <div class="widget">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象编程-OOP"><span class="toc-text">面向对象编程(OOP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于组件开发-CBD"><span class="toc-text">基于组件开发(CBD)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向切面编程-AOP"><span class="toc-text">面向切面编程(AOP)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向服务架构-SOA"><span class="toc-text">面向服务架构(SOA)</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#自动类型转换"><span class="toc-text">自动类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#强制类型转换"><span class="toc-text">强制类型转换</span></a></li></ol>
     </div>
   </div>
 
@@ -194,7 +211,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210607.html">https://www.gengruiblog.cn/article/20210607.html</a></p>
+              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210925.html">https://www.gengruiblog.cn/article/20210925.html</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -237,19 +254,10 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210610.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">newer</strong>
-      <div class="article-nav-title">
-        
-          Python面向对象编程
-        
-      </div>
-    </a>
   
-  
-    <a href="/article/20210605.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210924.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">面向过程编程 VS 面向对象编程</div>
+      <div class="article-nav-title">C语言运算符和表达式</div>
     </a>
   
 </nav>
