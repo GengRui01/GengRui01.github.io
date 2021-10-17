@@ -162,11 +162,11 @@
   </entry>
   
   <entry>
-    <title>Java IO流入门及文件类</title>
+    <title>Java IO流入门及File类</title>
     <link href="https://www.gengruiblog.cn/article/20210831.html"/>
     <id>https://www.gengruiblog.cn/article/20210831.html</id>
     <published>2021-08-30T16:00:00.000Z</published>
-    <updated>2021-10-17T14:17:00.240Z</updated>
+    <updated>2021-10-17T14:19:20.790Z</updated>
     
     <content type="html"><![CDATA[<h2 id="流的概念和作用"><a href="#流的概念和作用" class="headerlink" title="流的概念和作用"></a>流的概念和作用</h2><p>流是一组有顺序的，有起点和终点的字节集合，是对数据传输的总称或抽象。</p><p>即数据在两设备间的传输称为流，流的本质是数据传输，根据数据传输特性将流抽象为各种类，方便更直观的进行数据操作。</p><a id="more"></a><h2 id="IO流的分类"><a href="#IO流的分类" class="headerlink" title="IO流的分类"></a>IO流的分类</h2><ul><li>根据处理数据类型的不同分为：字符流和字节流</li><li>根据数据流向不同分为：输入流和输出流</li></ul><h2 id="字符流和字节流"><a href="#字符流和字节流" class="headerlink" title="字符流和字节流"></a>字符流和字节流</h2><p>字符流的由来： 因为数据编码的不同，而有了对字符进行高效操作的流对象。本质其实就是基于字节流读取时，去查了指定的码表。</p><p>字节流和字符流的区别：</p><ul><li>读写单位不同：<ul><li>字节流以字节（8bit）为单位</li><li>字符流以字符为单位，根据码表映射字符，一次可能读多个字节</li></ul></li><li>处理对象不同：<ul><li>字节流能处理所有类型的数据（如图片、avi等）</li><li>字符流只能处理字符类型的数据</li></ul></li><li>字节流：一次读入或读出是8位二进制。</li><li>字符流：一次读入或读出是16位二进制。</li></ul><p>设备上的数据无论是图片或者视频，文字，它们都以二进制存储的。</p><p>二进制的最终都是以一个8位为数据单元进行体现，所以计算机中的最小数据单元就是字节。</p><p>意味着，字节流可以处理设备上的所有数据，所以字节流一样可以处理字符数据。</p><p><strong>结论：</strong> 只要是处理纯文本数据，就优先考虑使用字符流。 除此之外都使用字节流。</p><h2 id="输入流和输出流"><a href="#输入流和输出流" class="headerlink" title="输入流和输出流"></a>输入流和输出流</h2><p>输入流只能进行读操作，输出流只能进行写操作，程序中需要根据待传输数据的不同特性而使用不同的流。</p><ul><li>输入字节流 InputStream<ul><li>InputStream 是所有的输入字节流的父类，它是一个抽象类。</li><li>ByteArrayInputStream、StringBufferInputStream、FileInputStream 是三种基本的介质流，它们分别从Byte 数组、StringBuffer、和本地文件中读取数据。</li><li>PipedInputStream 是从与其它线程共用的管道中读取数据，与Piped 相关的知识后续单独介绍。</li><li>ObjectInputStream 和所有FilterInputStream 的子类都是装饰流（装饰器模式的主角）。</li></ul></li><li>输出字节流 OutputStream<ul><li>OutputStream 是所有的输出字节流的父类，它是一个抽象类。</li><li>ByteArrayOutputStream、FileOutputStream 是两种基本的介质流，它们分别向Byte 数组、和本地文件中写入数据。</li><li>PipedOutputStream 是向与其它线程共用的管道中写入数据。</li><li>ObjectOutputStream 和所有FilterOutputStream 的子类都是装饰流。</li></ul></li></ul><p><strong>结论：</strong> </p><ul><li>输入流：InputStream或者Reader：从文件中读到程序中；</li><li>输出流：OutputStream或者Writer：从程序中输出到文件中；</li></ul><h2 id="Java流类图结构"><a href="#Java流类图结构" class="headerlink" title="Java流类图结构"></a>Java流类图结构</h2><p><img src="https://gengrui01.github.io/picture/java-io-file/1.png" alt=""></p>]]></content>
     
