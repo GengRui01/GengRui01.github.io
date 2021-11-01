@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>使用IDEA创建Maven工程 | 耿锐的博客</title>
+  <title>Java使用POI操作Excel文件 | 耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -92,7 +92,7 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-idea-create-maven-project" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-java-poi-excel" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner">
     
     
@@ -100,7 +100,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      使用IDEA创建Maven工程
+      Java使用POI操作Excel文件
     </h1>
   
 
@@ -111,12 +111,12 @@
       
       <span class="article-date">
   <i class="fa fa-date"></i>
-  <time class="dt-published" datetime="2021-02-27T16:00:00.000Z" itemprop="datePublished">2021年02月28日</time>
+  <time class="dt-published" datetime="2021-09-05T16:00:00.000Z" itemprop="datePublished">2021年09月06日</time>
 </span>
       
   <div class="article-category">
     <i class="fa fa-classify"></i>
-    <a class="article-category-link" href="/categories/IDEA/">IDEA</a>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
   </div>
 
       
@@ -129,7 +129,7 @@
 
       
       
-<a href="/article/20210228.html#comments" class="article-comment-link">
+<a href="/article/20210906.html#comments" class="article-comment-link">
   
     
     
@@ -145,32 +145,30 @@
     </div>
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ol>
-<li>打开开发工具IDEA，点击创建新项目</li>
-</ol>
+        <p>java操作excel的组件除了apache的poi，还有jexcelapi(jxl)，其中poi组件的获取地址为poi.apache.org。</p>
 <a id="more"></a>
 
-<p><img src="https://gengrui01.github.io/picture/idea-create-maven-project/1.png" alt=""></p>
-<ol start="2">
-<li><p>核实项目所使用的JDK是否是已经安装好的JDK</p>
-</li>
-<li><p>选择Maven工程 点击下一步</p>
-</li>
-</ol>
-<p><img src="https://gengrui01.github.io/picture/idea-create-maven-project/2.png" alt=""></p>
-<ol start="4">
-<li>输入项目名<code>spring-demo</code>可以看到存储位置有自动追加<code>spring-demo</code></li>
-</ol>
-<p><img src="https://gengrui01.github.io/picture/idea-create-maven-project/3.png" alt=""></p>
-<ol start="5">
-<li><p>将存储位置改为任意盘下</p>
-</li>
-<li><p>groupID一般是公司域名，我们可以使用com.自己的姓名全拼作为练习</p>
-</li>
-<li><p>版本默认即可 点击完成</p>
-</li>
-</ol>
-<p><img src="https://gengrui01.github.io/picture/idea-create-maven-project/4.png" alt=""></p>
+<p>poi组件中常用的类有：</p>
+<ul>
+<li>HSSFWorkbook表示一个完整的excel表格</li>
+<li>HSSFSheet表示excel中的一个工作薄</li>
+<li>HSSFRow表示工作薄中的一行</li>
+<li>HSSFCell表示一个单元格</li>
+</ul>
+<p>下面是一个简单的写入的demo：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        HSSFWorkbook workbook= <span class="keyword">new</span> HSSFWorkbook();</span><br><span class="line">        HSSFSheet sheet= workbook.createSheet(<span class="string">"test"</span>);</span><br><span class="line">        HSSFRow row = sheet.createRow(<span class="number">1</span>);</span><br><span class="line">        HSSFCell cell= row.createCell(<span class="number">2</span>);</span><br><span class="line">        cell.setCellValue(<span class="string">"test"</span>);</span><br><span class="line">        FileOutputStream os= <span class="keyword">null</span>;</span><br><span class="line">        os = <span class="keyword">new</span> FileOutputStream(<span class="string">"fisrtExcel.xls"</span>);</span><br><span class="line">        workbook.write(os);</span><br><span class="line">        os.flush();</span><br><span class="line">        os.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">"ok"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是一个简单的读取demo</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    FileInputStream file= <span class="keyword">new</span> FileInputStream(<span class="string">"fisrtExcel.xls"</span>);</span><br><span class="line">    POIFSFileSystem ts= <span class="keyword">new</span> POIFSFileSystem(file);</span><br><span class="line">    HSSFWorkbook wb=<span class="keyword">new</span> HSSFWorkbook(ts);</span><br><span class="line">    HSSFSheet sh= wb.getSheetAt(<span class="number">0</span>);</span><br><span class="line">    HSSFRow ro=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; sh.getRow(i)!=<span class="keyword">null</span>; i++) &#123;</span><br><span class="line">        ro=sh.getRow(i);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; ro.getCell(j)!=<span class="keyword">null</span>; j++) &#123;</span><br><span class="line">            System.out.print(ro.getCell(j)+<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"ok"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下面是几个常用的api：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用公式</span></span><br><span class="line">cell2.setCellFormula(<span class="string">"B2"</span>);</span><br><span class="line"><span class="comment">//设置列宽</span></span><br><span class="line">sheet.setColumnWidth(columnIndex, width);</span><br><span class="line"><span class="comment">//设置行高</span></span><br><span class="line">row.setHeight(height);</span><br><span class="line"><span class="comment">//设这样式：</span></span><br><span class="line">HSSFFont font= workbook.createFont();</span><br><span class="line">font.setFontHeightInPoints(height);</span><br><span class="line">font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);</span><br><span class="line">font.setFontName(<span class="string">"黑体"</span>);</span><br><span class="line">HSSFCellStyle style= workbook.createCellStyle();</span><br><span class="line">style.setFont(font);</span><br><span class="line"><span class="comment">//style可以设置对齐样式，边框，和格式化日期。</span></span><br><span class="line">cell.setCellStyle(style);</span><br><span class="line"><span class="comment">//合并单元格</span></span><br><span class="line">sheet.addMergedRegion(region);</span><br></pre></td></tr></table></figure>
+
+<p>总结一下：</p>
+<ul>
+<li>poi的使用比较简单，主要是写入和读取的时候计算好读取的位置</li>
+<li>现在项目中已经封装了一个现成的类，几乎几行代码就可以把结果输出到一个excel中并提供下载</li>
+</ul>
 
         
             <div id="toc-article">
@@ -187,7 +185,7 @@
         
         
           <blockquote id="copyright">
-              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210228.html">https://www.gengruiblog.cn/article/20210228.html</a></p>
+              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210906.html">https://www.gengruiblog.cn/article/20210906.html</a></p>
               <p>版权声明: 转载请注明出处.</p>
           </blockquote>
         
@@ -230,19 +228,19 @@
         
 <nav id="article-nav">
   
-    <a href="/article/20210301.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/article/20210920.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">newer</strong>
       <div class="article-nav-title">
         
-          IDEA配置Maven
+          Visual Studio 2019 安装 并 运行第一个C语言项目文件
         
       </div>
     </a>
   
   
-    <a href="/article/20210227.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/article/20210905.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">older</strong>
-      <div class="article-nav-title">MyBatis简介</div>
+      <div class="article-nav-title">Java中的ZIP压缩输入/输出流</div>
     </a>
   
 </nav>
