@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   
   
-  <title>category: C | 耿锐的博客</title>
+  <title>耿锐的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
     <meta name="description" content="耿锐的博客">
@@ -93,80 +93,168 @@
 
       <div class="outer">
         <section id="main">
-
-  
-  
+  <article id="post-jvm-class-loading" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
     
     
-    <section class="archives-wrap">
-      <div class="archive-title">
+      <header class="article-header">
         
-          <i class="fa fa-classify"></i>
-          C
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/article/20180718.html">JVM类加载机制</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2018-07-17T16:00:00.000Z" itemprop="datePublished">2018年07月18日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+      
+      
+<a href="/article/20180718.html#comments" class="article-comment-link">
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h2><p>类的生命周期如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/jvm-class-loading/1.jpg" alt=""></p>
+      
+    </div>
+    <footer class="article-footer">
+      
         
-      </div>
-      <div class="archives">
+        <p class="article-more-link">
+          <a href="/article/20180718.html#more">Read More</a>
+        </p>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+  <article id="post-jdk-jre-jvm" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20210925.html">
-      <time class="dt-published" datetime="2021-09-24T16:00:00.000Z" itemprop="datePublished">2021年09月25日</time>
-      | <span class="archive-article-title">C语言数据类型转换</span>
-    </a>
-  </li>
-</ul>
-
-
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/article/20180715.html">JDK JRE JVM 关系</a>
+    </h1>
   
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2018-07-14T16:00:00.000Z" itemprop="datePublished">2018年07月15日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+      
+      
+<a href="/article/20180715.html#comments" class="article-comment-link">
   
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20210924.html">
-      <time class="dt-published" datetime="2021-09-23T16:00:00.000Z" itemprop="datePublished">2021年09月24日</time>
-      | <span class="archive-article-title">C语言运算符和表达式</span>
-    </a>
-  </li>
-</ul>
+  <i class="fa fa-commt"></i>
+  留言
+</a>
 
 
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20210923.html">
-      <time class="dt-published" datetime="2021-09-22T16:00:00.000Z" itemprop="datePublished">2021年09月23日</time>
-      | <span class="archive-article-title">C语言数据类型、变量和常量</span>
-    </a>
-  </li>
-</ul>
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h2><p>JDK 全称 Java SE Development Kit，即java的标准版开发包</p>
+<p>它提供了编译、运行Java程序所需的各种工具和资源</p>
+<p>包括常用Java类库、Java编译器及Java运行环境等</p>
+<h2 id="JRE"><a href="#JRE" class="headerlink" title="JRE"></a>JRE</h2><p>上面提到的“Java运行环境”就是 Java Runtime Environment，即 JRE</p>
+<p>也就是说 JDK 中是包含 JRE 的</p>
+<p>JRE中包含Java虚拟机、类加载器、字节码校验器 等</p>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>上面提到的“Java虚拟机”就是 Java Virtual Machine，即 JVM</p>
+<p>也就是说 JRE 中是包含 JVM 的</p>
+<p>JVM是一种能够运行java字节码的虚拟机</p>
+<h2 id="JDK-JRE-JVM-关系"><a href="#JDK-JRE-JVM-关系" class="headerlink" title="JDK JRE JVM 关系"></a>JDK JRE JVM 关系</h2><p>JDK JRE JVM 三者的关系 如下图所示：</p>
+<p><img src="https://gengrui01.github.io/picture/jdk-jre-jvm/1.png" alt=""></p>
+
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://www.gengruiblog.cn/page/10/index.html">https://www.gengruiblog.cn/page/10/index.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
 
 
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20210922.html">
-      <time class="dt-published" datetime="2021-09-21T16:00:00.000Z" itemprop="datePublished">2021年09月22日</time>
-      | <span class="archive-article-title">C语言程序设计的特点及运行方式</span>
-    </a>
-  </li>
-</ul>
-
-
-  
-  
-  <ul class="archive-article archive-type-post">
-  <li class="archive-article-inner">
-    <a href="/article/20210921.html">
-      <time class="dt-published" datetime="2021-09-20T16:00:00.000Z" itemprop="datePublished">2021年09月21日</time>
-      | <span class="archive-article-title">程序与程序设计语言</span>
-    </a>
-  </li>
-</ul>
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
 
 
 
-  </div></section>
+        </div>
+      
+      
+      
+    </footer>
+  </div>
+</article>
+
+
+
+    <nav id="page-nav">
+
+<a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span>
+</nav>
 
 
 </section>
