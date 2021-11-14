@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Java异常处理 | 耿锐的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <meta name="description" content="耿锐的博客">
+  
+  
+    <meta name="keywords" content="GengRui, 耿锐, 博客, 耿锐的博客">
+  
+  
+    <link rel="alternate" href="/" title="耿锐的博客">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="/localshare/css/share.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+  
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="耿锐的博客" type="application/atom+xml">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">耿锐的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">欢迎的来到耿锐的技术小栈</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/."><i class="fa fa-home"></i> 首页</a>
+        
+          <a class="main-nav-link" href="/archives/"><i class="fa fa-archive"></i> 归档</a>
+        
+          <a class="main-nav-link" href="/about/"><i class="fa fa-user"></i> 关于</a>
+        
+      </nav>
+    </div>
+    <div id="search-form">
+      <div id="result-mask" class="hide"></div>
+      <label><input id="search-key" type="text" autocomplete="off" placeholder="搜索"></label>
+      <div id="result-wrap" class="hide">
+        <div id="search-result"></div>
+      </div>
+      <div class="hide">
+        <template id="search-tpl">
+          <div class="item">
+            <a href="/{path}" title="{title}">
+              <div class="title">{title}</div>
+              <div class="time">{date}</div>
+              <div class="tags">{tags}</div>
+            </a>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-java-tcp" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java异常处理
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+      <span class="article-date">
+  <i class="fa fa-date"></i>
+  <time class="dt-published" datetime="2021-09-10T16:00:00.000Z" itemprop="datePublished">2021年09月11日</time>
+</span>
+      
+  <div class="article-category">
+    <i class="fa fa-classify"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+      
+        <span class="article-views">
+  <i class="fa fa-views"></i>
+  <i id="busuanzi_container_page_pv">
+      <i id="busuanzi_value_page_pv"></i>
+  </i>
+</span>
+
+      
+      
+<a href="/article/20210911.html#comments" class="article-comment-link">
+  
+    
+    
+    
+    
+    
+  
+  <i class="fa fa-commt"></i>
+  留言
+</a>
+
+
+    </div>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>TCP网络程序设计是指利用Socket类编写通信程序</p>
+<p>利用TCP协议进行通信的两个应用程序是有主次之分的</p>
+<p>一个称为服务器程序，另外称为客户机程序，两个的功能和编写方法不大一样</p>
+<a id="more"></a>
+
+<p>服务器端与客户端的交互过程如下：</p>
+<ol>
+<li>服务器程序创建一个ServerSocket，调用accept()方法等待客户机来连接</li>
+<li>客户端程序创建一个Socket，请求余服务器建立连接</li>
+<li>服务器接收客户机的连接请求，同时创建一个新的Socket与客户建立连接。服务器继续等待新的请求</li>
+</ol>
+<h2 id="InetAddress类"><a href="#InetAddress类" class="headerlink" title="InetAddress类"></a>InetAddress类</h2><p>java.net包中的InetAddress类是与IP地址相关的类</p>
+<p>利用该类可以获取IP地址、主机地址等信息，常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getByName(String host)</td>
+<td>InetAddress</td>
+<td>获取与host相对应的InetAddress对象</td>
+</tr>
+<tr>
+<td>getHostAddress()</td>
+<td>String</td>
+<td>获取InetAddress对象所含的IP地址</td>
+</tr>
+<tr>
+<td>getHostName()</td>
+<td>String</td>
+<td>获取此IP地址的主机名</td>
+</tr>
+<tr>
+<td>getLocalHost()</td>
+<td>InetAddress</td>
+<td>返回本地主机的InetAddress对象</td>
+</tr>
+</tbody></table>
+<p>通过以下实例来进行说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		InetAddress ip;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			ip = InetAddress.getLocalHost();</span><br><span class="line">			String localName = ip.getHostName();</span><br><span class="line">			String localIp = ip.getHostAddress();</span><br><span class="line">			System.out.println(<span class="string">"本机名:"</span>+localName);</span><br><span class="line">			System.out.println(<span class="string">"本机IP地址："</span>+localIp);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="ServerSocket类"><a href="#ServerSocket类" class="headerlink" title="ServerSocket类"></a>ServerSocket类</h2><p>java.net包中的ServerSocket类用于表示服务器套接字</p>
+<p>其主要功能是等待来自网上的“请求”</p>
+<p>它可通过指定的端口来等待连接的套接字</p>
+<p>服务器套接字一次可以与一个套接字连接</p>
+<blockquote>
+<p>如果多台客户机同时提出连接请求<br>服务器套接字会将请求连接的客户机存入列队中<br>然后从中取出一个套接字，与服务器新建的套接字连接起来</p>
+</blockquote>
+<blockquote>
+<p>若请求连接数大于最大容纳数，则多出的连接请求被拒绝<br>队列的默认大小是50</p>
+</blockquote>
+<p>ServerSocket类的构造方法都抛出IOException异常，分别有以下几种形式。</p>
+<ol>
+<li>ServerSocket()：创建非绑定服务器套接字</li>
+<li>ServerSocket(int port)：创建绑定到特定端口的服务器套接字</li>
+<li>ServerSocket(int port,int backlog)：利用指定的backlog创建服务器套接字并将其绑定到指定的本地端口号</li>
+<li>ServerSocket(int port,int backlog,InetAddress bindAddress)：使用指定的端口、侦听backlog和要绑定到的本地IP地址创建服务器。</li>
+</ol>
+<p>ServerSocket类的常用方法如下：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>accept()</td>
+<td>Socket</td>
+<td>等待客户机的连接，若连接，则创建一套接字</td>
+</tr>
+<tr>
+<td>isBound()</td>
+<td>boolean</td>
+<td>判断ServerSocket的绑定状态</td>
+</tr>
+<tr>
+<td>getInetAddress()</td>
+<td>InetAddress</td>
+<td>返回此服务器套接字的本地地址</td>
+</tr>
+<tr>
+<td>isClosed()</td>
+<td>boolean</td>
+<td>返回服务器套接字的关闭状态</td>
+</tr>
+<tr>
+<td>close()</td>
+<td>void</td>
+<td>关闭服务器套接字</td>
+</tr>
+<tr>
+<td>bind(SocketAddress endpoint)</td>
+<td>void</td>
+<td>将ServerSocket绑定到特定地址</td>
+</tr>
+<tr>
+<td>getInetAddress()</td>
+<td>int</td>
+<td>返回服务器套接字等待的端口号</td>
+</tr>
+</tbody></table>
+<h2 id="TCP网络程序"><a href="#TCP网络程序" class="headerlink" title="TCP网络程序"></a>TCP网络程序</h2><p>在网络编程中如果只要求客户机向服务器发送消息，不要求服务器向客户就发送消息，称为单向通信</p>
+<p>客户机套接字和服务器套接字连接成功后，客户机通过输出流发送数据，服务器则通过输入流接受数据，通过下列简单实例进行说明</p>
+<p>TCP服务器端程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTcp</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> BufferedReader reader;</span><br><span class="line">	<span class="keyword">private</span> ServerSocket server;</span><br><span class="line">	<span class="keyword">private</span> Socket socket;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">getServer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			server = <span class="keyword">new</span> ServerSocket(<span class="number">8998</span>);</span><br><span class="line">			System.out.println(<span class="string">"服务器套接字已经创建成功"</span>);</span><br><span class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">				System.out.println(<span class="string">"等待客户机连接..."</span>);</span><br><span class="line">				socket = server.accept();</span><br><span class="line">				reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line">						socket.getInputStream()));</span><br><span class="line">				getClientMessage();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getClientMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">				System.out.println(<span class="string">"客户机:"</span>+reader.readLine());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">				reader.close();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(socket != <span class="keyword">null</span>) &#123;</span><br><span class="line">				socket.close();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">		MyTcp tcp = <span class="keyword">new</span> MyTcp();</span><br><span class="line">		tcp.getServer();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="https://gengrui01.github.io/picture/java-tcp/1.png" alt=""></p>
+<p>TCP客户机端程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClien</span> <span class="keyword">extends</span> <span class="title">JFrame</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> PrintWriter writer;</span><br><span class="line">	Socket socket;</span><br><span class="line">	<span class="keyword">private</span> JTextArea ta = <span class="keyword">new</span> JTextArea();</span><br><span class="line">	<span class="keyword">private</span> JTextField tf = <span class="keyword">new</span> JTextField();</span><br><span class="line">	Container cc;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MyClien</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>(title);</span><br><span class="line">		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span><br><span class="line">		cc = <span class="keyword">this</span>.getContentPane();</span><br><span class="line">		<span class="keyword">final</span> JScrollPane sp = <span class="keyword">new</span> JScrollPane();</span><br><span class="line">		sp.setBorder(<span class="keyword">new</span> BevelBorder(BevelBorder.RAISED));</span><br><span class="line">		getContentPane().add(sp,BorderLayout.CENTER);</span><br><span class="line">		sp.setViewportView(ta);</span><br><span class="line">		cc.add(tf,<span class="string">"South"</span>);</span><br><span class="line">		tf.addActionListener(<span class="keyword">new</span> ActionListener() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO 自动生成的方法存根</span></span><br><span class="line">				writer.println(tf.getText());</span><br><span class="line">				ta.append(tf.getText()+<span class="string">'\n'</span>);</span><br><span class="line">				ta.setSelectionEnd(ta.getText().length());</span><br><span class="line">				tf.setText(<span class="string">""</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		ta.append(<span class="string">"尝试连接\n"</span>);</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			socket = <span class="keyword">new</span> Socket(<span class="string">"127.0.0.1"</span>,<span class="number">11111</span>);</span><br><span class="line">			writer = <span class="keyword">new</span> PrintWriter(socket.getOutputStream(),<span class="keyword">true</span>);</span><br><span class="line">			ta.append(<span class="string">"完成连接\n"</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String agrs[])</span> </span>&#123;</span><br><span class="line">		MyClien clien = <span class="keyword">new</span> MyClien(<span class="string">"向服务器送数据"</span>);</span><br><span class="line">		clien.setSize(<span class="number">200</span>,<span class="number">200</span>);</span><br><span class="line">		clien.setVisible(<span class="keyword">true</span>);</span><br><span class="line">		clien.connect();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<p><img src="https://gengrui01.github.io/picture/java-tcp/2.png" alt=""></p>
+<p>当客户端输入TTTTT后，服务器也会收到TTTTT：</p>
+<p><img src="https://gengrui01.github.io/picture/java-tcp/3.png" alt=""></p>
+<p><img src="https://gengrui01.github.io/picture/java-tcp/4.png" alt=""></p>
+
+        
+            <div id="toc-article">
+                
+  <div class="widget-wrap" id="toc-wrap">
+    <h3 class="widget-title"><i class="fa fa-toc"></i> 文章目录</h3>
+    <div class="widget">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#InetAddress类"><span class="toc-text">InetAddress类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServerSocket类"><span class="toc-text">ServerSocket类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP网络程序"><span class="toc-text">TCP网络程序</span></a></li></ol>
+    </div>
+  </div>
+
+
+            </div>
+        
+        
+          <blockquote id="copyright">
+              <p>原文链接: <a href="https://www.gengruiblog.cn/article/20210911.html">https://www.gengruiblog.cn/article/20210911.html</a></p>
+              <p>版权声明: 转载请注明出处.</p>
+          </blockquote>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div class="article-tag-wrap">
+          
+    <div class="article-reward">
+        <a id="reward-btn" href="javascript:;">打赏</a>
+        <div id="reward-content">
+            <h6 class="reward-tit">“感谢你的支持，我会继续努力！”</h6>
+            <div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/wechat.jpg">
+                    <img class="er-code" src="/css/images/wechat-pay.jpg">
+                </div>
+                <div class="reward-code">
+                    <img class="type-code" src="/css/images/alipay.jpg">
+                    <img class="er-code" src="/css/images/alipay-pay.jpg">
+                </div>
+            </div>
+            <p class="reward-desc">扫码打赏，感谢支持</p>
+        </div>
+    </div>
+
+
+          
+          
+    <div class="social-share">
+      <span>分享到:</span>
+    </div>
+
+
+
+        </div>
+      
+      
+        
+<nav id="article-nav">
+  
+    <a href="/article/20210920.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">newer</strong>
+      <div class="article-nav-title">
+        
+          Visual Studio 2019 安装 并 运行第一个C语言项目文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/article/20210909.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">older</strong>
+      <div class="article-nav-title">Java异常处理</div>
+    </a>
+  
+</nav>
+
+      
+      
+        
+  <div id="comments"></div>
+
+
+
+
+
+
+
+
+      
+    </footer>
+  </div>
+</article>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-classify"></i> 分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/IDEA/">IDEA</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MyBatis/">MyBatis</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Spring/">Spring</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SpringMVC/">SpringMVC</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">安装与配置</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-archive"></i> 归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年09月</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年08月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年06月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年05月</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年04月</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年03月</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/">2021年02月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/">2020年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018年07月</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title"><i class="fa fa-link"></i> 友情链接</h3>
+    <div class="widget">
+      <ul>
+      
+        <li>
+          <a href="https://blog.ecutdl.cn/" target="_blank" rel="noopener">左耳听风</a>
+        </li>
+      
+        <li>
+          <a href="https://chaooo.github.io/" target="_blank" rel="noopener">秋过冬漫长</a>
+        </li>
+      
+      </ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <a id="totop" href="#top"></a>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      <p>
+        <a href="/sitemap.xml">网站地图</a>
+        <span> | </span><a href="/atom.xml">订阅本站</a>
+        <span> | </span><a href="/about/">联系博主</a>
+      </p>
+      
+        <p>
+          <i class="fa fa-visitors"></i>
+          <i id="busuanzi_container_site_uv"><i id="busuanzi_value_site_uv"></i></i>
+          ，
+          <i class="fa fa-views"></i>
+          <i id="busuanzi_container_site_pv"><i id="busuanzi_value_site_pv"></i></i>
+        </p>
+      
+      <p>
+        <span>Copyright &copy; 2021 耿锐.</span>
+        <span>Theme by <a href="https://github.com/chaooo/hexo-theme-BlueLake/" target="_blank">BlueLake.</a></span>
+        
+            <span>Count by <a href="http://busuanzi.ibruce.info/" target="_blank">busuanzi.</a></span>
+        
+        <span>Powered by <a href="https://hexo.io/" target="_blank">Hexo.</a></span>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/search.json.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+  
+<script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+  
+<script src="/localshare/js/social-share.js"></script>
+
+  
+<script src="/localshare/js/qrcode.js"></script>
+
+
+
+
+
+  
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: '2b288de9939594e51d70',
+      clientSecret: '72c37a839721d882389905bbe5c73b51003585da',
+      repo: 'BLOG-COMMENTS',
+      owner: 'GengRui01',
+      admin: ['GengRui01'],
+      id: md5(window.location.pathname),
+      distractionFreeMode: false,
+      language: 'zh-CN',
+      pagerDirection: 'last'
+    });
+    gitalk.render('comments');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</body>
+</html>
